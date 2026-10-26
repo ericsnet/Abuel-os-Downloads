@@ -117,3 +117,7 @@ Cambia la contraseña inicial de la cuenta responsable durante la primera config
 - [Notificar un problema con esta página](https://github.com/ericsnet/Abuel-os-Downloads/issues)
 
 abuel-os es software propietario. Descargar una ISO no concede por sí solo permiso para copiar, modificar o redistribuir el software fuera de lo permitido por la legislación aplicable o de una autorización del titular.
+
+## Historial detallado de versiones
+
+Consulta el [índice de versiones](versions/INDEX.md) para ver los cambios, los fallos conocidos y los datos de publicación de cada versión. Las ISO siguen pendientes de publicación en este repositorio; el índice enlaza a la página pública de [Releases](https://github.com/ericsnet/Abuel-os-Downloads/releases).
