@@ -1,8 +1,8 @@
 # Índice de versiones
 
-Cada versión publicada tiene su propia carpeta con lo que incluyó, sus fallos
-conocidos y los datos del artefacto. La carpeta se crea con
-`python tools/new-version.py <versión>`.
+Cada versión documentada tiene su propia carpeta con lo que incluyó, sus fallos
+conocidos y los datos del artefacto. Este índice refleja el historial de versiones;
+la publicación de las ISO en este repositorio se indica por separado.
 
 | Versión | Fecha | Estado en este repositorio | ISO SHA256 | Descargas |
 |---|---|---|---|---|
