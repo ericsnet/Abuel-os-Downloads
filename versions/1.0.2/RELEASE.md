@@ -1,7 +1,7 @@
 # Publicación - abuel-os 1.0.2
 
 - **Fecha:** 2026-10-25
-- **Etiqueta:** `v1.0.2` (publicada)
+- **Etiqueta:** `v1.0.2`
 - **Descargas públicas:** https://github.com/ericsnet/Abuel-os-Downloads/releases
 - **Estado en este repositorio:** ISO pendiente de publicación
 - **Ficheros:** `abuelo-os-amd64.iso` y `abuelo-os-amd64.iso.sha256`
