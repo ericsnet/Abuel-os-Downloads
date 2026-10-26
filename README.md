@@ -116,7 +116,9 @@ Cambia la contraseña inicial de la cuenta responsable durante la primera config
 - [Descargas y versiones publicadas](https://github.com/ericsnet/Abuel-os-Downloads/releases)
 - [Notificar un problema con esta página](https://github.com/ericsnet/Abuel-os-Downloads/issues)
 
-abuel-os es software propietario. Descargar una ISO no concede por sí solo permiso para copiar, modificar o redistribuir el software fuera de lo permitido por la legislación aplicable o de una autorización del titular.
+Copyright (c) 2026 **ericsnet**. Todos los derechos reservados.
+
+abuel-os es software propietario. Descargar una ISO no concede por sí solo permiso para copiar, modificar o redistribuir el software fuera de lo permitido por la legislación aplicable o de una autorización escrita previa de ericsnet. Consulta [LICENSE](LICENSE).
 
 ## Historial detallado de versiones
 
