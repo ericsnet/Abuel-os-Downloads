@@ -1,125 +1,127 @@
-# abuel-os — Descargas
+**Languages:** English | [Español](README.es.md)
 
-**Página oficial de descarga de abuel-os**, una distribución basada en Debian 12 (Bookworm) y XFCE, diseñada para ofrecer un escritorio sencillo y una cuenta separada para la persona responsable.
+# abuel-os — Downloads
 
-## Última versión: 1.0.2
+**Official abuel-os download page**, for a distribution based on Debian 12 (Bookworm) and XFCE, designed to provide a simple desktop and a separate account for the person responsible.
 
-| Característica | Detalle |
+## Latest version: 1.0.2
+
+| Feature | Detail |
 |---|---|
-| Arquitectura | AMD64 (Intel/AMD de 64 bits) |
-| Sistema base | Debian 12 (Bookworm) |
-| Escritorio | XFCE |
-| Arranque | BIOS y UEFI; compatibilidad con Secure Boot indicada para esta versión |
-| RAM | 2 GB mínimo; 4 GB recomendados |
-| USB | 4 GB mínimo; se recomienda 8 GB o más |
+| Architecture | AMD64 (64-bit Intel/AMD) |
+| Base system | Debian 12 (Bookworm) |
+| Desktop | XFCE |
+| Boot | BIOS and UEFI; Secure Boot compatibility indicated for this version |
+| RAM | 2 GB minimum; 4 GB recommended |
+| USB | 4 GB minimum; 8 GB or more recommended |
 
-**Estado de la descarga:** las ISO todavía no están publicadas en este repositorio. Cuando estén disponibles, aparecerán en [Releases](https://github.com/ericsnet/Abuel-os-Downloads/releases).
+**Download status:** the ISOs have not yet been published in this repository. When available, they will appear in [Releases](https://github.com/ericsnet/Abuel-os-Downloads/releases).
 
-## Versiones y verificación
+## Versions and verification
 
-| Versión | SHA-256 esperado | Estado |
+| Version | Expected SHA-256 | Status |
 |---|---|---|
-| 1.0.2 | `bb0b42ca5f3acd4694263906e296d0b2cac9ab33da4cf6760ce83335551cfb98` | ISO pendiente de publicación |
-| 1.0.1 | `ff037e08f2ee942806cb92498ae475217ec058db28207dfc2be3490bdb835fc2` | ISO pendiente de publicación |
-| 1.0.0 | `3262da299e671020aa0268eaf076b7d0756d799d163ff90e1a2b6eec2b22eebf` | ISO pendiente de publicación |
+| 1.0.2 | `bb0b42ca5f3acd4694263906e296d0b2cac9ab33da4cf6760ce83335551cfb98` | ISO pending publication |
+| 1.0.1 | `ff037e08f2ee942806cb92498ae475217ec058db28207dfc2be3490bdb835fc2` | ISO pending publication |
+| 1.0.0 | `3262da299e671020aa0268eaf076b7d0756d799d163ff90e1a2b6eec2b22eebf` | ISO pending publication |
 
-Verifica siempre la suma SHA-256 de la ISO descargada y compárala con la correspondiente a esa versión. Si no coincide exactamente, no utilices esa imagen.
+Always verify the SHA-256 checksum of the downloaded ISO and compare it with the one for that version. If it does not match exactly, do not use that image.
 
-### Verificar en Windows
+### Verify on Windows
 
-Abre PowerShell y ejecuta el comando siguiente, cambiando la ruta si guardaste la ISO en otra carpeta:
+Open PowerShell and run the following command, changing the path if you saved the ISO in another folder:
 
 ```powershell
 Get-FileHash "$HOME\Downloads\abuelo-os-amd64.iso" -Algorithm SHA256
 ```
 
-Compara el valor de `Hash` con el SHA-256 publicado.
+Compare the `Hash` value with the published SHA-256.
 
-### Verificar en Linux
+### Verify on Linux
 
-En un terminal abierto en la carpeta de la ISO:
+In a terminal open in the ISO folder:
 
 ```bash
 sha256sum abuelo-os-amd64.iso
 ```
 
-El resultado debe coincidir carácter por carácter con el checksum oficial.
+The result must match the official checksum character for character.
 
-## Guía de instalación
+## Installation guide
 
-**Antes de empezar:** instalar un sistema operativo puede borrar todos los archivos del ordenador. Haz una copia de seguridad de documentos, fotos y otros datos importantes. Si quieres conservar Windows u otro sistema, no selecciones el disco completo ni elimines particiones sin comprender el efecto.
+**Before you start:** installing an operating system can erase all files on the computer. Back up documents, photos, and other important data. If you want to keep Windows or another system, do not select the entire disk or delete partitions without understanding the effect.
 
-### 1. Preparar una memoria USB
+### 1. Prepare a USB drive
 
-Necesitarás la ISO oficial cuando se publique, una memoria USB de al menos 4 GB (preferiblemente 8 GB o más) y un ordenador para prepararla. El proceso puede borrar por completo la memoria USB.
+You will need the official ISO once it is published, a USB drive of at least 4 GB (8 GB or more is preferable), and a computer to prepare it. The process may completely erase the USB drive.
 
-**Con Rufus en Windows:**
+**With Rufus on Windows:**
 
-1. Descarga Rufus desde [rufus.ie](https://rufus.ie/).
-2. Conecta el USB y guarda fuera de él los archivos que quieras conservar.
-3. Abre Rufus y comprueba que el campo **Dispositivo** identifica la memoria USB correcta.
-4. En **Selección de arranque**, elige **Disco o imagen ISO** y selecciona la ISO de abuel-os.
-5. Si Rufus pregunta cómo escribir la imagen, utiliza primero el modo recomendado. Si el USB no arranca y Rufus ofrece el modo **DD**, vuelve a crearlo con ese modo.
-6. Pulsa **Empezar** y confirma únicamente después de revisar el dispositivo seleccionado.
-7. Espera a que termine y expulsa el USB de forma segura.
+1. Download Rufus from [rufus.ie](https://rufus.ie/).
+2. Connect the USB drive and save elsewhere any files you want to keep.
+3. Open Rufus and check that the **Device** field identifies the correct USB drive.
+4. Under **Boot selection**, choose **Disk or ISO image** and select the abuel-os ISO.
+5. If Rufus asks how to write the image, first use the recommended mode. If the USB drive does not boot and Rufus offers **DD** mode, recreate it using that mode.
+6. Click **Start** and confirm only after checking the selected device.
+7. Wait for the process to finish and safely eject the USB drive.
 
-También puedes usar [Ventoy](https://www.ventoy.net/), siguiendo su documentación oficial. Preparar Ventoy en un USB también puede borrar sus datos; después se copia la ISO a la unidad preparada.
+You can also use [Ventoy](https://www.ventoy.net/), following its official documentation. Preparing Ventoy on a USB drive may also erase its data; afterward, copy the ISO to the prepared drive.
 
-### 2. Arrancar desde el USB
+### 2. Boot from the USB drive
 
-1. Apaga el ordenador, conecta el USB y vuelve a encenderlo.
-2. Abre el menú de arranque pulsando la tecla indicada por el fabricante justo al encender. Suele ser F12, F11, Esc u otra tecla.
-3. Selecciona el USB. En equipos modernos, normalmente conviene elegir la entrada **UEFI** si aparecen varias.
-4. Espera a que aparezca el menú de abuel-os y elige la opción de inicio normal.
+1. Turn off the computer, connect the USB drive, and turn it on again.
+2. Open the boot menu by pressing the key indicated by the manufacturer just after powering on. It is often F12, F11, Esc, or another key.
+3. Select the USB drive. On modern computers, it is usually best to choose the **UEFI** entry if several appear.
+4. Wait for the abuel-os menu to appear and choose the normal startup option.
 
-Si el USB no aparece, consulta las instrucciones del fabricante para abrir el menú de arranque. No cambies opciones de BIOS/UEFI o de seguridad al azar.
+If the USB drive does not appear, consult the manufacturer's instructions for opening the boot menu. Do not change BIOS/UEFI or security settings at random.
 
-### 3. Probar el sistema e iniciar la instalación
+### 3. Try the system and start installation
 
-1. Si aparece un escritorio de prueba, comprueba que funcionan la pantalla, el teclado, el ratón, el sonido y la conexión de red.
-2. **Si la ISO incluye un instalador**, ábrelo y sigue las pantallas. Selecciona idioma, zona horaria y distribución del teclado cuando se soliciten.
-3. Cuando llegues a la configuración del disco, revisa cuidadosamente las opciones. Usar el disco completo puede borrar los sistemas y archivos existentes.
-4. Si quieres conservar Windows, hacer arranque dual o mantener particiones con datos, detente antes de confirmar y prepara un plan de particionado adecuado.
-5. Lee el resumen de cambios del instalador. Continúa solo cuando el disco de destino y las particiones sean los correctos.
-6. Espera a que el instalador indique que ha terminado. Reinicia y retira el USB cuando se te indique.
-7. Si el ordenador vuelve a arrancar desde el USB, reinicia y selecciona el disco interno desde el menú de arranque.
+1. If a test desktop appears, check that the display, keyboard, mouse, sound, and network connection work.
+2. **If the ISO includes an installer**, open it and follow the screens. Select the language, time zone, and keyboard layout when prompted.
+3. When you reach disk setup, review the options carefully. Using the entire disk can erase existing systems and files.
+4. If you want to keep Windows, set up dual boot, or keep partitions with data, stop before confirming and prepare an appropriate partitioning plan.
+5. Read the installer's summary of changes. Continue only when the destination disk and partitions are correct.
+6. Wait for the installer to indicate that it has finished. Restart and remove the USB drive when prompted.
+7. If the computer boots from the USB drive again, restart and select the internal disk from the boot menu.
 
-**Nota:** las pantallas y opciones exactas dependen del instalador incluido en la ISO. Si no aparece un instalador o las pantallas no coinciden, no modifiques el disco; consulta las notas específicas de esa versión antes de continuar.
+**Note:** the exact screens and options depend on the installer included in the ISO. If no installer appears or the screens do not match, do not modify the disk; consult that version's specific notes before continuing.
 
-### 4. Primer inicio de sesión
+### 4. First login
 
-En la versión 1.0.2, las cuentas previstas son:
+In version 1.0.2, the planned accounts are:
 
-- **Uso diario:** `abuelo`, con inicio de sesión automático.
-- **Persona responsable:** `responsable`, con contraseña inicial `live`.
+- **Daily use:** `abuelo`, with automatic login.
+- **Responsible person:** `responsable`, with initial password `live`.
 
-Cambia la contraseña inicial de la cuenta responsable durante la primera configuración. No la reutilices en otros servicios ni la compartas públicamente. Si las credenciales de tu ISO no coinciden con esta información, consulta las notas de esa versión.
+Change the responsible account's initial password during the first setup. Do not reuse it on other services or share it publicly. If the credentials in your ISO do not match this information, consult that version's notes.
 
-### 5. Después de instalar
+### 5. After installation
 
-- Comprueba que el sistema inicia sin el USB conectado.
-- Verifica Internet, sonido, resolución de pantalla, teclado, ratón e impresora si corresponde.
-- Instala las actualizaciones disponibles mediante las herramientas del sistema.
-- Mantén una copia de seguridad de los datos importantes.
-- Acordad quién se encargará de las actualizaciones, las contraseñas y la recuperación del equipo.
+- Check that the system starts without the USB drive connected.
+- Check the Internet, sound, screen resolution, keyboard, mouse, and printer if applicable.
+- Install available updates using the system tools.
+- Keep a backup of important data.
+- Agree on who will take care of updates, passwords, and recovery of the computer.
 
-## Requisitos
+## Requirements
 
-- Procesador Intel o AMD de 64 bits.
-- 2 GB de RAM como mínimo; 4 GB recomendados.
-- Memoria USB de 4 GB como mínimo.
-- Copia de seguridad de los datos existentes.
-- Conexión a Internet recomendada para actualizaciones y documentación.
+- 64-bit Intel or AMD processor.
+- 2 GB of RAM minimum; 4 GB recommended.
+- USB drive of at least 4 GB.
+- Backup of existing data.
+- Internet connection recommended for updates and documentation.
 
-## Ayuda y versiones
+## Help and versions
 
-- [Descargas y versiones publicadas](https://github.com/ericsnet/Abuel-os-Downloads/releases)
-- [Notificar un problema con esta página](https://github.com/ericsnet/Abuel-os-Downloads/issues)
+- [Downloads and published versions](https://github.com/ericsnet/Abuel-os-Downloads/releases)
+- [Report a problem with this page](https://github.com/ericsnet/Abuel-os-Downloads/issues)
 
-Copyright (c) 2026 **ericsnet**. Todos los derechos reservados.
+Copyright (c) 2026 **ericsnet**. All rights reserved.
 
-abuel-os es software propietario. Descargar una ISO no concede por sí solo permiso para copiar, modificar o redistribuir el software fuera de lo permitido por la legislación aplicable o de una autorización escrita previa de ericsnet. Consulta [LICENSE](LICENSE).
+abuel-os is proprietary software. Downloading an ISO does not by itself grant permission to copy, modify, or redistribute the software beyond what is permitted by applicable law or prior written authorization from ericsnet. See [LICENSE](LICENSE).
 
-## Historial detallado de versiones
+## Detailed version history
 
-Consulta el [índice de versiones](versions/INDEX.md) para ver los cambios, los fallos conocidos y los datos de publicación de cada versión. Las ISO siguen pendientes de publicación en este repositorio; el índice enlaza a la página pública de [Releases](https://github.com/ericsnet/Abuel-os-Downloads/releases).
+See the [version index](versions/INDEX.md) for changes, known issues, and publication details for each version. The ISOs are still pending publication in this repository; the index links to the public [Releases](https://github.com/ericsnet/Abuel-os-Downloads/releases) page.
