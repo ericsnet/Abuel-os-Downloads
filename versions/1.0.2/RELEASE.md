@@ -1,14 +1,14 @@
 # Publicación - abuel-os 1.0.2
 
 - **Fecha:** 2026-10-25
-- **Etiqueta:** `v1.0.2`
-- **Descargas públicas:** https://github.com/ericsnet/Abuel-os-Downloads/releases
-- **Estado en este repositorio:** ISO pendiente de publicación
+- **Etiqueta:** `v1.0.2` (publicada)
+- **Release:** https://github.com/ericsnet/Abuel-os/releases/tag/v1.0.2
 - **Ficheros:** `abuelo-os-amd64.iso` y `abuelo-os-amd64.iso.sha256`
 - **Tamaño:** 1.946.157.056 bytes
 - **SHA256:** `bb0b42ca5f3acd4694263906e296d0b2cac9ab33da4cf6760ce83335551cfb98`
 
-La ISO y su fichero SHA256 todavía están pendientes de publicación en el repositorio público de descargas. Cuando estén disponibles, aparecerán en [Releases](https://github.com/ericsnet/Abuel-os-Downloads/releases).
+Los dos ficheros están subidos como adjuntos de la release (no dentro del
+repositorio, por tamaño). GitHub verificó el adjunto con el mismo SHA256.
 
 ## Comprobaciones de la imagen
 

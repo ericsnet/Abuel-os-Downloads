@@ -2,13 +2,12 @@
 
 - **Fecha:** 2026-10-25
 - **Etiqueta:** `v1.0.1`
-- **Descargas públicas:** https://github.com/ericsnet/Abuel-os-Downloads/releases
-- **Estado en este repositorio:** ISO pendiente de publicación
+- **Release:** https://github.com/Pickeric/Abuel-os/releases/tag/v1.0.1
 - **Fichero:** `abuelo-os-amd64.iso`
 - **Tamaño:** 1.692.844.032 bytes
 - **SHA256:** `ff037e08f2ee942806cb92498ae475217ec058db28207dfc2be3490bdb835fc2`
 
-La ISO todavía no está publicada en el repositorio público de descargas. Cuando se publique, estará disponible en [Releases](https://github.com/ericsnet/Abuel-os-Downloads/releases).
+Artefacto subido como adjunto de la release (no dentro del repositorio, por tamaño).
 
 ## Comprobaciones de la imagen
 
