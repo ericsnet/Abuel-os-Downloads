@@ -35,7 +35,7 @@ Versión de corrección de los fallos encontrados por el operador al probar la
    ventana al monitor. Se añade `abuelo-display` (autostart) que reencaja la
    resolución con `xrandr --auto` al iniciar sesión.
 6. **Enlaces del sistema**. `os-release`, `issue` y `lsb-release` ya indican
-   1.0.3 y apuntan a `https://github.com/ericsnet/Abuel-os-Downloads`. El mensaje de
+   1.0.3 y apuntan a `https://github.com/ericsnet/Abuel-os`. El mensaje de
    bienvenida de consola (`/etc/motd`) también dice 1.0.3.
 7. **Carpeta `~/.local` del usuario mayor**. La preparación de la sesión live la
    creaba como `root:root`, así que el usuario no podía guardar ajustes
