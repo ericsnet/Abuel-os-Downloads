@@ -4,7 +4,7 @@
 
 **Official abuel-os download page**, for a distribution based on Debian 12 (Bookworm) and XFCE, designed to provide a simple desktop and a separate account for the person responsible.
 
-## Latest version: 1.0.2
+## Latest version: 1.0.4
 
 | Feature | Detail |
 |---|---|
@@ -15,15 +15,17 @@
 | RAM | 2 GB minimum; 4 GB recommended |
 | USB | 4 GB minimum; 8 GB or more recommended |
 
-**Download status:** the ISOs have not yet been published in this repository. When available, they will appear in [Releases](https://github.com/ericsnet/Abuel-os-Downloads/releases).
+**Download status:** every version is published in this repository, one folder per version (`1.0.0/`, `1.0.1/`, `1.0.2/`, `1.0.3/`, `1.0.4/`), each containing `abuelo-os-amd64.iso`, its `.sha256` file and `RELEASE.md`.
 
 ## Versions and verification
 
 | Version | Expected SHA-256 | Status |
 |---|---|---|
-| 1.0.2 | `bb0b42ca5f3acd4694263906e296d0b2cac9ab33da4cf6760ce83335551cfb98` | ISO pending publication |
-| 1.0.1 | `ff037e08f2ee942806cb92498ae475217ec058db28207dfc2be3490bdb835fc2` | ISO pending publication |
-| 1.0.0 | `3262da299e671020aa0268eaf076b7d0756d799d163ff90e1a2b6eec2b22eebf` | ISO pending publication |
+| [1.0.4](1.0.4/) | `d095937be77d94bd5626aed2933649f8543eed81767fcde4dd8f55a0f151cb7e` | ISO published in this repository |
+| [1.0.3](1.0.3/) | `c9636d05b124391c094077d543df9bba7d3e1f8af5ada2641bef62c6e79f2fae` | ISO published in this repository |
+| [1.0.2](1.0.2/) | `bb0b42ca5f3acd4694263906e296d0b2cac9ab33da4cf6760ce83335551cfb98` | ISO published in this repository |
+| [1.0.1](1.0.1/) | `ff037e08f2ee942806cb92498ae475217ec058db28207dfc2be3490bdb835fc2` | ISO published in this repository |
+| [1.0.0](1.0.0/) | `3262da299e671020aa0268eaf076b7d0756d799d163ff90e1a2b6eec2b22eebf` | ISO published in this repository |
 
 Always verify the SHA-256 checksum of the downloaded ISO and compare it with the one for that version. If it does not match exactly, do not use that image.
 
@@ -124,4 +126,4 @@ abuel-os is proprietary software. Downloading an ISO does not by itself grant pe
 
 ## Detailed version history
 
-See the [version index](versions/INDEX.md) for changes, known issues, and publication details for each version. The ISOs are still pending publication in this repository; the index links to the public [Releases](https://github.com/ericsnet/Abuel-os-Downloads/releases) page.
+See the [version index](versions/INDEX.md) for changes, known issues, and publication details for each version. Every ISO is published in this repository, in the per-version folder shown above.

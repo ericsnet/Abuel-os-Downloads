@@ -4,7 +4,7 @@
 
 **Página oficial de descarga de abuel-os**, una distribución basada en Debian 12 (Bookworm) y XFCE, diseñada para ofrecer un escritorio sencillo y una cuenta separada para la persona responsable.
 
-## Última versión: 1.0.2
+## Última versión: 1.0.4
 
 | Característica | Detalle |
 |---|---|
@@ -15,15 +15,17 @@
 | RAM | 2 GB mínimo; 4 GB recomendados |
 | USB | 4 GB mínimo; se recomienda 8 GB o más |
 
-**Estado de la descarga:** las ISO todavía no están publicadas en este repositorio. Cuando estén disponibles, aparecerán en [Releases](https://github.com/ericsnet/Abuel-os-Downloads/releases).
+**Estado de la descarga:** todas las versiones están publicadas en este repositorio, una carpeta por versión (`1.0.0/`, `1.0.1/`, `1.0.2/`, `1.0.3/`, `1.0.4/`), cada una con `abuelo-os-amd64.iso`, su fichero `.sha256` y `RELEASE.md`.
 
 ## Versiones y verificación
 
 | Versión | SHA-256 esperado | Estado |
 |---|---|---|
-| 1.0.2 | `bb0b42ca5f3acd4694263906e296d0b2cac9ab33da4cf6760ce83335551cfb98` | ISO pendiente de publicación |
-| 1.0.1 | `ff037e08f2ee942806cb92498ae475217ec058db28207dfc2be3490bdb835fc2` | ISO pendiente de publicación |
-| 1.0.0 | `3262da299e671020aa0268eaf076b7d0756d799d163ff90e1a2b6eec2b22eebf` | ISO pendiente de publicación |
+| [1.0.4](1.0.4/) | `d095937be77d94bd5626aed2933649f8543eed81767fcde4dd8f55a0f151cb7e` | ISO publicada en este repositorio |
+| [1.0.3](1.0.3/) | `c9636d05b124391c094077d543df9bba7d3e1f8af5ada2641bef62c6e79f2fae` | ISO publicada en este repositorio |
+| [1.0.2](1.0.2/) | `bb0b42ca5f3acd4694263906e296d0b2cac9ab33da4cf6760ce83335551cfb98` | ISO publicada en este repositorio |
+| [1.0.1](1.0.1/) | `ff037e08f2ee942806cb92498ae475217ec058db28207dfc2be3490bdb835fc2` | ISO publicada en este repositorio |
+| [1.0.0](1.0.0/) | `3262da299e671020aa0268eaf076b7d0756d799d163ff90e1a2b6eec2b22eebf` | ISO publicada en este repositorio |
 
 Verifica siempre la suma SHA-256 de la ISO descargada y compárala con la correspondiente a esa versión. Si no coincide exactamente, no utilices esa imagen.
 
@@ -124,4 +126,4 @@ abuel-os es software propietario. Descargar una ISO no concede por sí solo perm
 
 ## Historial detallado de versiones
 
-Consulta el [índice de versiones](versions/INDEX.md) para ver los cambios, los fallos conocidos y los datos de publicación de cada versión. Las ISO siguen pendientes de publicación en este repositorio; el índice enlaza a la página pública de [Releases](https://github.com/ericsnet/Abuel-os-Downloads/releases).
+Consulta el [índice de versiones](versions/INDEX.md) para ver los cambios, los fallos conocidos y los datos de publicación de cada versión. Todas las ISO están publicadas en este repositorio, en la carpeta de cada versión indicada arriba.
