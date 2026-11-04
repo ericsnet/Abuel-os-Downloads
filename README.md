@@ -21,7 +21,7 @@
 
 | Version | Expected SHA-256 | Status |
 |---|---|---|
-| [1.0.4](1.0.4/) | `d095937be77d94bd5626aed2933649f8543eed81767fcde4dd8f55a0f151cb7e` | ISO published in this repository |
+| [1.0.4](1.0.4/) | `468c8785723a63881f3828611d5d56c6282de67dddd27c2a8cfdeab476e5356e` | ISO published in this repository |
 | [1.0.3](1.0.3/) | `c9636d05b124391c094077d543df9bba7d3e1f8af5ada2641bef62c6e79f2fae` | ISO published in this repository |
 | [1.0.2](1.0.2/) | `bb0b42ca5f3acd4694263906e296d0b2cac9ab33da4cf6760ce83335551cfb98` | ISO published in this repository |
 | [1.0.1](1.0.1/) | `ff037e08f2ee942806cb92498ae475217ec058db28207dfc2be3490bdb835fc2` | ISO published in this repository |

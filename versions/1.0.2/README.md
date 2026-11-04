@@ -1,14 +1,19 @@
 # abuel-os 1.0.2
 
 Versión de **corrección**: 15 de 15 fallos documentados en 1.0.0 y 1.0.1
-corregidos, más 2 incidencias encontradas en las pruebas. **0 fallos abiertos.**
+corregidos, más 2 incidencias encontradas en las pruebas.
+
+> **Aviso (2026-11-03):** las pruebas posteriores a la publicación encontraron
+> fallos no documentados en esta ficha (iconos del escritorio, Chrome, Correo y
+> tamaños de ventana). Están corregidos en [1.0.3](../1.0.3/) y detallados en
+> [KNOWN_ISSUES.md](KNOWN_ISSUES.md).
 
 ## Contenido de esta carpeta
 
 | Fichero | Qué es |
 |---|---|
 | `CHANGELOG.md` | Resumen de cambios y recuento de fallos |
-| `KNOWN_ISSUES.md` | Fallos abiertos (ninguno) |
+| `KNOWN_ISSUES.md` | Fallos detectados después de publicar (corregidos en 1.0.3) |
 | `RELEASE.md` | Artefacto, tamaño, SHA256 y comprobaciones |
 
 ## Resumen
