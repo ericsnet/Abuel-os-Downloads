@@ -1,11 +1,13 @@
 # Publicación - abuel-os 1.0.4
 
 - **Fecha:** 2026-11-03
-- **Etiqueta:** `v1.0.4` (construida, pendiente de publicar)
-- **Release:** pendiente
+- **Etiqueta:** `v1.0.4` (publicada)
+- **Release:** https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.4
 - **Ficheros:** `abuelo-os-amd64.iso` y `abuelo-os-amd64.iso.sha256`
 - **Tamaño:** 1.949.515.776 bytes
 - **SHA256:** `468c8785723a63881f3828611d5d56c6282de67dddd27c2a8cfdeab476e5356e`
+
+Los dos ficheros están subidos como adjuntos de la release. GitHub calculó el mismo SHA256 para el adjunto (sha256:468c8785…5356e).
 
 ## Comprobaciones de la imagen
 
@@ -20,4 +22,4 @@
 
 ## Capturas y registros
 
-En `project/artifacts/1.0.4/`.
+En `artifacts/1.0.4/`.

@@ -2,7 +2,7 @@
 
 - **Fecha:** 2026-11-03
 - **Etiqueta:** `v1.0.3` (publicada)
-- **Release:** https://github.com/ericsnet/Abuel-os/releases/tag/v1.0.3
+- **Release:** https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.3
 - **Ficheros:** `abuelo-os-amd64.iso` y `abuelo-os-amd64.iso.sha256`
 - **Tamaño:** 1.947.598.848 bytes
 - **SHA256:** `c9636d05b124391c094077d543df9bba7d3e1f8af5ada2641bef62c6e79f2fae`
@@ -26,7 +26,7 @@ Los dos ficheros están subidos como adjuntos de la release. GitHub calculó el 
 
 ## Capturas y registros
 
-En `project/artifacts/1.0.3/`:
+En `artifacts/1.0.3/`:
 
 - `screenshots/01-desktop-panel-error.png` (1.0.2, fallo original).
 - `screenshots/02-panel-ask-responsable.png` (1.0.3, arreglado).

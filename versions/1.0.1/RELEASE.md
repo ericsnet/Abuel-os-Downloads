@@ -2,7 +2,7 @@
 
 - **Fecha:** 2026-10-25
 - **Etiqueta:** `v1.0.1`
-- **Release:** https://github.com/Pickeric/Abuel-os/releases/tag/v1.0.1
+- **Release:** https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.1
 - **Fichero:** `abuelo-os-amd64.iso`
 - **Tamaño:** 1.692.844.032 bytes
 - **SHA256:** `ff037e08f2ee942806cb92498ae475217ec058db28207dfc2be3490bdb835fc2`

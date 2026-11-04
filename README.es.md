@@ -15,17 +15,17 @@
 | RAM | 2 GB mínimo; 4 GB recomendados |
 | USB | 4 GB mínimo; se recomienda 8 GB o más |
 
-**Estado de la descarga:** todas las versiones están publicadas en este repositorio, una carpeta por versión (`1.0.0/`, `1.0.1/`, `1.0.2/`, `1.0.3/`, `1.0.4/`), cada una con `abuelo-os-amd64.iso`, su fichero `.sha256` y `RELEASE.md`.
+**Estado de la descarga:** todas las versiones están publicadas en este repositorio, una carpeta por versión (`versions/1.0.0/`, `versions/1.0.1/`, `versions/1.0.2/`, `versions/1.0.3/`, `versions/1.0.4/`), cada una con `abuelo-os-amd64.iso`, su fichero `.sha256` y `RELEASE.md`.
 
 ## Versiones y verificación
 
 | Versión | SHA-256 esperado | Estado |
 |---|---|---|
-| [1.0.4](1.0.4/) | `468c8785723a63881f3828611d5d56c6282de67dddd27c2a8cfdeab476e5356e` | ISO publicada en este repositorio |
-| [1.0.3](1.0.3/) | `c9636d05b124391c094077d543df9bba7d3e1f8af5ada2641bef62c6e79f2fae` | ISO publicada en este repositorio |
-| [1.0.2](1.0.2/) | `bb0b42ca5f3acd4694263906e296d0b2cac9ab33da4cf6760ce83335551cfb98` | ISO publicada en este repositorio |
-| [1.0.1](1.0.1/) | `ff037e08f2ee942806cb92498ae475217ec058db28207dfc2be3490bdb835fc2` | ISO publicada en este repositorio |
-| [1.0.0](1.0.0/) | `3262da299e671020aa0268eaf076b7d0756d799d163ff90e1a2b6eec2b22eebf` | ISO publicada en este repositorio |
+| [1.0.4](versions/1.0.4/) | `468c8785723a63881f3828611d5d56c6282de67dddd27c2a8cfdeab476e5356e` | ISO publicada en este repositorio |
+| [1.0.3](versions/1.0.3/) | `c9636d05b124391c094077d543df9bba7d3e1f8af5ada2641bef62c6e79f2fae` | ISO publicada en este repositorio |
+| [1.0.2](versions/1.0.2/) | `bb0b42ca5f3acd4694263906e296d0b2cac9ab33da4cf6760ce83335551cfb98` | ISO publicada en este repositorio |
+| [1.0.1](versions/1.0.1/) | `ff037e08f2ee942806cb92498ae475217ec058db28207dfc2be3490bdb835fc2` | ISO publicada en este repositorio |
+| [1.0.0](versions/1.0.0/) | `3262da299e671020aa0268eaf076b7d0756d799d163ff90e1a2b6eec2b22eebf` | ISO publicada en este repositorio |
 
 Verifica siempre la suma SHA-256 de la ISO descargada y compárala con la correspondiente a esa versión. Si no coincide exactamente, no utilices esa imagen.
 

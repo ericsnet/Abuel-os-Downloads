@@ -2,7 +2,7 @@
 
 - **Fecha:** 2026-10-25
 - **Etiqueta:** `v1.0.2` (publicada)
-- **Release:** https://github.com/ericsnet/Abuel-os/releases/tag/v1.0.2
+- **Release:** https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.2
 - **Ficheros:** `abuelo-os-amd64.iso` y `abuelo-os-amd64.iso.sha256`
 - **Tamaño:** 1.946.157.056 bytes
 - **SHA256:** `bb0b42ca5f3acd4694263906e296d0b2cac9ab33da4cf6760ce83335551cfb98`
@@ -27,5 +27,5 @@ repositorio, por tamaño). GitHub verificó el adjunto con el mismo SHA256.
 
 ## Capturas y registros
 
-En `project/artifacts/1.0.2/`: `boot-bios2.png`, `boot-uefi2.png`,
+En `artifacts/1.0.2/`: `boot-bios2.png`, `boot-uefi2.png`,
 `serial-bios2.log`, `serial-uefi2.log`.
