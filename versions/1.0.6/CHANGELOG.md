@@ -32,4 +32,4 @@ revisar la 1.0.5.
 
 ## Artefacto
 
-Pendiente. Ver [RELEASE.md](RELEASE.md).
+ISO 1.0.6 construida: `18d62c0af617b5c89f175d993d5428ecd1ad2abf2143ac9bd6446f4e5d8a8f5a`. Ver [RELEASE.md](RELEASE.md).
