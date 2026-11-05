@@ -11,9 +11,18 @@
 
 ## Comprobaciones previstas
 
-- [ ] ISO 1.0.6 y primer arranque instalado.
-- [ ] `abuelo-update --check` contra una release con paquete firmado.
-- [ ] Instalación del `.deb` sobre 1.0.5/1.0.6 y rollback.
-- [ ] Papelera propia sin acceso a Thunar.
-- [ ] Listas del panel sin el hueco blanco.
+- [x] ISO 1.0.6 arrancada en live.
+- [ ] Primer arranque instalado.
+- [x] `abuelo-update --check` contra la release con paquete firmado.
+- [x] Instalación del `.deb` sobre 1.0.5 (bootstrap + core).
+- [ ] Rollback a la versión anterior.
+- [x] Papelera propia sin acceso a Thunar.
+- [x] Listas del panel sin el hueco blanco.
 - [ ] Persistencia de resolución y adaptación desde el panel.
+
+## Detalle
+
+- [CHANGELOG.md](CHANGELOG.md)
+- [KNOWN_ISSUES.md](KNOWN_ISSUES.md)
+- [UPDATES.md](UPDATES.md)
+- [Desktops investigados](../../docs/DESKTOPS.md)
