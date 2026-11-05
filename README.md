@@ -4,7 +4,7 @@
 
 **Official abuel-os download page**, for a distribution based on Debian 12 (Bookworm) and XFCE, designed to provide a simple desktop and a separate account for the person responsible.
 
-## Latest version: 1.0.4
+## Latest version: 1.0.5
 
 | Feature | Detail |
 |---|---|
@@ -15,13 +15,14 @@
 | RAM | 2 GB minimum; 4 GB recommended |
 | USB | 4 GB minimum; 8 GB or more recommended |
 
-**Download status:** every version is published in this repository, one folder per version (`versions/1.0.0/`, `versions/1.0.1/`, `versions/1.0.2/`, `versions/1.0.3/`, `versions/1.0.4/`), each containing `abuelo-os-amd64.iso`, its `.sha256` file and `RELEASE.md`.
+**Download status:** every version is published in this repository, one folder per version (`versions/1.0.0/`, `versions/1.0.1/`, `versions/1.0.2/`, `versions/1.0.3/`, `versions/1.0.4/`, `versions/1.0.5/`), each containing `abuelo-os-amd64.iso`, its `.sha256` file and `RELEASE.md`.
 
 ## Versions and verification
 
 | Version | Expected SHA-256 | Status |
 |---|---|---|
 | [1.0.4](versions/1.0.4/) | `468c8785723a63881f3828611d5d56c6282de67dddd27c2a8cfdeab476e5356e` | ISO published in this repository |
+| [1.0.5](versions/1.0.5/) | `5de7fd5384cc4a84ec798e25aa547e6c62902d464c849756995ec4ee04177c07` | ISO published in this repository |
 | [1.0.3](versions/1.0.3/) | `c9636d05b124391c094077d543df9bba7d3e1f8af5ada2641bef62c6e79f2fae` | ISO published in this repository |
 | [1.0.2](versions/1.0.2/) | `bb0b42ca5f3acd4694263906e296d0b2cac9ab33da4cf6760ce83335551cfb98` | ISO published in this repository |
 | [1.0.1](versions/1.0.1/) | `ff037e08f2ee942806cb92498ae475217ec058db28207dfc2be3490bdb835fc2` | ISO published in this repository |
