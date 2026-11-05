@@ -1,36 +1,23 @@
 # Publicación - abuel-os 1.0.3
 
-- **Fecha:** 2026-11-03
-- **Etiqueta:** `v1.0.3` (publicada)
-- **Release:** https://github.com/ericsnet/Abuel-os/releases/tag/v1.0.3
-- **Ficheros:** `abuelo-os-amd64.iso` y `abuelo-os-amd64.iso.sha256`
+## ISO
+
+- **Archivo:** `abuelo-os-amd64.iso`
 - **Tamaño:** 1.947.598.848 bytes
 - **SHA256:** `c9636d05b124391c094077d543df9bba7d3e1f8af5ada2641bef62c6e79f2fae`
+- **Fecha:** 2026-11-03
+- **Etiqueta:** `v1.0.3`
+- **Descarga:** [release](https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.3) · [ISO](https://github.com/ericsnet/Abuel-os-Downloads/releases/download/v1.0.3/abuelo-os-amd64.iso)
+- **Verificación:** `sha256sum abuelo-os-amd64.iso` debe devolver `c9636d05b124391c094077d543df9bba7d3e1f8af5ada2641bef62c6e79f2fae`.
 
-Los dos ficheros están subidos como adjuntos de la release. GitHub calculó el mismo SHA256 para el adjunto (`sha256:c9636d05...f2fae`).
+## Fallos conocidos (resumen)
 
-## Comprobaciones de la imagen
+- **Total:** 24 (21 de la auditoría QA y 3 previos).
+- **Severidad:** 2 alta, 10 media, 11 baja.
+- **Principales:**
+  - ABL-001 — La configuracion del responsable no es legible por el usuario mayor: tema, idioma y apps nunca se aplican
+  - ABL-004 — Tar-slip al restaurar copias de seguridad (extractall sin filtro)
 
-- [x] `PRETTY_NAME="abuel-os 1.0.3"` en `/etc/os-release` (leído en la VM).
-- [x] `/etc/motd` dice 1.0.3.
-- [x] Arranque UEFI con autologin; escritorio sin pantalla de acceso.
-- [x] Escritorio sin icono del medio de arranque «Debian…».
-- [x] `Panel.desktop` abre la petición de contraseña del responsable
-      (antes: «requiere un servicio de gestión de archivos»).
-- [x] `Internet.desktop` abre Chrome dentro del confinamiento
-      (`/opt/google/chrome/chrome` visible en el sandbox).
-- [x] `Correo.desktop` abre Evolution dentro del confinamiento.
-- [x] `~/.local` pertenece a `abuelo` y admite escritura.
-- [x] Servicio D-Bus `org.xfce.FileManager` activo con UID 1000.
-- [x] Ventanas ajustadas: `abuelo-files` cabe en 800x600 sin botones fuera.
+## Auditoría completa
 
-## Capturas y registros
-
-En `project/artifacts/1.0.3/`:
-
-- `screenshots/01-desktop-panel-error.png` (1.0.2, fallo original).
-- `screenshots/02-panel-ask-responsable.png` (1.0.3, arreglado).
-- `screenshots/03-internet-click.png`, `04-headless-chrome-evolution.png`.
-- `screenshots/05-800x600-archivos.png`.
-- `logs/serial-*.log` y `logs/probe*-1.0.3-serial.log`.
-- `scripts/serial-console.ps1` (consola serial por TCP usada en las pruebas).
+- [1.0.3/KNOWN_ISSUES.md](https://github.com/ericsnet/Abuel-os-Downloads/blob/main/versions/1.0.3/KNOWN_ISSUES.md)
