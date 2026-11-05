@@ -1,8 +1,8 @@
 # Versiones de abuel-os
 
-Una carpeta por versión. Nada de mezclar: los fallos de la 1.0.0 no se editan
-después; si se arreglan, se anotan como resueltos y el fallo vivo se describe en la
-versión nueva.
+Una carpeta por versión. Nada de mezclar: `KNOWN_ISSUES.md` solo enumera los
+fallos **abiertos en esa versión**. Si se arreglan, se anotan en el
+`CHANGELOG.md` de la versión que los corrige, no en el `KNOWN_ISSUES`.
 
 ## Estructura de cada versión
 
