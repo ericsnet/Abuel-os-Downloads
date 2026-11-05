@@ -1,6 +1,6 @@
 # Fallos conocidos - abuel-os 1.0.5
 
-- **0 fallos abiertos** conocidos.
+- **0 fallos abiertos** conocidos al publicar.
 - Pendiente: probar en equipo real y completar una instalación a disco.
 
 

@@ -4,7 +4,7 @@
 - **Etiqueta:** pendiente
 - **ISO:** pendiente
 - **Paquete de actualización:** `abuelo-os-core_1.0.6_all.deb` (borrador local)
-- **SHA256 del paquete:** `8bc3a59517d081ca53f54d1432b506816f49651c8edeb3d432d7291712a1240f`
+- **SHA256 del paquete:** `0c15fc5f1c7b02f23b4de66bd3c310bfaabcaeb9a77fa9e44046bf555bad8623`
   (cambiará con la build final)
 
 ## Comprobaciones previstas

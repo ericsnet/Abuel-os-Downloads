@@ -54,3 +54,9 @@ config/
 - 1.0.6: solo XFCE. Este documento es la investigación y el plan; no se
   incluyen paquetes de otros escritorios en la ISO.
 - Próximo paso: prototipo LXQt en una rama/VM aparte, sin tocar la ISO estable.
+
+## Fuentes consultadas
+
+- ComputingForGeeks, comparativa de RAM de 7 escritorios (2026): <https://computingforgeeks.com/desktop-environment-ram-usage>
+- FossLinux, escritorios ligeros para Debian (2026): <https://www.fosslinux.com/49920/best-desktop-environments-for-debian.htm>
+- The Infobits, LXQt vs XFCE (2026): <https://www.theinfobits.com/lxqt-vs-xfce>
