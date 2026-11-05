@@ -1,4 +1,4 @@
-# Fallos conocidos - abuel-os 1.0.6 (en desarrollo)
+# Fallos conocidos - abuel-os 1.0.6
 
 Fallos y limitaciones **abiertos en esta versión**. No se listan aquí errores
 de otras versiones ni correcciones ya aplicadas; eso va en el `CHANGELOG.md`.

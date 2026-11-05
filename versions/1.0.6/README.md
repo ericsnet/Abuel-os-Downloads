@@ -1,4 +1,4 @@
-# abuel-os 1.0.6 (en desarrollo)
+# abuel-os 1.0.6
 
 Versión centrada en **actualizaciones dinámicas**: un equipo con 1.0.6 podrá
 actualizar a 1.0.7 sin reinstalar, mediante un paquete firmado y un comprobador
@@ -10,13 +10,13 @@ integrado en el panel.
 |---|---|
 | `CHANGELOG.md` | Qué incluye y qué se está desarrollando |
 | `KNOWN_ISSUES.md` | Fallos heredados y detectados |
-| `RELEASE.md` | Artefacto (pendiente) |
+| `RELEASE.md` | Artefacto, tamaño y SHA256 |
 | `UPDATES.md` | Diseño del sistema de actualizaciones |
 | `../../docs/DESKTOPS.md` | Investigación de otros escritorios |
 
 ## Estado
 
-En desarrollo. La ISO 1.0.5 publicada sigue siendo la última estable.
+Publicada el 2026-11-05.
 
 ## Actualización desde 1.0.5
 

@@ -1,11 +1,11 @@
-# Cambios - abuel-os 1.0.6 (en desarrollo)
+# Cambios - abuel-os 1.0.6
 
 ## Objetivo
 
 Actualizaciones dinámicas del sistema y corrección de los fallos detectados al
 revisar la 1.0.5.
 
-## En curso
+## Incluido
 
 1. **`abuelo-update`**: comprueba la última release de GitHub, descarga el
    paquete `abuelo-os-core`, verifica SHA256 y firma Ed25519, e instala con
