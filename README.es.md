@@ -4,7 +4,7 @@
 
 **Página oficial de descarga de abuel-os**, una distribución basada en Debian 12 (Bookworm) y XFCE, diseñada para ofrecer un escritorio sencillo y una cuenta separada para la persona responsable.
 
-## Última versión: 1.0.5
+## Última versión: 1.0.6
 
 | Característica | Detalle |
 |---|---|
@@ -15,7 +15,7 @@
 | RAM | 2 GB mínimo; 4 GB recomendados |
 | USB | 4 GB mínimo; se recomienda 8 GB o más |
 
-**Estado de la descarga:** todas las versiones están publicadas en este repositorio, una carpeta por versión (`versions/1.0.0/`, `versions/1.0.1/`, `versions/1.0.2/`, `versions/1.0.3/`, `versions/1.0.4/`, `versions/1.0.5/`), cada una con `abuelo-os-amd64.iso`, su fichero `.sha256` y `RELEASE.md`.
+**Estado de la descarga:** todas las versiones están publicadas en este repositorio, una carpeta por versión (`versions/1.0.0/`, `versions/1.0.1/`, `versions/1.0.2/`, `versions/1.0.3/`, `versions/1.0.4/`, `versions/1.0.5/`, `versions/1.0.6/`), cada una con `abuelo-os-amd64.iso`, su fichero `.sha256` y `RELEASE.md`.
 
 ## Versiones y verificación
 
@@ -23,6 +23,7 @@
 |---|---|---|
 | [1.0.4](versions/1.0.4/) | `468c8785723a63881f3828611d5d56c6282de67dddd27c2a8cfdeab476e5356e` | ISO publicada en este repositorio |
 | [1.0.5](versions/1.0.5/) | `5de7fd5384cc4a84ec798e25aa547e6c62902d464c849756995ec4ee04177c07` | ISO publicada en este repositorio |
+| [1.0.6](versions/1.0.6/) | `18d62c0af617b5c89f175d993d5428ecd1ad2abf2143ac9bd6446f4e5d8a8f5a` | ISO publicada en este repositorio |
 | [1.0.3](versions/1.0.3/) | `c9636d05b124391c094077d543df9bba7d3e1f8af5ada2641bef62c6e79f2fae` | ISO publicada en este repositorio |
 | [1.0.2](versions/1.0.2/) | `bb0b42ca5f3acd4694263906e296d0b2cac9ab33da4cf6760ce83335551cfb98` | ISO publicada en este repositorio |
 | [1.0.1](versions/1.0.1/) | `ff037e08f2ee942806cb92498ae475217ec058db28207dfc2be3490bdb835fc2` | ISO publicada en este repositorio |
