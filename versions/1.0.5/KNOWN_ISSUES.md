@@ -51,3 +51,8 @@ técnico»).
   aplicaciones en lugar de bloquearlas.
 - **`abuelo-report` ejecutado a mano como root** escribe en `/root/Avisos`;
   desde el panel ya se pasa la ruta del mayor.
+- **Ruido de journal**: `gkr-pam` al hacer `chpasswd`, cookies de PulseAudio,
+  plugin `mdraid` ausente en udisks, aviso de compositing de xfwm4, blueman sin
+  adaptador y EDID vacío de colord. Son de entorno/VM, no bloquean.
+- **`abuelo-firstboot`** (clave por instalación) solo se puede probar en un
+  sistema instalado.
