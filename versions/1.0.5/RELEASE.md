@@ -1,7 +1,8 @@
 # Publicación - abuel-os 1.0.5
 
 - **Fecha:** 2026-11-05
-- **Etiqueta:** `v1.0.5` (construida, pendiente de publicar)
+- **Etiqueta:** `v1.0.5` (publicada)
+- **Release:** https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.5
 - **Ficheros:** `abuelo-os-amd64.iso` y `abuelo-os-amd64.iso.sha256`
 - **Tamaño:** 1.951.432.704 bytes
 - **SHA256:** `5de7fd5384cc4a84ec798e25aa547e6c62902d464c849756995ec4ee04177c07`

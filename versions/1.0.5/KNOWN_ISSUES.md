@@ -1,9 +1,7 @@
 # Fallos conocidos - abuel-os 1.0.5
 
-- **0 fallos abiertos** de la QA de 1.0.4 (ver
-  `artifacts/qa-1.0.4/INFORME_QA_1.0.4.md`).
-- Pendiente: probar la ISO 1.0.5 en equipo real y completar una instalación a
-  disco (la QA de 1.0.4 se hizo en modo live).
+- **0 fallos abiertos** conocidos.
+- Pendiente: probar en equipo real y completar una instalación a disco.
 
 
 
@@ -31,3 +29,25 @@
 Incluye el modelo del equipo, si arranca en BIOS o UEFI, la resolución de
 pantalla y el informe generado con `abuelo-report` (Ayuda → «Generar informe
 técnico»).
+
+## Detectados después de publicar (2026-11-05)
+
+- **La Papelera del escritorio salta el aislamiento.** El icono integrado de
+  xfdesktop abre Thunar; desde esa ventana se puede navegar por todo el sistema
+  de archivos, fuera de `abuelo-files` y del sandbox. Es el mismo binario
+  Thunar que se dejó ejecutable para que funcionen los iconos del escritorio.
+- **Listas con un espacio en blanco enorme.** En el panel, al abrir una lista
+  (por ejemplo la de resolución en «Ajustar pantalla»), aparece un área blanca
+  grande sin contenido visible. Pendiente de reproducir y corregir; apunta a
+  tamaño del popup/tema GTK o a filas sin renderizar.
+- **La resolución elegida no se guarda.** `abuelo-display --set` solo cambia
+  xrandr para la sesión; al reiniciar, `--auto` vuelve a la preferida.
+- **Ajustar pantalla desde el panel no adapta panel/iconos/DPI.** El panel corre
+  como root sin el bus de sesión (`DBUS_SESSION_BUS_ADDRESS`/`XDG_RUNTIME_DIR`),
+  así que `xfconf` falla en silencio aunque xrandr cambie el modo.
+- **VirtualBox no recupera 1280x800 desde 1024x768** (`Configure crtc 0 failed`);
+  `--auto` tampoco lo detecta y devuelve éxito.
+- **`abuelo-allowed` falla abierto** si no puede leer `config.json`: permite las
+  aplicaciones en lugar de bloquearlas.
+- **`abuelo-report` ejecutado a mano como root** escribe en `/root/Avisos`;
+  desde el panel ya se pasa la ruta del mayor.
