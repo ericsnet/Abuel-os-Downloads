@@ -10,8 +10,9 @@
 
 ## Comprobaciones realizadas
 
-- [x] Persistencia de resolución tras reiniciar sesión.
+- [x] Guardado y recuperación con `--auto`; `--reset` borra la preferencia.
 - [x] `--reset` vuelve al modo preferido.
-- [x] El panel adapta panel/iconos/DPI como la persona mayor.
+- [x] El panel ejecuta `abuelo-display` como la persona mayor (rc 0).
 - [x] ISO 1.0.7 y actualización desde 1.0.6 (probada en vivo).
+- [ ] Cambio visual de panel/iconos/DPI en una sesión real.
 - [ ] Rollback a 1.0.6.
