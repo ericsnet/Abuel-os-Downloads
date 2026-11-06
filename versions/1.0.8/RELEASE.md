@@ -28,7 +28,8 @@ Artefacto para adjuntar a la release, no dentro del repositorio.
 
 ## Pendiente
 
-- [ ] Probar actualización real 1.0.7 → 1.0.8 y rollback.
+- [x] Probar actualización real 1.0.7 → 1.0.8.
+- [ ] Probar rollback a 1.0.7.
 - [ ] Probar primer arranque instalado con el asistente como responsable.
 - [ ] Validar el botón de terminal root con ratón en la sesión del responsable.
-- [ ] Publicar la release.
+- [x] Publicar la release.

@@ -26,8 +26,8 @@ La ISO completa queda para cambios de base Debian o instalaciones nuevas.
    - `/etc/abuelo-os/version`: `1.0.8`
    - `dpkg-query`: `abuelo-os-core 1.0.8 install ok installed`
 
-El paquete 1.0.8 ya se instaló sobre live 1.0.8 para validar el `postinst`;
-falta la prueba real del salto 1.0.7 → 1.0.8.
+El salto real 1.0.7 → 1.0.8 está probado: descarga, firma, `postinst`,
+`Actualizar.desktop` en el responsable y `abuelo` sin panel ni actualizador.
 
 ## Firma
 
@@ -39,6 +39,5 @@ falta la prueba real del salto 1.0.7 → 1.0.8.
 
 ## Pendiente
 
-- Probar el salto real 1.0.7 → 1.0.8.
 - Rollback a 1.0.7 con el paquete anterior conservado en
   `/var/cache/abuelo-os/updates/`.
