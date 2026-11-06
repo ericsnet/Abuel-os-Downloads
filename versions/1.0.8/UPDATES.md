@@ -35,7 +35,7 @@ falta la prueba real del salto 1.0.7 → 1.0.8.
   versiona**.
 - `tools/make-update-package.py` genera el `.deb`, el `.sha256` y la firma.
 - `abuelo-update` falla cerrado si falta la clave pública o la firma.
-- Paquete 1.0.8: `2cd4d3f42f959524dff1e9f149c7cf0a4f9bde94907c9cf18f3c1bc1afb31b0b`.
+- Paquete 1.0.8: `cef82aa89f51b9f8f8d31c5600c6678206315b91b57ed9571ddf219887d2e8f7`.
 
 ## Pendiente
 

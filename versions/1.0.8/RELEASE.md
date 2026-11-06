@@ -7,7 +7,7 @@
 - **ISO:** `abuelo-os-amd64.iso` (1.951.432.704 bytes)
 - **SHA256:** `584cb3b2c71d4fd458b3541464fe27af8b0ec38c8580e7bf3774b619f0627c57`
 - **Paquete de actualización:** `abuelo-os-core_1.0.8_all.deb`
-- **SHA256 del paquete:** `2cd4d3f42f959524dff1e9f149c7cf0a4f9bde94907c9cf18f3c1bc1afb31b0b`
+- **SHA256 del paquete:** `cef82aa89f51b9f8f8d31c5600c6678206315b91b57ed9571ddf219887d2e8f7`
 
 Artefacto para adjuntar a la release, no dentro del repositorio.
 
