@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { CURRENT, LINKS, META, VERSIONS, t, type Lang } from './content'
 
 /* ------------------------------------------------------------------ iconos */
@@ -205,12 +205,14 @@ function CopyButton({
 function Terminal({
   title,
   code,
+  prompt,
   copyLabel,
   copiedLabel,
   onStatus,
 }: {
   title: string
   code: string
+  prompt?: string
   copyLabel: string
   copiedLabel: string
   onStatus: (message: string) => void
@@ -227,7 +229,15 @@ function Terminal({
         <CopyButton text={code} label={copyLabel} copiedLabel={copiedLabel} onStatus={onStatus} compact />
       </div>
       <pre tabIndex={0}>
-        <code>{code}</code>
+        <code>
+          {code.split('\n').map((line, index) => (
+            <span className="term-line" key={index}>
+              {prompt ? <span className="prompt" aria-hidden="true">{prompt}</span> : null}
+              {line}
+              {'\n'}
+            </span>
+          ))}
+        </code>
       </pre>
     </div>
   )
@@ -312,6 +322,12 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [status, setStatus] = useState('')
+  const [active, setActive] = useState('inicio')
+  const [releaseIn, setReleaseIn] = useState(false)
+
+  const progressRef = useRef<HTMLDivElement>(null)
+  const heroRef = useRef<HTMLElement>(null)
+  const releaseRef = useRef<HTMLDivElement>(null)
 
   const tr = (key: string) => t(lang, key)
 
@@ -328,10 +344,20 @@ export default function App() {
   }, [lang])
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16)
+    const onScroll = () => {
+      setScrolled(window.scrollY > 16)
+      const doc = document.documentElement
+      const max = doc.scrollHeight - window.innerHeight
+      const ratio = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0
+      if (progressRef.current) progressRef.current.style.transform = `scaleX(${ratio})`
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
   }, [])
 
   useEffect(() => {
@@ -339,6 +365,72 @@ export default function App() {
     const id = window.setTimeout(() => setStatus(''), 2200)
     return () => window.clearTimeout(id)
   }, [status])
+
+  /* Progreso de lectura y paralaje del escritorio: una sola idea, ligada al scroll. */
+  useEffect(() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)')
+    let frame = 0
+
+    const update = () => {
+      frame = 0
+
+      if (heroRef.current && !reduce.matches) {
+        const rect = heroRef.current.getBoundingClientRect()
+        const t = Math.min(1, Math.max(0, -rect.top / Math.max(1, rect.height)))
+        heroRef.current.style.setProperty('--screen-shift', `${(-16 * t).toFixed(1)}px`)
+        heroRef.current.style.setProperty('--screen-tilt', `${(3.2 * t).toFixed(2)}deg`)
+        heroRef.current.style.setProperty('--screen-scale', `${(1 - 0.015 * t).toFixed(3)}`)
+        heroRef.current.style.setProperty('--screen-glow', `${(1 - 0.55 * t).toFixed(2)}`)
+      }
+    }
+
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(update)
+    }
+
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+      if (frame) window.cancelAnimationFrame(frame)
+    }
+  }, [])
+
+  /* Sección activa en la navegación. */
+  useEffect(() => {
+    const ids = ['inicio', 'descargar', 'instalar', 'verificar', 'actualizar', 'versiones']
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id)
+        })
+      },
+      { rootMargin: '-40% 0px -55% 0px', threshold: 0 },
+    )
+    ids.forEach((id) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+    return () => observer.disconnect()
+  }, [])
+
+  /* La ficha de la release aparece una vez, al entrar en pantalla. */
+  useEffect(() => {
+    if (!releaseRef.current) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setReleaseIn(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.18 },
+    )
+    observer.observe(releaseRef.current)
+    return () => observer.disconnect()
+  }, [])
 
   const toggleLang = () => setLang((value) => (value === 'es' ? 'en' : 'es'))
   const closeMenu = () => setMenuOpen(false)
@@ -356,7 +448,7 @@ export default function App() {
 
           <nav className="nav" aria-label={tr('nav.aria')}>
             {NAV.map((item) => (
-              <a key={item.href} href={item.href}>{tr(item.key)}</a>
+              <a key={item.href} href={item.href} className={active === item.href.slice(1) ? 'is-active' : undefined}>{tr(item.key)}</a>
             ))}
           </nav>
 
@@ -386,14 +478,15 @@ export default function App() {
 
         <nav id="mobile-nav" className={menuOpen ? 'mobile-nav is-open' : 'mobile-nav'} aria-label={tr('nav.aria')}>
           {NAV.map((item) => (
-            <a key={item.href} href={item.href} onClick={closeMenu}>{tr(item.key)}</a>
+            <a key={item.href} href={item.href} className={active === item.href.slice(1) ? 'is-active' : undefined} onClick={closeMenu}>{tr(item.key)}</a>
           ))}
           <a href={LINKS.repo} onClick={closeMenu}>{tr('nav.github')}</a>
         </nav>
+        <div className="progress" ref={progressRef} aria-hidden="true" />
       </header>
 
       <main id="contenido">
-        <section className="hero" id="inicio">
+        <section className="hero" id="inicio" ref={heroRef}>
           <div className="wrap hero-grid">
             <div className="hero-copy">
               <h1>{tr('hero.title')}</h1>
@@ -414,7 +507,11 @@ export default function App() {
 
         <section className="release" id="descargar" aria-labelledby="release-title">
           <div className="wrap">
-            <div className="release-sheet">
+            <div
+              ref={releaseRef}
+              className={releaseIn ? 'release-sheet is-revealed' : 'release-sheet'}
+              data-reveal="true"
+            >
               <div className="release-main">
                 <h2 id="release-title">{tr('release.title')}</h2>
                 <p className="release-version">{CURRENT.version}</p>
@@ -505,6 +602,7 @@ export default function App() {
             <div className="terminals">
               <Terminal
                 title={tr('verify.win')}
+                prompt="PS>"
                 code={'Get-FileHash "$HOME\\Downloads\\abuelo-os-amd64.iso" -Algorithm SHA256'}
                 copyLabel={tr('copy.cmd')}
                 copiedLabel={tr('copied')}
@@ -512,6 +610,7 @@ export default function App() {
               />
               <Terminal
                 title={tr('verify.linux')}
+                prompt="$"
                 code={'sha256sum abuelo-os-amd64.iso'}
                 copyLabel={tr('copy.cmd')}
                 copiedLabel={tr('copied')}
@@ -542,6 +641,7 @@ export default function App() {
               </div>
               <Terminal
                 title={tr('update.cmdlabel')}
+                prompt="$"
                 code={'abuelo-update --check\nsudo abuelo-update --install'}
                 copyLabel={tr('copy.cmd')}
                 copiedLabel={tr('copied')}
