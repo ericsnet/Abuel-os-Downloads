@@ -26,7 +26,7 @@
     "dl.iso": "Download the ISO",
     "dl.release": "View the release and its assets",
     "dl.sha": "ISO SHA-256",
-    "dl.note": "The 1.0.7 release also includes the update package abuelo-os-core_1.0.7_all.deb, signed and with its own SHA-256.",
+    "dl.note": "The 1.0.8 release also includes the abuelo-os-core_1.0.8_all.deb and abuelo-os-updater_1.0.8_all.deb packages, signed and with their own SHA-256.",
 
     "copy.hash": "Copy",
     "copy.cmd": "Copy",
@@ -68,7 +68,7 @@
     "update.lead": "There are two independent layers. Debian updates the base with its security patches; the abuel-os layer travels in a signed <code>.deb</code> package and changes the system version without touching your files.",
     "update.cmdlabel": "From the responsable account",
     "update.detail": "<code>--check</code> asks for the latest published release. <code>--install</code> downloads the package, verifies its SHA-256 and Ed25519 signature, and installs it with apt. If the public key is missing or the signature doesn't match, it aborts. The full ISO is only needed for new installs or changes to the Debian base.",
-    "update.link": "Read the 1.0.7 update document",
+    "update.link": "Read the 1.0.8 update document",
 
     "versions.title": "Published versions",
     "versions.lead": "Every version has its own folder in the repository with changes, known issues and artifact details. The ISO and packages are attached to the matching release.",
@@ -77,7 +77,7 @@
     "table.hash": "ISO SHA-256",
     "table.release": "Release",
     "versions.index": "Full version index",
-    "versions.issues": "Known issues in 1.0.7",
+    "versions.issues": "Known issues in 1.0.8",
 
     "footer.legal": "abuel-os is proprietary software. Downloading an ISO does not by itself grant permission to copy, modify or redistribute the software beyond what applicable law or prior written authorization from ericsnet allows.",
     "footer.releases": "Releases",
@@ -91,8 +91,8 @@
   };
 
   var DESCRIPTIONS = {
-    es: "Descarga abuel-os: sistema basado en Debian 12 y XFCE, pensado para personas mayores. Versi\u00f3n 1.0.7 para AMD64, verificaci\u00f3n SHA-256 e instrucciones de instalaci\u00f3n.",
-    en: "Download abuel-os: a system based on Debian 12 and XFCE, made for older people. Version 1.0.7 for AMD64, SHA-256 verification and installation instructions."
+    es: "Descarga abuel-os: sistema basado en Debian 12 y XFCE, pensado para personas mayores. Versi\u00f3n 1.0.8 para AMD64, verificaci\u00f3n SHA-256 e instrucciones de instalaci\u00f3n.",
+    en: "Download abuel-os: a system based on Debian 12 and XFCE, made for older people. Version 1.0.8 for AMD64, SHA-256 verification and installation instructions."
   };
 
   var COPIED = { es: "Copiado", en: "Copied" };

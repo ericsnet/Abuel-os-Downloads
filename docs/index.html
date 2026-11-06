@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>abuel-os — Descargas</title>
-<meta name="description" content="Descarga abuel-os: sistema basado en Debian 12 y XFCE, pensado para personas mayores. Versión 1.0.7 para AMD64, verificación SHA-256 e instrucciones de instalación.">
+<meta name="description" content="Descarga abuel-os: sistema basado en Debian 12 y XFCE, pensado para personas mayores. Versión 1.0.8 para AMD64, verificación SHA-256 e instrucciones de instalación.">
 <meta name="theme-color" content="#0C2438">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="styles.css">
 <meta property="og:type" content="website">
 <meta property="og:title" content="abuel-os — Descargas">
-<meta property="og:description" content="Un ordenador fácil de usar para quien no creció con uno. Debian 12 + XFCE, versión 1.0.7.">
+<meta property="og:description" content="Un ordenador fácil de usar para quien no creció con uno. Debian 12 + XFCE, versión 1.0.8.">
 <meta property="og:url" content="https://ericsnet.github.io/Abuel-os-Downloads/">
 </head>
 <body>
@@ -85,19 +85,19 @@
 
       <aside class="download" aria-labelledby="dl-title">
         <p class="dl-kicker" id="dl-title" data-i18n="dl.kicker">Última versión publicada</p>
-        <p class="dl-version">1.0.7</p>
+        <p class="dl-version">1.0.8</p>
         <p class="dl-meta"><span data-i18n="dl.date">6 de noviembre de 2026</span> · <span>1,82 GiB</span></p>
 
         <a class="btn btn-primary btn-block" href="https://github.com/ericsnet/Abuel-os-Downloads/releases/latest/download/abuelo-os-amd64.iso" data-i18n="dl.iso">Descargar la ISO</a>
-        <a class="btn btn-quiet btn-block" href="https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.7" data-i18n="dl.release">Ver la release y sus adjuntos</a>
+        <a class="btn btn-quiet btn-block" href="https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.8" data-i18n="dl.release">Ver la release y sus adjuntos</a>
 
         <div class="hash">
           <p class="hash-label" data-i18n="dl.sha">SHA-256 de la ISO</p>
-          <code class="hash-value" id="iso-hash">eb87d71e87a115541c81b4aa683c8d7e83ae9c6a415b31f5776e34350ebcfec5</code>
+          <code class="hash-value" id="iso-hash">584cb3b2c71d4fd458b3541464fe27af8b0ec38c8580e7bf3774b619f0627c57</code>
           <button class="copy" type="button" data-copy="#iso-hash" data-i18n="copy.hash">Copiar</button>
         </div>
 
-        <p class="dl-note" data-i18n="dl.note">La release 1.0.7 incluye además el paquete de actualización abuelo-os-core_1.0.7_all.deb, firmado y con su propio SHA-256.</p>
+        <p class="dl-note" data-i18n="dl.note">La release 1.0.8 incluye además los paquetes abuelo-os-core_1.0.8_all.deb y abuelo-os-updater_1.0.8_all.deb, firmados y con su propio SHA-256.</p>
       </aside>
     </div>
   </section>
@@ -208,7 +208,7 @@ sudo abuelo-update --install</code></pre>
       <p class="section-lead" data-i18n="update.detail"><code>--check</code> consulta la última release publicada. <code>--install</code> descarga el paquete, verifica su SHA-256 y su firma Ed25519, e instala con apt. Si falta la clave pública o la firma no cuadra, aborta. La ISO completa solo hace falta para instalaciones nuevas o cambios en la base Debian.</p>
 
       <p class="links">
-        <a href="https://github.com/ericsnet/Abuel-os-Downloads/blob/main/versions/1.0.7/UPDATES.md" data-i18n="update.link">Leer el documento de actualizaciones de 1.0.7</a>
+        <a href="https://github.com/ericsnet/Abuel-os-Downloads/blob/main/versions/1.0.8/UPDATES.md" data-i18n="update.link">Leer el documento de actualizaciones de 1.0.8</a>
       </p>
     </div>
   </section>
@@ -230,6 +230,11 @@ sudo abuelo-update --install</code></pre>
           </thead>
           <tbody>
             <tr>
+              <th scope="row"><a href="https://github.com/ericsnet/Abuel-os-Downloads/tree/main/versions/1.0.8">1.0.8</a></th>
+              <td><time datetime="2026-11-06">2026-11-06</time></td>
+              <td><code class="tiny">584cb3b2c71d4fd458b3541464fe27af8b0ec38c8580e7bf3774b619f0627c57</code></td>
+              <td><a href="https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.8">v1.0.8</a></td>
+            </tr>            <tr>
               <th scope="row"><a href="https://github.com/ericsnet/Abuel-os-Downloads/tree/main/versions/1.0.7">1.0.7</a></th>
               <td><time datetime="2026-11-06">2026-11-06</time></td>
               <td><code class="tiny">eb87d71e87a115541c81b4aa683c8d7e83ae9c6a415b31f5776e34350ebcfec5</code></td>
@@ -283,7 +288,7 @@ sudo abuelo-update --install</code></pre>
 
       <p class="links">
         <a href="https://github.com/ericsnet/Abuel-os-Downloads/blob/main/versions/INDEX.md" data-i18n="versions.index">Índice completo de versiones</a>
-        <a href="https://github.com/ericsnet/Abuel-os-Downloads/blob/main/versions/1.0.7/KNOWN_ISSUES.md" data-i18n="versions.issues">Fallos conocidos de 1.0.7</a>
+        <a href="https://github.com/ericsnet/Abuel-os-Downloads/blob/main/versions/1.0.8/KNOWN_ISSUES.md" data-i18n="versions.issues">Fallos conocidos de 1.0.8</a>
       </p>
     </div>
   </section>
