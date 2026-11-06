@@ -14,3 +14,4 @@ Fallos y limitaciones abiertos en esta versión.
 - **Calamares**: traducciones/stylesheet y instalación completa sin validar.
 - **Rollback de actualizaciones**: falta probar la vuelta a la versión anterior.
 - **Escritorios alternativos**: XFCE por defecto; LXQt/MATE solo investigados.
+- **Actualizar desde la cuenta `abuelo`**: `abuelo-update --check` funciona, pero `--install` abre `pkexec` y pide credenciales de administrador; el panel que sí instala es el del responsable. Pendiente autorizar `update-launcher` y añadir un acceso directo.
