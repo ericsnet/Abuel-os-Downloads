@@ -4,3 +4,6 @@
 
 # Artefactos locales de trabajo (informes, capturas, QA): no se publican.
 /artifacts/
+# Dependencias del sitio React (el build va a docs/)
+site/node_modules/
+site/.vite/
