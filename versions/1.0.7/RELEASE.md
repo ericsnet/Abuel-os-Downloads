@@ -8,9 +8,10 @@
 - **Paquete de actualización:** `abuelo-os-core_1.0.7_all.deb` (adjunto de la release)
 - **SHA256 del paquete:** `a2d3c5323d4715d3947e4d89b20c79440b7f3b1d4d4fc172612b3fb42f06df65`
 
-## Comprobaciones previstas
+## Comprobaciones realizadas
 
-- [ ] Persistencia de resolución tras reiniciar sesión.
-- [ ] `--reset` vuelve al modo preferido.
-- [ ] El panel adapta panel/iconos/DPI como la persona mayor.
-- [ ] ISO 1.0.7 y actualización desde 1.0.6 con rollback.
+- [x] Persistencia de resolución tras reiniciar sesión.
+- [x] `--reset` vuelve al modo preferido.
+- [x] El panel adapta panel/iconos/DPI como la persona mayor.
+- [x] ISO 1.0.7 y actualización desde 1.0.6 (probada en vivo).
+- [ ] Rollback a 1.0.6.
