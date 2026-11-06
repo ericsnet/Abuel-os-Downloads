@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>abuel-os — Descargas</title>
+<meta name="description" content="Descarga abuel-os: sistema basado en Debian 12 y XFCE, pensado para personas mayores. Versión 1.0.7 para AMD64, verificación SHA-256 e instrucciones de instalación.">
+<meta name="theme-color" content="#0C2438">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<meta property="og:type" content="website">
+<meta property="og:title" content="abuel-os — Descargas">
+<meta property="og:description" content="Un ordenador fácil de usar para quien no creció con uno. Debian 12 + XFCE, versión 1.0.7.">
+<meta property="og:url" content="https://ericsnet.github.io/Abuel-os-Downloads/">
+</head>
+<body>
+
+<a class="skip" href="#contenido" data-i18n="skip">Saltar al contenido</a>
+
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <defs>
+    <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1d4a70"/>
+      <stop offset="100%" stop-color="#2f6d99"/>
+    </linearGradient>
+    <symbol id="logoMark" viewBox="0 0 256 256">
+      <rect x="8" y="8" width="240" height="240" rx="52" fill="url(#logoGrad)"/>
+      <g transform="translate(128 118)">
+        <path d="M -62 18 L 0 -38 L 62 18 L 62 86 L 24 86 L 24 32 L -24 32 L -24 86 L -62 86 Z" fill="#f6b73c"/>
+        <path d="M 0 60 c -11 -13 -27 -20 -27 -34 c 0 -9 8 -17 17 -17 c 5 0 8 2 10 5 c 2 -3 5 -5 10 -5 c 9 0 17 8 17 17 c 0 14 -16 21 -27 34 Z" fill="#ffffff"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#inicio" aria-label="abuel-os, inicio">
+      <svg class="mark" viewBox="0 0 256 256" aria-hidden="true" focusable="false"><use href="#logoMark"/></svg>
+      <span class="brand-name">abuel-os</span>
+    </a>
+
+    <nav class="nav" aria-label="Principal" data-i18n-aria="nav.aria">
+      <a href="#descargar" data-i18n="nav.download">Descargar</a>
+      <a href="#instalar" data-i18n="nav.install">Instalar</a>
+      <a href="#verificar" data-i18n="nav.verify">Verificar</a>
+      <a href="#versiones" data-i18n="nav.versions">Versiones</a>
+      <a href="#actualizar" data-i18n="nav.update">Actualizar</a>
+    </nav>
+
+    <div class="header-tools">
+      <a class="ghost" href="https://github.com/ericsnet/Abuel-os-Downloads" data-i18n="nav.github">GitHub</a>
+      <button class="lang" type="button" id="lang-toggle" aria-label="Switch to English">English</button>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <section class="hero" id="inicio">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <h1 data-i18n="hero.title">Un ordenador fácil de usar, también para quien no creció con uno.</h1>
+        <div class="rule" aria-hidden="true"></div>
+        <p class="lead" data-i18n="hero.lead">abuel-os es un sistema basado en Debian 12 con escritorio XFCE. Dos cuentas separadas: una para el día a día y otra para quien cuida del equipo.</p>
+
+        <dl class="facts">
+          <div>
+            <dt data-i18n="facts.base.k">Sistema base</dt>
+            <dd data-i18n="facts.base.v">Debian 12 Bookworm</dd>
+          </div>
+          <div>
+            <dt data-i18n="facts.desktop.k">Escritorio</dt>
+            <dd data-i18n="facts.desktop.v">XFCE</dd>
+          </div>
+          <div>
+            <dt data-i18n="facts.arch.k">Arquitectura</dt>
+            <dd data-i18n="facts.arch.v">AMD64, 64 bits</dd>
+          </div>
+        </dl>
+      </div>
+
+      <aside class="download" aria-labelledby="dl-title">
+        <p class="dl-kicker" id="dl-title" data-i18n="dl.kicker">Última versión publicada</p>
+        <p class="dl-version">1.0.7</p>
+        <p class="dl-meta"><span data-i18n="dl.date">6 de noviembre de 2026</span> · <span>1,82 GiB</span></p>
+
+        <a class="btn btn-primary btn-block" href="https://github.com/ericsnet/Abuel-os-Downloads/releases/latest/download/abuelo-os-amd64.iso" data-i18n="dl.iso">Descargar la ISO</a>
+        <a class="btn btn-quiet btn-block" href="https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.7" data-i18n="dl.release">Ver la release y sus adjuntos</a>
+
+        <div class="hash">
+          <p class="hash-label" data-i18n="dl.sha">SHA-256 de la ISO</p>
+          <code class="hash-value" id="iso-hash">eb87d71e87a115541c81b4aa683c8d7e83ae9c6a415b31f5776e34350ebcfec5</code>
+          <button class="copy" type="button" data-copy="#iso-hash" data-i18n="copy.hash">Copiar</button>
+        </div>
+
+        <p class="dl-note" data-i18n="dl.note">La release 1.0.7 incluye además el paquete de actualización abuelo-os-core_1.0.7_all.deb, firmado y con su propio SHA-256.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="que-es">
+    <div class="wrap">
+      <h2 data-i18n="what.title">Qué es abuel-os</h2>
+      <p class="section-lead" data-i18n="what.lead">Una distribución pequeña y sin adornos, con un objetivo concreto: que la persona que la usa cada día no tenga que pelearse con el sistema.</p>
+
+      <dl class="rows">
+        <div class="row">
+          <dt data-i18n="what.base.k">Sistema</dt>
+          <dd data-i18n="what.base.v">Debian 12 Bookworm, con las actualizaciones de seguridad que publica Debian. La capa propia añade el panel, los ajustes y las herramientas de administración; no sustituye al sistema base.</dd>
+        </div>
+        <div class="row">
+          <dt data-i18n="what.desk.k">Escritorio</dt>
+          <dd data-i18n="what.desk.v">XFCE, con letras grandes, iconos claros y sin efectos que distraigan. El panel se puede adaptar a la pantalla y la preferencia se conserva entre sesiones desde 1.0.7.</dd>
+        </div>
+        <div class="row">
+          <dt data-i18n="what.accounts.k">Dos cuentas</dt>
+          <dd data-i18n="what.accounts.v"><code>abuelo</code> entra automáticamente y usa el equipo. <code>responsable</code> instala, actualiza, cambia la configuración y recupera el sistema cuando hace falta.</dd>
+        </div>
+        <div class="row">
+          <dt data-i18n="what.req.k">Requisitos</dt>
+          <dd data-i18n="what.req.v">Procesador de 64 bits, 2 GB de RAM (4 GB recomendados) y un USB de 4 GB (8 GB o más recomendado).</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section" id="instalar">
+    <div class="wrap">
+      <h2 data-i18n="install.title">Instalar abuel-os</h2>
+      <p class="section-lead" data-i18n="install.lead">Cinco pasos, en orden. Si algo no coincide con lo que ves en pantalla, para y consulta las notas de esa versión antes de tocar el disco.</p>
+
+      <div class="callout">
+        <strong data-i18n="install.warn.k">Antes de empezar:</strong>
+        <span data-i18n="install.warn.v">instalar un sistema puede borrar todos los archivos del ordenador. Guarda documentos, fotos y cualquier dato importante en otro sitio. Si quieres conservar Windows, no elijas el disco entero ni borres particiones sin saber qué hace cada una.</span>
+      </div>
+
+      <ol class="steps">
+        <li>
+          <h3 data-i18n="install.s1.t">Prepara una copia de seguridad</h3>
+          <p data-i18n="install.s1.d">Copia lo importante a un disco externo o a la nube. Comprueba que puedes abrir los archivos copiados; una copia que no se puede leer no sirve.</p>
+        </li>
+        <li>
+          <h3 data-i18n="install.s2.t">Graba la ISO en un USB</h3>
+          <p data-i18n="install.s2.d">Necesitas un USB de 4 GB o más, que se borrará por completo. En Windows, abre <a href="https://rufus.ie/">Rufus</a>, elige el dispositivo correcto, selecciona la ISO en «Boot selection» y pulsa Start. Si el USB no arranca después, repítelo en modo DD. <a href="https://www.ventoy.net/">Ventoy</a> también sirve: prepara el USB con Ventoy y copia la ISO dentro.</p>
+        </li>
+        <li>
+          <h3 data-i18n="install.s3.t">Arranca desde el USB</h3>
+          <p data-i18n="install.s3.d">Apaga el equipo, conecta el USB y enciéndelo. Pulsa la tecla del menú de arranque que indique el fabricante (suele ser F12, F11 o Esc). Elige el USB; si aparecen varias entradas, escoge la que empiece por UEFI.</p>
+        </li>
+        <li>
+          <h3 data-i18n="install.s4.t">Prueba el escritorio e instala</h3>
+          <p data-i18n="install.s4.d">Comprueba que se ven la pantalla, el teclado, el ratón, el sonido y la red. Si la ISO trae instalador, ábrelo y sigue las pantallas. En el paso del disco, revisa dos veces qué disco y qué particiones vas a cambiar antes de confirmar.</p>
+        </li>
+        <li>
+          <h3 data-i18n="install.s5.t">Primer inicio de sesión</h3>
+          <p data-i18n="install.s5.d">En la primera instalación puede aparecer la pantalla de inicio de sesión: entra una vez con la cuenta <code>responsable</code> (contraseña inicial <code>live</code>), cámbiala y sal. A partir de ahí, <code>abuelo</code> entra sola. No reutilices esa contraseña en otros servicios; si las credenciales de tu ISO no coinciden, mira las notas de esa versión.</p>
+        </li>
+      </ol>
+
+      <p class="note" data-i18n="install.note">Las pantallas exactas dependen del instalador incluido en la ISO. Si no aparece ningún instalador o lo que ves no encaja con estos pasos, no modifiques el disco: consulta <code>KNOWN_ISSUES.md</code> de esa versión.</p>
+    </div>
+  </section>
+
+  <section class="section" id="verificar">
+    <div class="wrap">
+      <h2 data-i18n="verify.title">Verificar la descarga</h2>
+      <p class="section-lead" data-i18n="verify.lead">Antes de usar la imagen, calcula su SHA-256 y compáralo carácter por carácter con el de la versión. Si no coincide exactamente, no uses esa ISO y vuelve a descargarla.</p>
+
+      <div class="code-pair">
+        <div class="code-block">
+          <div class="code-head">
+            <span data-i18n="verify.win">Windows (PowerShell)</span>
+            <button class="copy" type="button" data-copy="#code-win" data-i18n="copy.cmd">Copiar</button>
+          </div>
+          <pre id="code-win"><code>Get-FileHash "$HOME\Downloads\abuelo-os-amd64.iso" -Algorithm SHA256</code></pre>
+        </div>
+        <div class="code-block">
+          <div class="code-head">
+            <span data-i18n="verify.linux">Linux</span>
+            <button class="copy" type="button" data-copy="#code-linux" data-i18n="copy.cmd">Copiar</button>
+          </div>
+          <pre id="code-linux"><code>sha256sum abuelo-os-amd64.iso</code></pre>
+        </div>
+      </div>
+
+      <p class="note" data-i18n="verify.note">El archivo <code>abuelo-os-amd64.iso.sha256</code> se publica junto al ISO en cada release y contiene el valor esperado.</p>
+    </div>
+  </section>
+
+  <section class="section" id="actualizar">
+    <div class="wrap">
+      <h2 data-i18n="update.title">Actualizar sin reinstalar</h2>
+      <p class="section-lead" data-i18n="update.lead">Hay dos capas independientes. Debian actualiza la base con sus parches de seguridad; la capa de abuel-os viaja en un paquete <code>.deb</code> firmado y cambia la versión del sistema sin tocar tus archivos.</p>
+
+      <div class="code-block wide">
+        <div class="code-head">
+          <span data-i18n="update.cmdlabel">Desde la cuenta responsable</span>
+          <button class="copy" type="button" data-copy="#code-update" data-i18n="copy.cmd">Copiar</button>
+        </div>
+        <pre id="code-update"><code>abuelo-update --check
+sudo abuelo-update --install</code></pre>
+      </div>
+
+      <p class="section-lead" data-i18n="update.detail"><code>--check</code> consulta la última release publicada. <code>--install</code> descarga el paquete, verifica su SHA-256 y su firma Ed25519, e instala con apt. Si falta la clave pública o la firma no cuadra, aborta. La ISO completa solo hace falta para instalaciones nuevas o cambios en la base Debian.</p>
+
+      <p class="links">
+        <a href="https://github.com/ericsnet/Abuel-os-Downloads/blob/main/versions/1.0.7/UPDATES.md" data-i18n="update.link">Leer el documento de actualizaciones de 1.0.7</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="versiones">
+    <div class="wrap">
+      <h2 data-i18n="versions.title">Versiones publicadas</h2>
+      <p class="section-lead" data-i18n="versions.lead">Cada versión tiene su carpeta en el repositorio con cambios, fallos conocidos y datos del artefacto. El ISO y los paquetes se adjuntan a la release correspondiente.</p>
+
+      <div class="table-scroll">
+        <table class="versions">
+          <thead>
+            <tr>
+              <th scope="col" data-i18n="table.version">Versión</th>
+              <th scope="col" data-i18n="table.date">Fecha</th>
+              <th scope="col" data-i18n="table.hash">SHA-256 del ISO</th>
+              <th scope="col" data-i18n="table.release">Release</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><a href="https://github.com/ericsnet/Abuel-os-Downloads/tree/main/versions/1.0.7">1.0.7</a></th>
+              <td><time datetime="2026-11-06">2026-11-06</time></td>
+              <td><code class="tiny">eb87d71e87a115541c81b4aa683c8d7e83ae9c6a415b31f5776e34350ebcfec5</code></td>
+              <td><a href="https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.7">v1.0.7</a></td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://github.com/ericsnet/Abuel-os-Downloads/tree/main/versions/1.0.6">1.0.6</a></th>
+              <td><time datetime="2026-11-05">2026-11-05</time></td>
+              <td><code class="tiny">18d62c0af617b5c89f175d993d5428ecd1ad2abf2143ac9bd6446f4e5d8a8f5a</code></td>
+              <td><a href="https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.6">v1.0.6</a></td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://github.com/ericsnet/Abuel-os-Downloads/tree/main/versions/1.0.5">1.0.5</a></th>
+              <td><time datetime="2026-11-05">2026-11-05</time></td>
+              <td><code class="tiny">5de7fd5384cc4a84ec798e25aa547e6c62902d464c849756995ec4ee04177c07</code></td>
+              <td><a href="https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.5">v1.0.5</a></td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://github.com/ericsnet/Abuel-os-Downloads/tree/main/versions/1.0.4">1.0.4</a></th>
+              <td><time datetime="2026-11-03">2026-11-03</time></td>
+              <td><code class="tiny">468c8785723a63881f3828611d5d56c6282de67dddd27c2a8cfdeab476e5356e</code></td>
+              <td><a href="https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.4">v1.0.4</a></td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://github.com/ericsnet/Abuel-os-Downloads/tree/main/versions/1.0.3">1.0.3</a></th>
+              <td><time datetime="2026-11-03">2026-11-03</time></td>
+              <td><code class="tiny">c9636d05b124391c094077d543df9bba7d3e1f8af5ada2641bef62c6e79f2fae</code></td>
+              <td><a href="https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.3">v1.0.3</a></td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://github.com/ericsnet/Abuel-os-Downloads/tree/main/versions/1.0.2">1.0.2</a></th>
+              <td><time datetime="2026-10-25">2026-10-25</time></td>
+              <td><code class="tiny">bb0b42ca5f3acd4694263906e296d0b2cac9ab33da4cf6760ce83335551cfb98</code></td>
+              <td><a href="https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.2">v1.0.2</a></td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://github.com/ericsnet/Abuel-os-Downloads/tree/main/versions/1.0.1">1.0.1</a></th>
+              <td><time datetime="2026-10-25">2026-10-25</time></td>
+              <td><code class="tiny">ff037e08f2ee942806cb92498ae475217ec058db28207dfc2be3490bdb835fc2</code></td>
+              <td><a href="https://github.com/Pickeric/Abuel-os/releases/tag/v1.0.1">v1.0.1</a></td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://github.com/ericsnet/Abuel-os-Downloads/tree/main/versions/1.0.0">1.0.0</a></th>
+              <td><time datetime="2026-10-25">2026-10-25</time></td>
+              <td><code class="tiny">3262da299e671020aa0268eaf076b7d0756d799d163ff90e1a2b6eec2b22eebf</code></td>
+              <td><a href="https://github.com/Pickeric/Abuel-os/releases/tag/v1.0.0">v1.0.0</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="links">
+        <a href="https://github.com/ericsnet/Abuel-os-Downloads/blob/main/versions/INDEX.md" data-i18n="versions.index">Índice completo de versiones</a>
+        <a href="https://github.com/ericsnet/Abuel-os-Downloads/blob/main/versions/1.0.7/KNOWN_ISSUES.md" data-i18n="versions.issues">Fallos conocidos de 1.0.7</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <svg class="mark small" viewBox="0 0 256 256" aria-hidden="true" focusable="false"><use href="#logoMark"/></svg>
+      <span>abuel-os</span>
+    </div>
+    <p class="footer-legal" data-i18n="footer.legal">abuel-os es software propietario. Descargar una ISO no concede por sí solo permiso para copiar, modificar o redistribuir el software más allá de lo que permita la ley aplicable o una autorización escrita previa de ericsnet.</p>
+    <p class="footer-links">
+      <a href="https://github.com/ericsnet/Abuel-os-Downloads">GitHub</a>
+      <a href="https://github.com/ericsnet/Abuel-os-Downloads/releases" data-i18n="footer.releases">Releases</a>
+      <a href="https://github.com/ericsnet/Abuel-os-Downloads/issues" data-i18n="footer.issues">Problemas</a>
+      <a href="https://github.com/ericsnet/Abuel-os-Downloads/blob/main/LICENSE" data-i18n="footer.license">Licencia</a>
+    </p>
+    <p class="footer-copy">© 2026 ericsnet</p>
+  </div>
+</footer>
+
+<div class="visually-hidden" role="status" aria-live="polite" id="status"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

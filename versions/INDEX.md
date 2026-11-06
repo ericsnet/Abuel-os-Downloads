@@ -14,3 +14,4 @@ conocidos y los datos del artefacto. La carpeta se crea con
 | [1.0.5](1.0.5/) | 2026-11-05 | publicada | `5de7fd5384cc4a84ec798e25aa547e6c62902d464c849756995ec4ee04177c07` | [v1.0.5](https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.5) |
 | [1.0.6](1.0.6/) | 2026-11-05 | publicada | `18d62c0af617b5c89f175d993d5428ecd1ad2abf2143ac9bd6446f4e5d8a8f5a` | [v1.0.6](https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.6) |
 | [1.0.7](1.0.7/) | 2026-11-06 | publicada | `eb87d71e87a115541c81b4aa683c8d7e83ae9c6a415b31f5776e34350ebcfec5` | [v1.0.7](https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.7) |
+| [1.0.8](1.0.8/) | 2026-11-06 | construida | `584cb3b2c71d4fd458b3541464fe27af8b0ec38c8580e7bf3774b619f0627c57` | pendiente |

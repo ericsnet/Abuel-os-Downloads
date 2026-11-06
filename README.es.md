@@ -4,7 +4,7 @@
 
 **Página oficial de descarga de abuel-os**, una distribución basada en Debian 12 (Bookworm) y XFCE, diseñada para ofrecer un escritorio sencillo y una cuenta separada para la persona responsable.
 
-## Última versión: 1.0.7
+## Última versión: 1.0.8
 
 | Característica | Detalle |
 |---|---|
@@ -15,7 +15,7 @@
 | RAM | 2 GB mínimo; 4 GB recomendados |
 | USB | 4 GB mínimo; se recomienda 8 GB o más |
 
-**Estado de la descarga:** todas las versiones están publicadas en este repositorio, una carpeta por versión (`versions/1.0.0/`, `versions/1.0.1/`, `versions/1.0.2/`, `versions/1.0.3/`, `versions/1.0.4/`, `versions/1.0.5/`, `versions/1.0.6/`, `versions/1.0.7/`), cada una con sus notas y sumas de verificación; la ISO y los paquetes de actualización se adjuntan a cada release de GitHub.
+**Estado de la descarga:** todas las versiones están publicadas en este repositorio, una carpeta por versión (`versions/1.0.0/`, `versions/1.0.1/`, `versions/1.0.2/`, `versions/1.0.3/`, `versions/1.0.4/`, `versions/1.0.5/`, `versions/1.0.6/`, `versions/1.0.7/`, `versions/1.0.8/`), cada una con sus notas y sumas de verificación; la ISO y los paquetes de actualización se adjuntan a cada release de GitHub.
 
 ## Versiones y verificación
 
@@ -25,6 +25,7 @@
 | [1.0.5](versions/1.0.5/) | `5de7fd5384cc4a84ec798e25aa547e6c62902d464c849756995ec4ee04177c07` | ISO publicada en este repositorio |
 | [1.0.6](versions/1.0.6/) | `18d62c0af617b5c89f175d993d5428ecd1ad2abf2143ac9bd6446f4e5d8a8f5a` | ISO publicada en este repositorio |
 | [1.0.7](versions/1.0.7/) | `eb87d71e87a115541c81b4aa683c8d7e83ae9c6a415b31f5776e34350ebcfec5` | ISO y actualizaciones adjuntas a la release |
+| [1.0.8](versions/1.0.8/) | `584cb3b2c71d4fd458b3541464fe27af8b0ec38c8580e7bf3774b619f0627c57` | ISO y actualizaciones adjuntas a la release |
 | [1.0.3](versions/1.0.3/) | `c9636d05b124391c094077d543df9bba7d3e1f8af5ada2641bef62c6e79f2fae` | ISO publicada en este repositorio |
 | [1.0.2](versions/1.0.2/) | `bb0b42ca5f3acd4694263906e296d0b2cac9ab33da4cf6760ce83335551cfb98` | ISO publicada en este repositorio |
 | [1.0.1](versions/1.0.1/) | `ff037e08f2ee942806cb92498ae475217ec058db28207dfc2be3490bdb835fc2` | ISO publicada en este repositorio |
