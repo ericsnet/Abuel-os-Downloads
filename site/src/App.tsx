@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent, type ReactNode } from 'react'
 import { CURRENT, LINKS, META, VERSIONS, t, type Lang } from './content'
 
 /* ------------------------------------------------------------------ iconos */
@@ -243,15 +243,69 @@ function Terminal({
   )
 }
 
+const HelpIcon = () => (
+  <Icon>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M9.6 9.4a2.5 2.5 0 1 1 3.6 2.3c-.7.4-1.2 1-1.2 1.8v.4" />
+    <path d="M12 17.4h.01" />
+  </Icon>
+)
+
+type DemoId = 'files' | 'net' | 'panel' | 'help'
+
+const DEMO_ITEMS = [
+  { id: 'files' as const, label: 'mock.files', icon: <FolderIcon /> },
+  { id: 'net' as const, label: 'mock.net', icon: <GlobeIcon /> },
+  { id: 'panel' as const, label: 'mock.panel', icon: <SlidersIcon /> },
+  { id: 'help' as const, label: 'mock.help', icon: <HelpIcon /> },
+]
+
+const DEMO_CHIPS: Record<DemoId | 'home', string[]> = {
+  home: ['mock.files', 'mock.net', 'mock.help'],
+  files: ['demo.files.c1', 'demo.files.c2'],
+  net: ['demo.net.c1', 'demo.net.c2'],
+  panel: ['demo.panel.c1', 'demo.panel.c2'],
+  help: ['demo.help.c1', 'demo.help.c2'],
+}
+
 function DesktopMock({ lang }: { lang: Lang }) {
   const tr = (key: string) => t(lang, key)
+  const [active, setActive] = useState<DemoId | 'home'>('home')
+  const [now, setNow] = useState(() => new Date())
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setNow(new Date()), 30000)
+    return () => window.clearInterval(timer)
+  }, [])
+
+  const hour = now.getHours()
+  const greeting = hour < 12 ? 'mock.morning' : hour < 20 ? 'mock.afternoon' : 'mock.evening'
+  const time = now.toLocaleTimeString(lang === 'es' ? 'es-ES' : 'en-GB', {
+    hour: '2-digit',
+    minute: '2-digit',
+  })
+
+  const titleKey = active === 'home' ? greeting : `demo.${active}.t`
+  const noteKey = active === 'home' ? 'mock.note' : `demo.${active}.d`
+
+  function tilt(event: ReactPointerEvent<HTMLElement>) {
+    if (!window.matchMedia('(pointer: fine)').matches) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const rect = event.currentTarget.getBoundingClientRect()
+    const x = (event.clientX - rect.left) / rect.width - 0.5
+    const y = (event.clientY - rect.top) / rect.height - 0.5
+    event.currentTarget.style.setProperty('--tilt-y', `${(x * 5).toFixed(2)}deg`)
+    event.currentTarget.style.setProperty('--tilt-x', `${(-y * 4).toFixed(2)}deg`)
+  }
+
+  function untilt(event: ReactPointerEvent<HTMLElement>) {
+    event.currentTarget.style.setProperty('--tilt-y', '0deg')
+    event.currentTarget.style.setProperty('--tilt-x', '0deg')
+  }
+
   return (
-    <figure className="hero-art">
-      <div
-        className="screen"
-        role="img"
-        aria-label={tr('mock.alt')}
-      >
+    <figure className="hero-art" onPointerMove={tilt} onPointerLeave={untilt}>
+      <div className="screen" role="group" aria-label={tr('mock.alt')}>
         <div className="screen-bar">
           <span className="dots" aria-hidden="true">
             <i className="dot dot-gold" />
@@ -263,19 +317,30 @@ function DesktopMock({ lang }: { lang: Lang }) {
         <div className="screen-body">
           <div className="screen-rings" aria-hidden="true" />
           <ul className="screen-icons">
-            <li><span className="dicon"><FolderIcon /></span><span>{tr('mock.files')}</span></li>
-            <li><span className="dicon"><GlobeIcon /></span><span>{tr('mock.net')}</span></li>
-            <li><span className="dicon"><SlidersIcon /></span><span>{tr('mock.panel')}</span></li>
-            <li><span className="dicon"><PowerIcon /></span><span>{tr('mock.power')}</span></li>
+            {DEMO_ITEMS.map((item) => (
+              <li key={item.id}>
+                <button
+                  type="button"
+                  className={active === item.id ? 'dicon-btn is-active' : 'dicon-btn'}
+                  aria-pressed={active === item.id}
+                  onClick={() => setActive(item.id)}
+                >
+                  <span className="dicon">{item.icon}</span>
+                  <span className="dicon-label">{tr(item.label)}</span>
+                </button>
+              </li>
+            ))}
           </ul>
-          <div className="screen-card">
-            <p className="screen-hello">{tr('mock.hello')}</p>
-            <p className="screen-clock">10:30</p>
-            <p className="screen-note">{tr('mock.note')}</p>
-            <div className="screen-chips">
-              <span>{tr('mock.files')}</span>
-              <span>{tr('mock.net')}</span>
-              <span>{tr('mock.help')}</span>
+          <div className="screen-card" aria-live="polite">
+            <div className="screen-card-body" key={active}>
+              <p className="screen-hello">{tr(titleKey)}</p>
+              {active === 'home' ? <p className="screen-clock">{time}</p> : null}
+              <p className="screen-note">{tr(noteKey)}</p>
+              <div className="screen-chips">
+                {DEMO_CHIPS[active].map((key) => (
+                  <span key={key}>{tr(key)}</span>
+                ))}
+              </div>
             </div>
           </div>
           <div className="screen-panel">
@@ -283,11 +348,11 @@ function DesktopMock({ lang }: { lang: Lang }) {
             <span className="panel-dot" />
             <span className="panel-dot" />
             <span className="panel-spacer" />
-            <span className="panel-clock">10:30</span>
+            <span className="panel-clock">{time}</span>
           </div>
         </div>
       </div>
-      <figcaption>{tr('mock.caption')}</figcaption>
+      <figcaption>{tr('mock.demo')}</figcaption>
     </figure>
   )
 }
@@ -429,6 +494,28 @@ export default function App() {
       { threshold: 0.18 },
     )
     observer.observe(releaseRef.current)
+    return () => observer.disconnect()
+  }, [])
+
+  /* Las secciones entran suavemente la primera vez que se ven. */
+  useEffect(() => {
+    const sections = Array.from(document.querySelectorAll<HTMLElement>('.section'))
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      sections.forEach((section) => section.classList.add('is-in'))
+      return
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -8% 0px' },
+    )
+    sections.forEach((section) => observer.observe(section))
     return () => observer.disconnect()
   }, [])
 

@@ -559,11 +559,69 @@ code {
   border-radius: 12px;
   background: rgba(242, 236, 223, 0.06);
   color: var(--gold-2);
+  transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.dicon-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: none;
+  color: var(--paper-dim);
+  font-family: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: color 0.18s ease;
+}
+
+.dicon-btn:hover {
+  color: var(--paper);
+}
+
+.dicon-btn:hover .dicon {
+  border-color: rgba(240, 181, 74, 0.5);
+  transform: translateY(-2px);
+}
+
+.dicon-btn.is-active {
+  color: var(--gold-2);
+}
+
+.dicon-btn.is-active .dicon {
+  border-color: var(--gold);
+  background: rgba(240, 181, 74, 0.16);
+  box-shadow: 0 0 0 3px rgba(240, 181, 74, 0.08);
+  transform: translateY(-1px);
+}
+
+.dicon-label {
+  font-weight: 700;
 }
 
 .dicon svg {
   width: 21px;
   height: 21px;
+}
+
+.screen-card-body {
+  min-height: 128px;
+  animation: card-in 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .screen-card {
@@ -691,6 +749,19 @@ code {
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .hero-art::before {
+    animation: halo-drift 14s ease-in-out infinite alternate;
+  }
+
+  @keyframes halo-drift {
+    from {
+      transform: translate3d(-1.5%, -1%, 0) scale(1);
+    }
+    to {
+      transform: translate3d(1.5%, 2%, 0) scale(1.05);
+    }
+  }
+
   .release-sheet[data-reveal="true"] {
     opacity: 0;
     transform: translateY(26px);
@@ -845,6 +916,19 @@ code {
 }
 
 /* ------------------------------------------------------------- secciones */
+
+.section > .wrap {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section.is-in > .wrap {
+  opacity: 1;
+  transform: none;
+}
 
 .section {
   padding: clamp(72px, 9vw, 120px) 0;
@@ -1294,6 +1378,19 @@ code {
 /* ------------------------------------------------------------- movimiento */
 
 @media (prefers-reduced-motion: no-preference) {
+  .hero-art::before {
+    animation: halo-drift 14s ease-in-out infinite alternate;
+  }
+
+  @keyframes halo-drift {
+    from {
+      transform: translate3d(-1.5%, -1%, 0) scale(1);
+    }
+    to {
+      transform: translate3d(1.5%, 2%, 0) scale(1.05);
+    }
+  }
+
   .hero-copy > * {
     animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   }
@@ -1340,6 +1437,11 @@ code {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .section > .wrap {
+    opacity: 1;
+    transform: none;
   }
 
   *,
