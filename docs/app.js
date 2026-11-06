@@ -3,49 +3,63 @@
 
   var EN = {
     "skip": "Skip to content",
+    "brand.aria": "abuel-os, home",
     "nav.aria": "Main",
     "nav.download": "Download",
     "nav.install": "Install",
     "nav.verify": "Verify",
-    "nav.versions": "Versions",
     "nav.update": "Update",
+    "nav.versions": "Versions",
     "nav.github": "GitHub",
 
     "hero.title": "A computer that's easy to use for people who didn't grow up with one.",
-    "hero.lead": "abuel-os is a system based on Debian 12 with the XFCE desktop. Two separate accounts: one for everyday use and one for whoever looks after the machine.",
+    "hero.lead": "abuel-os is a system based on Debian 12 and XFCE, with two separate accounts: one for everyday use and one for whoever looks after the machine.",
+    "hero.cta.download": "Download the ISO",
+    "hero.cta.install": "How installation works",
+    "hero.f1.k": "Base system",
+    "hero.f1.v": "Debian 12",
+    "hero.f2.k": "Desktop",
+    "hero.f2.v": "XFCE",
+    "hero.f3.k": "Architecture",
+    "hero.f3.v": "AMD64",
 
-    "facts.base.k": "Base system",
-    "facts.base.v": "Debian 12 Bookworm",
-    "facts.desktop.k": "Desktop",
-    "facts.desktop.v": "XFCE",
-    "facts.arch.k": "Architecture",
-    "facts.arch.v": "AMD64, 64-bit",
+    "mock.alt": "Illustration of the abuel-os desktop: large icons, a welcome card and a bottom panel.",
+    "mock.title": "abuel-os 1.0.8",
+    "mock.files": "Files",
+    "mock.net": "Internet",
+    "mock.panel": "Panel",
+    "mock.power": "Power off",
+    "mock.hello": "Good morning",
+    "mock.note": "All set. Choose what you want to do.",
+    "mock.help": "Help",
+    "mock.caption": "Desktop view: large icons, a welcome card and the panel always in sight.",
 
-    "dl.kicker": "Latest published version",
-    "dl.date": "November 6, 2026",
-    "dl.iso": "Download the ISO",
-    "dl.release": "View the release and its assets",
-    "dl.sha": "ISO SHA-256",
-    "dl.note": "The 1.0.8 release also includes the abuelo-os-core_1.0.8_all.deb and abuelo-os-updater_1.0.8_all.deb packages, signed and with their own SHA-256.",
+    "release.title": "Latest published version",
+    "release.date": "November 6, 2026",
+    "release.download": "Download the ISO",
+    "release.link": "View the release",
+    "release.note": "Includes the signed abuelo-os-core and abuelo-os-updater packages for this version.",
+    "release.sha": "ISO SHA-256",
+    "release.hint": "Compare it before using the image. If it doesn't match, don't use it.",
 
     "copy.hash": "Copy",
     "copy.cmd": "Copy",
 
-    "what.title": "What abuel-os is",
-    "what.lead": "A small, unadorned distribution with one concrete goal: the person who uses it every day shouldn't have to fight the system.",
-    "what.base.k": "System",
-    "what.base.v": "Debian 12 Bookworm, with the security updates Debian publishes. The abuel-os layer adds the panel, settings and administration tools; it does not replace the base system.",
-    "what.desk.k": "Desktop",
-    "what.desk.v": "XFCE, with large text, clear icons and no distracting effects. The panel can be adapted to the screen, and the preference is kept between sessions since 1.0.7.",
-    "what.accounts.k": "Two accounts",
-    "what.accounts.v": "<code>abuelo</code> logs in automatically and uses the computer. <code>responsable</code> installs, updates, changes settings and recovers the system when needed.",
-    "what.req.k": "Requirements",
-    "what.req.v": "64-bit processor, 2 GB of RAM (4 GB recommended) and a 4 GB USB drive (8 GB or more recommended).",
+    "about.title": "What abuel-os is",
+    "about.lead": "A small, unadorned distribution, made so the person who uses it every day doesn't have to fight the system.",
+    "about.s1.t": "System",
+    "about.s1.d": "Debian 12 Bookworm, with the security updates Debian publishes. The abuel-os layer adds the panel, settings and administration tools; it does not replace the base system.",
+    "about.s2.t": "Desktop",
+    "about.s2.d": "XFCE, with large text, clear icons and no distracting effects. The panel adapts to the screen and the preference is kept between sessions since 1.0.7.",
+    "about.s3.t": "Two accounts",
+    "about.s3.d": "<code>abuelo</code> logs in automatically and uses the computer. <code>responsable</code> installs, updates, changes settings and recovers the system when needed.",
+    "about.s4.t": "Requirements",
+    "about.s4.d": "64-bit processor, 2 GB of RAM (4 GB recommended) and a 4 GB USB drive (8 GB or more recommended).",
 
-    "install.title": "Install abuel-os",
-    "install.lead": "Five steps, in order. If something doesn't match what you see on screen, stop and check that version's notes before touching the disk.",
-    "install.warn.k": "Before you start:",
-    "install.warn.v": "installing a system can erase every file on the computer. Back up documents, photos and any important data somewhere else. If you want to keep Windows, don't choose the whole disk or delete partitions without knowing what each one does.",
+    "install.title": "Install in five steps",
+    "install.lead": "In order. If something doesn't match what you see on screen, stop and check that version's notes before touching the disk.",
+    "install.warn.k": "Before you start",
+    "install.warn.v": "Installing a system can erase every file on the computer. Back up documents, photos and any important data somewhere else. If you want to keep Windows, don't choose the whole disk or delete partitions without knowing what each one does.",
     "install.s1.t": "Make a backup",
     "install.s1.d": "Copy what matters to an external drive or to the cloud. Check that you can open the copied files; a backup you can't read is no backup.",
     "install.s2.t": "Write the ISO to a USB drive",
@@ -55,30 +69,35 @@
     "install.s4.t": "Try the desktop and install",
     "install.s4.d": "Check the screen, keyboard, mouse, sound and network. If the ISO includes an installer, open it and follow the screens. At the disk step, look twice at which disk and partitions you're about to change before confirming.",
     "install.s5.t": "First sign-in",
-    "install.s5.d": "On a first install, the sign-in screen may appear: sign in once as <code>responsable</code> (initial password <code>live</code>), change it and sign out. After that, <code>abuelo</code> logs in by itself. Don't reuse that password on other services; if your ISO's credentials don't match, read that version's notes.",
-    "install.note": "The exact screens depend on the installer included in the ISO. If no installer appears, or what you see doesn't match these steps, don't modify the disk: check that version's <code>KNOWN_ISSUES.md</code>.",
+    "install.s5.d": "On a first install, the sign-in screen may appear: sign in once as <code>responsable</code> (initial password <code>live</code>), change it and sign out. After that, <code>abuelo</code> logs in by itself. Don't reuse that password on other services.",
 
-    "verify.title": "Verify the download",
-    "verify.lead": "Before using the image, calculate its SHA-256 and compare it character for character with the version's. If it doesn't match exactly, don't use that ISO and download it again.",
-    "verify.win": "Windows (PowerShell)",
-    "verify.linux": "Linux",
+    "verify.title": "Check the ISO",
+    "verify.lead": "Calculate the file's SHA-256 and compare it character for character with this version's. If it doesn't match exactly, don't use that image: download it again.",
     "verify.note": "The file <code>abuelo-os-amd64.iso.sha256</code> is published next to the ISO in every release and contains the expected value.",
+    "verify.win": "Windows \u00b7 PowerShell",
+    "verify.linux": "Linux",
 
     "update.title": "Update without reinstalling",
-    "update.lead": "There are two independent layers. Debian updates the base with its security patches; the abuel-os layer travels in a signed <code>.deb</code> package and changes the system version without touching your files.",
+    "update.lead": "Two independent layers. Debian updates the base with its security patches; the abuel-os layer travels in a signed package and changes the version without touching your files.",
+    "update.detail": "<code>--check</code> asks for the latest release. <code>--install</code> downloads the package, verifies its SHA-256 and Ed25519 signature, and installs it with apt. If the public key is missing or the signature doesn't match, it aborts.",
+    "update.link": "Read the update document",
+    "update.layer1.tag": "abuel-os layer",
+    "update.layer1.d": "Panel, settings and utilities in a signed <code>.deb</code>.",
+    "update.layer2.tag": "Debian 12",
+    "update.layer2.d": "Security and system patches with apt.",
     "update.cmdlabel": "From the responsable account",
-    "update.detail": "<code>--check</code> asks for the latest published release. <code>--install</code> downloads the package, verifies its SHA-256 and Ed25519 signature, and installs it with apt. If the public key is missing or the signature doesn't match, it aborts. The full ISO is only needed for new installs or changes to the Debian base.",
-    "update.link": "Read the 1.0.8 update document",
 
-    "versions.title": "Published versions",
-    "versions.lead": "Every version has its own folder in the repository with changes, known issues and artifact details. The ISO and packages are attached to the matching release.",
+    "versions.title": "All versions",
+    "versions.lead": "Every version has its own folder in the repository with changes, known issues and artifact details. The ISO and packages are attached to its release.",
     "table.version": "Version",
     "table.date": "Date",
     "table.hash": "ISO SHA-256",
     "table.release": "Release",
+    "versions.current": "current",
     "versions.index": "Full version index",
     "versions.issues": "Known issues in 1.0.8",
 
+    "footer.tagline": "Easy. Safe. For you.",
     "footer.legal": "abuel-os is proprietary software. Downloading an ISO does not by itself grant permission to copy, modify or redistribute the software beyond what applicable law or prior written authorization from ericsnet allows.",
     "footer.releases": "Releases",
     "footer.issues": "Issues",
@@ -104,14 +123,8 @@
   var originalText = new Map();
   var originalAria = new Map();
 
-  nodes.forEach(function (el) {
-    originalText.set(el, el.innerHTML);
-    if (el.hasAttribute("data-i18n-default")) { return; }
-    el.setAttribute("data-i18n-default", "");
-  });
-  ariaNodes.forEach(function (el) {
-    originalAria.set(el, el.getAttribute("aria-label") || "");
-  });
+  nodes.forEach(function (el) { originalText.set(el, el.innerHTML); });
+  ariaNodes.forEach(function (el) { originalAria.set(el, el.getAttribute("aria-label") || ""); });
 
   var toggle = document.getElementById("lang-toggle");
   var status = document.getElementById("status");
@@ -154,7 +167,7 @@
       toggle.setAttribute("lang", useEnglish ? "es" : "en");
     }
 
-    try { localStorage.setItem("abuelos-lang", lang); } catch (e) { /* almacenamiento no disponible */ }
+    try { localStorage.setItem("abuelos-lang", lang); } catch (e) { /* sin almacenamiento */ }
   }
 
   if (toggle) {
@@ -165,9 +178,28 @@
 
   var stored = null;
   try { stored = localStorage.getItem("abuelos-lang"); } catch (e) { stored = null; }
-  if (stored === "en") {
-    applyLanguage("en");
+  if (stored === "en") { applyLanguage("en"); }
+
+  /* ---------- cabecera al hacer scroll ---------- */
+
+  var header = document.querySelector(".site-header");
+  var ticking = false;
+
+  function syncHeader() {
+    if (!header) { return; }
+    header.classList.toggle("is-top", window.scrollY <= 16);
+    ticking = false;
   }
+
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      window.requestAnimationFrame(syncHeader);
+    }
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  syncHeader();
 
   /* ---------- copiar al portapapeles ---------- */
 
