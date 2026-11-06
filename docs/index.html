@@ -63,7 +63,7 @@
   <section class="hero" id="inicio">
     <div class="wrap hero-inner">
       <div class="hero-copy">
-        <h1 data-i18n="hero.title">Un ordenador fácil de usar, también para quien no creció con uno.</h1>
+        <h1 data-i18n="hero.title">Un ordenador fácil de usar para quien no creció con uno.</h1>
         <div class="rule" aria-hidden="true"></div>
         <p class="lead" data-i18n="hero.lead">abuel-os es un sistema basado en Debian 12 con escritorio XFCE. Dos cuentas separadas: una para el día a día y otra para quien cuida del equipo.</p>
 
@@ -176,14 +176,14 @@
             <span data-i18n="verify.win">Windows (PowerShell)</span>
             <button class="copy" type="button" data-copy="#code-win" data-i18n="copy.cmd">Copiar</button>
           </div>
-          <pre id="code-win"><code>Get-FileHash "$HOME\Downloads\abuelo-os-amd64.iso" -Algorithm SHA256</code></pre>
+          <pre id="code-win" tabindex="0"><code>Get-FileHash "$HOME\Downloads\abuelo-os-amd64.iso" -Algorithm SHA256</code></pre>
         </div>
         <div class="code-block">
           <div class="code-head">
             <span data-i18n="verify.linux">Linux</span>
             <button class="copy" type="button" data-copy="#code-linux" data-i18n="copy.cmd">Copiar</button>
           </div>
-          <pre id="code-linux"><code>sha256sum abuelo-os-amd64.iso</code></pre>
+          <pre id="code-linux" tabindex="0"><code>sha256sum abuelo-os-amd64.iso</code></pre>
         </div>
       </div>
 
@@ -201,7 +201,7 @@
           <span data-i18n="update.cmdlabel">Desde la cuenta responsable</span>
           <button class="copy" type="button" data-copy="#code-update" data-i18n="copy.cmd">Copiar</button>
         </div>
-        <pre id="code-update"><code>abuelo-update --check
+        <pre id="code-update" tabindex="0"><code>abuelo-update --check
 sudo abuelo-update --install</code></pre>
       </div>
 

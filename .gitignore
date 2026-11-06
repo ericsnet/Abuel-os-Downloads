@@ -1,3 +1,6 @@
 # Las ISO no se versionan en git: superan el límite de 100 MB por fichero de GitHub.
 # Se publican como adjuntos de release y se copian localmente en <version>/.
 *.iso
+
+# Artefactos locales de trabajo (informes, capturas, QA): no se publican.
+/artifacts/

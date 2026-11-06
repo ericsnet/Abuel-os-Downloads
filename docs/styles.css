@@ -244,7 +244,7 @@ code {
 
 .facts dt {
   font-size: .82rem;
-  color: #A9C3D6;
+  color: #C2D6E4;
   margin-bottom: 4px;
 }
 .facts dd {
@@ -503,7 +503,7 @@ code {
 
 .code-head .copy {
   margin: 0;
-  min-height: 40px;
+  min-height: 44px;
   border-color: rgba(246, 183, 60, .6);
   color: var(--gold);
 }
@@ -531,9 +531,16 @@ pre code {
 .links {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 28px;
-  margin: 30px 0 0;
+  gap: 4px 28px;
+  margin: 26px 0 0;
   font-weight: 700;
+}
+
+.links a,
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 
 /* ---------- tabla ---------- */
@@ -570,7 +577,7 @@ pre code {
 .versions tbody tr:hover { background: #F7FAFC; }
 
 .tiny {
-  font-size: .72rem;
+  font-size: .76rem;
   line-height: 1.5;
   word-break: break-all;
   background: none;
@@ -683,7 +690,7 @@ pre code {
   .footer-inner { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 860px) {
   .table-scroll { overflow-x: visible; border-top-width: 2px; }
   .versions { min-width: 0; }
   .versions thead {

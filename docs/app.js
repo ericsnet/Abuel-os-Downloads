@@ -11,7 +11,7 @@
     "nav.update": "Update",
     "nav.github": "GitHub",
 
-    "hero.title": "A computer that's easy to use, including for people who didn't grow up with one.",
+    "hero.title": "A computer that's easy to use for people who didn't grow up with one.",
     "hero.lead": "abuel-os is a system based on Debian 12 with the XFCE desktop. Two separate accounts: one for everyday use and one for whoever looks after the machine.",
 
     "facts.base.k": "Base system",

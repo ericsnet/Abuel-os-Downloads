@@ -1,9 +1,9 @@
 # Publicación - abuel-os 1.0.8
 
 - **Fecha:** 2026-11-06
-- **Estado:** construida (no publicada)
-- **Etiqueta:** `v1.0.8` (pendiente de publicar)
-- **Release:** pendiente
+- **Estado:** publicada
+- **Etiqueta:** `v1.0.8`
+- **Release:** https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.8
 - **ISO:** `abuelo-os-amd64.iso` (1.951.432.704 bytes)
 - **SHA256:** `584cb3b2c71d4fd458b3541464fe27af8b0ec38c8580e7bf3774b619f0627c57`
 - **Paquete de actualización:** `abuelo-os-core_1.0.8_all.deb`

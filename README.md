@@ -2,6 +2,9 @@
 
 # abuel-os — Downloads
 
+**Website:** https://ericsnet.github.io/Abuel-os-Downloads/
+
+
 **Official abuel-os download page**, for a distribution based on Debian 12 (Bookworm) and XFCE, designed to provide a simple desktop and a separate account for the person responsible.
 
 ## Latest version: 1.0.8
