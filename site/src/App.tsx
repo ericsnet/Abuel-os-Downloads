@@ -519,6 +519,44 @@ export default function App() {
     return () => observer.disconnect()
   }, [])
 
+  /* Revelado progresivo de texto y bloques al entrar en el viewport. */
+  useEffect(() => {
+    const targets = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        '.section h2, .section-lead, .section .micro, .features li, .steps li, .callout, .terminal, .layer, .versions-head, .table-scroll, .section .links, .release-main > *, .release-verify > *',
+      ),
+    )
+
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      targets.forEach((target) => target.classList.add('scroll-revealed'))
+      return
+    }
+
+    const groups = new Map<Element, number>()
+    targets.forEach((target) => {
+      const parent = target.parentElement
+      const index = parent ? (groups.get(parent) ?? 0) : 0
+      if (parent) groups.set(parent, index + 1)
+      target.style.setProperty('--reveal-delay', `${Math.min(index * 75, 300)}ms`)
+      target.classList.add('scroll-reveal')
+    })
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('scroll-revealed')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -7% 0px' },
+    )
+
+    targets.forEach((target) => observer.observe(target))
+    return () => observer.disconnect()
+  }, [])
+
   const toggleLang = () => setLang((value) => (value === 'es' ? 'en' : 'es'))
   const closeMenu = () => setMenuOpen(false)
 
