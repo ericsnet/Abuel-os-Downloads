@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { CURRENT, LINKS, META, VERSIONS, t, type Lang } from './content'
 
 /* ------------------------------------------------------------------ iconos */
@@ -43,12 +43,6 @@ const SlidersIcon = () => (
     <path d="M4 17h4" />
     <path d="M12 17h8" />
     <circle cx="10" cy="17" r="2" />
-  </Icon>
-)
-const PowerIcon = () => (
-  <Icon>
-    <path d="M12 3v8" />
-    <path d="M6.3 6.3a8 8 0 1 0 11.4 0" />
   </Icon>
 )
 const MenuIcon = () => (
@@ -288,23 +282,8 @@ function DesktopMock({ lang }: { lang: Lang }) {
   const titleKey = active === 'home' ? greeting : `demo.${active}.t`
   const noteKey = active === 'home' ? 'mock.note' : `demo.${active}.d`
 
-  function tilt(event: ReactPointerEvent<HTMLElement>) {
-    if (!window.matchMedia('(pointer: fine)').matches) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const rect = event.currentTarget.getBoundingClientRect()
-    const x = (event.clientX - rect.left) / rect.width - 0.5
-    const y = (event.clientY - rect.top) / rect.height - 0.5
-    event.currentTarget.style.setProperty('--tilt-y', `${(x * 5).toFixed(2)}deg`)
-    event.currentTarget.style.setProperty('--tilt-x', `${(-y * 4).toFixed(2)}deg`)
-  }
-
-  function untilt(event: ReactPointerEvent<HTMLElement>) {
-    event.currentTarget.style.setProperty('--tilt-y', '0deg')
-    event.currentTarget.style.setProperty('--tilt-x', '0deg')
-  }
-
   return (
-    <figure className="hero-art" onPointerMove={tilt} onPointerLeave={untilt}>
+    <figure className="hero-art">
       <div className="screen" role="group" aria-label={tr('mock.alt')}>
         <div className="screen-bar">
           <span className="dots" aria-hidden="true">
@@ -388,11 +367,8 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [status, setStatus] = useState('')
   const [active, setActive] = useState('inicio')
-  const [releaseIn, setReleaseIn] = useState(false)
 
   const progressRef = useRef<HTMLDivElement>(null)
-  const heroRef = useRef<HTMLElement>(null)
-  const releaseRef = useRef<HTMLDivElement>(null)
 
   const tr = (key: string) => t(lang, key)
 
@@ -431,38 +407,6 @@ export default function App() {
     return () => window.clearTimeout(id)
   }, [status])
 
-  /* Progreso de lectura y paralaje del escritorio: una sola idea, ligada al scroll. */
-  useEffect(() => {
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)')
-    let frame = 0
-
-    const update = () => {
-      frame = 0
-
-      if (heroRef.current && !reduce.matches) {
-        const rect = heroRef.current.getBoundingClientRect()
-        const t = Math.min(1, Math.max(0, -rect.top / Math.max(1, rect.height)))
-        heroRef.current.style.setProperty('--screen-shift', `${(-16 * t).toFixed(1)}px`)
-        heroRef.current.style.setProperty('--screen-tilt', `${(3.2 * t).toFixed(2)}deg`)
-        heroRef.current.style.setProperty('--screen-scale', `${(1 - 0.015 * t).toFixed(3)}`)
-        heroRef.current.style.setProperty('--screen-glow', `${(1 - 0.55 * t).toFixed(2)}`)
-      }
-    }
-
-    const onScroll = () => {
-      if (!frame) frame = window.requestAnimationFrame(update)
-    }
-
-    update()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
-      if (frame) window.cancelAnimationFrame(frame)
-    }
-  }, [])
-
   /* Sección activa en la navegación. */
   useEffect(() => {
     const ids = ['inicio', 'descargar', 'instalar', 'verificar', 'actualizar', 'versiones']
@@ -478,44 +422,6 @@ export default function App() {
       const el = document.getElementById(id)
       if (el) observer.observe(el)
     })
-    return () => observer.disconnect()
-  }, [])
-
-  /* La ficha de la release aparece una vez, al entrar en pantalla. */
-  useEffect(() => {
-    if (!releaseRef.current) return
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          setReleaseIn(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.18 },
-    )
-    observer.observe(releaseRef.current)
-    return () => observer.disconnect()
-  }, [])
-
-  /* Las secciones entran suavemente la primera vez que se ven. */
-  useEffect(() => {
-    const sections = Array.from(document.querySelectorAll<HTMLElement>('.section'))
-    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      sections.forEach((section) => section.classList.add('is-in'))
-      return
-    }
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-in')
-            observer.unobserve(entry.target)
-          }
-        })
-      },
-      { threshold: 0.08, rootMargin: '0px 0px -8% 0px' },
-    )
-    sections.forEach((section) => observer.observe(section))
     return () => observer.disconnect()
   }, [])
 
@@ -573,7 +479,7 @@ export default function App() {
       </header>
 
       <main id="contenido">
-        <section className="hero" id="inicio" ref={heroRef}>
+        <section className="hero" id="inicio">
           <div className="wrap hero-grid">
             <div className="hero-copy">
               <h1>{tr('hero.title')}</h1>
@@ -594,11 +500,7 @@ export default function App() {
 
         <section className="release" id="descargar" aria-labelledby="release-title">
           <div className="wrap">
-            <div
-              ref={releaseRef}
-              className={releaseIn ? 'release-sheet is-revealed' : 'release-sheet'}
-              data-reveal="true"
-            >
+            <div className="release-sheet">
               <div className="release-main">
                 <h2 id="release-title">{tr('release.title')}</h2>
                 <p className="release-version">{CURRENT.version}</p>

@@ -35,21 +35,16 @@ export const strings: Record<string, Localized> = {
   'hero.f3.v': { es: 'AMD64', en: 'AMD64' },
 
   'mock.alt': {
-    es: 'Ilustración del escritorio de abuel-os: iconos grandes, tarjeta de bienvenida y panel inferior.',
-    en: 'Illustration of the abuel-os desktop: large icons, a welcome card and a bottom panel.',
+    es: 'Demostración interactiva del escritorio de abuel-os: iconos, tarjeta de bienvenida y panel inferior.',
+    en: 'Interactive demo of the abuel-os desktop: icons, a welcome card and a bottom panel.',
   },
   'mock.title': { es: 'abuel-os 1.0.8', en: 'abuel-os 1.0.8' },
   'mock.files': { es: 'Archivos', en: 'Files' },
   'mock.net': { es: 'Internet', en: 'Internet' },
   'mock.panel': { es: 'Panel', en: 'Panel' },
-  'mock.power': { es: 'Apagar', en: 'Power off' },
-  'mock.hello': { es: 'Buenos días', en: 'Good morning' },
   'mock.note': { es: 'Todo listo. Elige lo que quieres hacer.', en: 'All set. Choose what you want to do.' },
   'mock.help': { es: 'Ayuda', en: 'Help' },
-  'mock.caption': {
-    es: 'Vista del escritorio: iconos grandes, una tarjeta de bienvenida y el panel siempre a la vista.',
-    en: 'Desktop view: large icons, a welcome card and the panel always in sight.',
-  },
+
   'mock.demo': {
     es: 'Pulsa un icono para probar el escritorio.',
     en: 'Tap an icon to try the desktop.',
