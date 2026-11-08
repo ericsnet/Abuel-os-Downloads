@@ -5,7 +5,9 @@ type Localized = { es: string; en: string }
 export const strings: Record<string, Localized> = {
   skip: { es: 'Saltar al contenido', en: 'Skip to content' },
   'brand.aria': { es: 'abuel-os, inicio', en: 'abuel-os, home' },
-  'nav.aria': { es: 'Principal', en: 'Main' },
+  'nav.aria': { es: 'Secciones', en: 'Sections' },
+  'nav.home': { es: 'Inicio', en: 'Home' },
+  'nav.about': { es: 'Qué es', en: 'About' },
   'nav.download': { es: 'Descargar', en: 'Download' },
   'nav.install': { es: 'Instalar', en: 'Install' },
   'nav.verify': { es: 'Verificar', en: 'Verify' },

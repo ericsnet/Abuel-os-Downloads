@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { useEffect, useState, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from 'react'
 import { CURRENT, LINKS, META, VERSIONS, t, type Lang } from './content'
 
 /* ------------------------------------------------------------------ iconos */
@@ -331,20 +331,25 @@ function DesktopMock({ lang }: { lang: Lang }) {
           </div>
         </div>
       </div>
-      <figcaption>{tr('mock.demo')}</figcaption>
     </figure>
   )
 }
 
 /* ------------------------------------------------------------------ app */
 
-const NAV = [
-  { href: '#descargar', key: 'nav.download' },
-  { href: '#instalar', key: 'nav.install' },
-  { href: '#verificar', key: 'nav.verify' },
-  { href: '#actualizar', key: 'nav.update' },
-  { href: '#versiones', key: 'nav.versions' },
+type ViewId = 'inicio' | 'que-es' | 'descargar' | 'instalar' | 'verificar' | 'actualizar' | 'versiones'
+
+const VIEWS: { id: ViewId; key: string }[] = [
+  { id: 'inicio', key: 'nav.home' },
+  { id: 'que-es', key: 'nav.about' },
+  { id: 'descargar', key: 'nav.download' },
+  { id: 'instalar', key: 'nav.install' },
+  { id: 'verificar', key: 'nav.verify' },
+  { id: 'actualizar', key: 'nav.update' },
+  { id: 'versiones', key: 'nav.versions' },
 ]
+
+const isViewId = (value: string): value is ViewId => VIEWS.some((item) => item.id === value)
 
 const FEATURES = [
   { icon: <LayerIcon />, t: 'about.s1.t', d: 'about.s1.d' },
@@ -366,9 +371,10 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [status, setStatus] = useState('')
-  const [active, setActive] = useState('inicio')
-
-  const progressRef = useRef<HTMLDivElement>(null)
+  const [view, setView] = useState<ViewId>(() => {
+    const hash = window.location.hash.replace('#', '')
+    return isViewId(hash) ? hash : 'inicio'
+  })
 
   const tr = (key: string) => t(lang, key)
 
@@ -385,19 +391,11 @@ export default function App() {
   }, [lang])
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 16)
-      const doc = document.documentElement
-      const max = doc.scrollHeight - window.innerHeight
-      const ratio = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0
-      if (progressRef.current) progressRef.current.style.transform = `scaleX(${ratio})`
-    }
+    const onScroll = () => setScrolled(window.scrollY > 16)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
     return () => {
       window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
     }
   }, [])
 
@@ -407,23 +405,43 @@ export default function App() {
     return () => window.clearTimeout(id)
   }, [status])
 
-  /* Sección activa en la navegación. */
+  /* La vista activa vive en el hash: enlaces directos y atrás/adelante. */
   useEffect(() => {
-    const ids = ['inicio', 'descargar', 'instalar', 'verificar', 'actualizar', 'versiones']
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id)
-        })
-      },
-      { rootMargin: '-40% 0px -55% 0px', threshold: 0 },
-    )
-    ids.forEach((id) => {
-      const el = document.getElementById(id)
-      if (el) observer.observe(el)
-    })
-    return () => observer.disconnect()
+    const syncView = () => {
+      const hash = window.location.hash.replace('#', '')
+      setView(isViewId(hash) ? hash : 'inicio')
+    }
+    window.addEventListener('popstate', syncView)
+    window.addEventListener('hashchange', syncView)
+    return () => {
+      window.removeEventListener('popstate', syncView)
+      window.removeEventListener('hashchange', syncView)
+    }
   }, [])
+
+  useEffect(() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' })
+  }, [view])
+
+  function selectView(id: ViewId) {
+    setView(id)
+    setMenuOpen(false)
+    const hash = `#${id}`
+    if (window.location.hash !== hash) window.history.pushState(null, '', hash)
+  }
+
+  function onTabKeyDown(event: ReactKeyboardEvent<HTMLButtonElement>, index: number) {
+    if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return
+    event.preventDefault()
+    let next = index
+    if (event.key === 'ArrowRight') next = (index + 1) % VIEWS.length
+    if (event.key === 'ArrowLeft') next = (index - 1 + VIEWS.length) % VIEWS.length
+    if (event.key === 'Home') next = 0
+    if (event.key === 'End') next = VIEWS.length - 1
+    selectView(VIEWS[next].id)
+    document.getElementById(`tab-${VIEWS[next].id}`)?.focus()
+  }
 
   const toggleLang = () => setLang((value) => (value === 'es' ? 'en' : 'es'))
   const closeMenu = () => setMenuOpen(false)
@@ -434,16 +452,37 @@ export default function App() {
 
       <header className={scrolled ? 'site-header is-scrolled' : 'site-header'}>
         <div className="wrap header-inner">
-          <a className="brand" href="#inicio" aria-label={tr('brand.aria')} onClick={closeMenu}>
+          <a
+            className="brand"
+            href="#inicio"
+            aria-label={tr('brand.aria')}
+            onClick={(event) => {
+              event.preventDefault()
+              selectView('inicio')
+            }}
+          >
             <LogoMark className="mark" />
             <span className="brand-name">abuel-os</span>
           </a>
 
-          <nav className="nav" aria-label={tr('nav.aria')}>
-            {NAV.map((item) => (
-              <a key={item.href} href={item.href} className={active === item.href.slice(1) ? 'is-active' : undefined}>{tr(item.key)}</a>
+          <div className="tabs" role="tablist" aria-label={tr('nav.aria')}>
+            {VIEWS.map((item, index) => (
+              <button
+                key={item.id}
+                type="button"
+                role="tab"
+                id={`tab-${item.id}`}
+                aria-selected={view === item.id}
+                aria-controls={`panel-${item.id}`}
+                tabIndex={view === item.id ? 0 : -1}
+                className={view === item.id ? 'is-active' : undefined}
+                onClick={() => selectView(item.id)}
+                onKeyDown={(event) => onTabKeyDown(event, index)}
+              >
+                {tr(item.key)}
+              </button>
             ))}
-          </nav>
+          </div>
 
           <div className="header-tools">
             <a className="ghost hide-sm" href={LINKS.repo}>{tr('nav.github')}</a>
@@ -470,214 +509,237 @@ export default function App() {
         </div>
 
         <nav id="mobile-nav" className={menuOpen ? 'mobile-nav is-open' : 'mobile-nav'} aria-label={tr('nav.aria')}>
-          {NAV.map((item) => (
-            <a key={item.href} href={item.href} className={active === item.href.slice(1) ? 'is-active' : undefined} onClick={closeMenu}>{tr(item.key)}</a>
+          {VIEWS.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              aria-current={view === item.id ? 'page' : undefined}
+              className={view === item.id ? 'is-active' : undefined}
+              onClick={() => selectView(item.id)}
+            >
+              {tr(item.key)}
+            </button>
           ))}
           <a href={LINKS.repo} onClick={closeMenu}>{tr('nav.github')}</a>
         </nav>
-        <div className="progress" ref={progressRef} aria-hidden="true" />
       </header>
 
-      <main id="contenido">
-        <section className="hero" id="inicio">
-          <div className="wrap hero-grid">
-            <div className="hero-copy">
-              <h1>{tr('hero.title')}</h1>
-              <p className="hero-lead">{tr('hero.lead')}</p>
-              <div className="hero-actions">
-                <a className="btn btn-gold" href={LINKS.isoLatest}>{tr('hero.cta.download')}</a>
-                <a className="btn btn-outline" href="#instalar">{tr('hero.cta.install')}</a>
-              </div>
-              <dl className="hero-facts">
-                <div><dt>{tr('hero.f1.k')}</dt><dd>{tr('hero.f1.v')}</dd></div>
-                <div><dt>{tr('hero.f2.k')}</dt><dd>{tr('hero.f2.v')}</dd></div>
-                <div><dt>{tr('hero.f3.k')}</dt><dd>{tr('hero.f3.v')}</dd></div>
-              </dl>
+            <main id="contenido">
+        <div className="wrap">
+          <section className="window" aria-labelledby={`tab-${view}`}>
+            <div className="window-bar">
+              <span className="dots" aria-hidden="true">
+                <i className="dot dot-gold" />
+                <i className="dot dot-sage" />
+                <i className="dot" />
+              </span>
+              <span className="window-title">{tr(VIEWS.find((item) => item.id === view)?.key ?? 'nav.home')}</span>
+              <span className="window-app">abuel-os</span>
             </div>
-            <DesktopMock lang={lang} />
-          </div>
-        </section>
 
-        <section className="release" id="descargar" aria-labelledby="release-title">
-          <div className="wrap">
-            <div className="release-sheet">
-              <div className="release-main">
-                <h2 id="release-title">{tr('release.title')}</h2>
-                <p className="release-version">{CURRENT.version}</p>
-                <ul className="release-meta">
-                  <li>{tr('release.arch')}</li>
-                  <li>{tr('release.size')}</li>
-                  <li><time dateTime={CURRENT.date}>{tr('release.date')}</time></li>
-                </ul>
-                <div className="release-actions">
-                  <a className="btn btn-gold" href={LINKS.isoLatest}>{tr('release.download')}</a>
-                  <a className="btn btn-quiet" href={LINKS.release108}>{tr('release.link')}</a>
+            <div className="window-body">
+              <div className="view" role="tabpanel" id="panel-inicio" aria-labelledby="tab-inicio" hidden={view !== 'inicio'}>
+                <div className="hero-grid">
+                  <div className="hero-copy">
+                    <h1>{tr('hero.title')}</h1>
+                    <p className="hero-lead">{tr('hero.lead')}</p>
+                    <div className="hero-actions">
+                      <a className="btn btn-gold" href={LINKS.isoLatest}>{tr('hero.cta.download')}</a>
+                      <button className="btn btn-outline" type="button" onClick={() => selectView('instalar')}>
+                        {tr('hero.cta.install')}
+                      </button>
+                    </div>
+                    <dl className="hero-facts">
+                      <div><dt>{tr('hero.f1.k')}</dt><dd>{tr('hero.f1.v')}</dd></div>
+                      <div><dt>{tr('hero.f2.k')}</dt><dd>{tr('hero.f2.v')}</dd></div>
+                      <div><dt>{tr('hero.f3.k')}</dt><dd>{tr('hero.f3.v')}</dd></div>
+                    </dl>
+                    <p className="demo-hint">{tr('mock.demo')}</p>
+                  </div>
+                  <DesktopMock lang={lang} />
                 </div>
-                <p className="micro">{tr('release.note')}</p>
               </div>
 
-              <div className="release-verify">
-                <p className="verify-label">{tr('release.sha')}</p>
-                <code className="hash">{CURRENT.hash}</code>
-                <CopyButton
-                  text={CURRENT.hash}
-                  label={tr('copy.hash')}
-                  copiedLabel={tr('copied')}
-                  onStatus={setStatus}
-                />
-                <p className="hint">
-                  <ShieldIcon />
-                  <span>{tr('release.hint')}</span>
+              <div className="view" role="tabpanel" id="panel-que-es" aria-labelledby="tab-que-es" hidden={view !== 'que-es'}>
+                <div className="split">
+                  <div className="split-head">
+                    <h2>{tr('about.title')}</h2>
+                    <p className="section-lead">{tr('about.lead')}</p>
+                  </div>
+                  <ul className="features">
+                    {FEATURES.map((feature) => (
+                      <li key={feature.t}>
+                        <div className="f-head">
+                          <span className="f-icon">{feature.icon}</span>
+                          <h3>{tr(feature.t)}</h3>
+                        </div>
+                        <p dangerouslySetInnerHTML={{ __html: tr(feature.d) }} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="view" role="tabpanel" id="panel-descargar" aria-labelledby="tab-descargar" hidden={view !== 'descargar'}>
+                <div className="release-sheet">
+                  <div className="release-main">
+                    <h2 id="release-title">{tr('release.title')}</h2>
+                    <p className="release-version">{CURRENT.version}</p>
+                    <ul className="release-meta">
+                      <li>{tr('release.arch')}</li>
+                      <li>{tr('release.size')}</li>
+                      <li><time dateTime={CURRENT.date}>{tr('release.date')}</time></li>
+                    </ul>
+                    <div className="release-actions">
+                      <a className="btn btn-gold" href={LINKS.isoLatest}>{tr('release.download')}</a>
+                      <a className="btn btn-quiet" href={LINKS.release108}>{tr('release.link')}</a>
+                    </div>
+                    <p className="micro">{tr('release.note')}</p>
+                  </div>
+
+                  <div className="release-verify">
+                    <p className="verify-label">{tr('release.sha')}</p>
+                    <code className="hash">{CURRENT.hash}</code>
+                    <CopyButton
+                      text={CURRENT.hash}
+                      label={tr('copy.hash')}
+                      copiedLabel={tr('copied')}
+                      onStatus={setStatus}
+                    />
+                    <p className="hint">
+                      <ShieldIcon />
+                      <span>{tr('release.hint')}</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="view" role="tabpanel" id="panel-instalar" aria-labelledby="tab-instalar" hidden={view !== 'instalar'}>
+                <div className="split">
+                  <div className="split-head">
+                    <h2>{tr('install.title')}</h2>
+                    <p className="section-lead">{tr('install.lead')}</p>
+                    <div className="callout">
+                      <WarnIcon />
+                      <div>
+                        <strong>{tr('install.warn.k')}</strong>
+                        <p>{tr('install.warn.v')}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <ol className="steps">
+                    {STEPS.map((step) => (
+                      <li key={step}>
+                        <span className="step-num" aria-hidden="true" />
+                        <div>
+                          <h3>{tr(`install.${step}.t`)}</h3>
+                          <p dangerouslySetInnerHTML={{ __html: tr(`install.${step}.d`) }} />
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </div>
+
+              <div className="view" role="tabpanel" id="panel-verificar" aria-labelledby="tab-verificar" hidden={view !== 'verificar'}>
+                <div className="split">
+                  <div className="split-head">
+                    <h2>{tr('verify.title')}</h2>
+                    <p className="section-lead">{tr('verify.lead')}</p>
+                    <p className="micro" dangerouslySetInnerHTML={{ __html: tr('verify.note') }} />
+                  </div>
+                  <div className="terminals">
+                    <Terminal
+                      title={tr('verify.win')}
+                      prompt="PS>"
+                      code={'Get-FileHash "$HOME\\Downloads\\abuelo-os-amd64.iso" -Algorithm SHA256'}
+                      copyLabel={tr('copy.cmd')}
+                      copiedLabel={tr('copied')}
+                      onStatus={setStatus}
+                    />
+                    <Terminal
+                      title={tr('verify.linux')}
+                      prompt="$"
+                      code={'sha256sum abuelo-os-amd64.iso'}
+                      copyLabel={tr('copy.cmd')}
+                      copiedLabel={tr('copied')}
+                      onStatus={setStatus}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="view" role="tabpanel" id="panel-actualizar" aria-labelledby="tab-actualizar" hidden={view !== 'actualizar'}>
+                <div className="split">
+                  <div className="split-head">
+                    <h2>{tr('update.title')}</h2>
+                    <p className="section-lead">{tr('update.lead')}</p>
+                    <p className="section-lead" dangerouslySetInnerHTML={{ __html: tr('update.detail') }} />
+                    <p className="links"><a href={LINKS.updates108}>{tr('update.link')} <ArrowIcon /></a></p>
+                  </div>
+                  <div className="update-side">
+                    <div className="layers">
+                      <div className="layer layer-top">
+                        <span className="layer-tag">{tr('update.layer1.tag')}</span>
+                        <p dangerouslySetInnerHTML={{ __html: tr('update.layer1.d') }} />
+                      </div>
+                      <div className="layer layer-base">
+                        <span className="layer-tag">{tr('update.layer2.tag')}</span>
+                        <p dangerouslySetInnerHTML={{ __html: tr('update.layer2.d') }} />
+                      </div>
+                    </div>
+                    <Terminal
+                      title={tr('update.cmdlabel')}
+                      prompt="$"
+                      code={'abuelo-update --check\nsudo abuelo-update --install'}
+                      copyLabel={tr('copy.cmd')}
+                      copiedLabel={tr('copied')}
+                      onStatus={setStatus}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="view" role="tabpanel" id="panel-versiones" aria-labelledby="tab-versiones" hidden={view !== 'versiones'}>
+                <div className="versions-head">
+                  <h2>{tr('versions.title')}</h2>
+                  <p className="section-lead">{tr('versions.lead')}</p>
+                </div>
+                <div className="table-scroll">
+                  <table className="versions">
+                    <thead>
+                      <tr>
+                        <th scope="col">{tr('table.version')}</th>
+                        <th scope="col">{tr('table.date')}</th>
+                        <th scope="col">{tr('table.hash')}</th>
+                        <th scope="col">{tr('table.release')}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {VERSIONS.map((version) => (
+                        <tr key={version.version} className={version.latest ? 'is-latest' : undefined}>
+                          <th scope="row">
+                            {version.latest && <span className="current">{tr('versions.current')}</span>}
+                            <a href={version.tree}>{version.version}</a>
+                          </th>
+                          <td><time dateTime={version.date}>{version.date}</time></td>
+                          <td><code className="tiny">{version.hash}</code></td>
+                          <td><a href={version.release}>v{version.version}</a></td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="links">
+                  <a href={LINKS.index}>{tr('versions.index')} <ArrowIcon /></a>
+                  <a href={LINKS.issues108}>{tr('versions.issues')} <ArrowIcon /></a>
                 </p>
               </div>
             </div>
-          </div>
-        </section>
-
-        <section className="section about" id="que-es">
-          <div className="wrap split">
-            <div className="split-head">
-              <h2>{tr('about.title')}</h2>
-              <p className="section-lead">{tr('about.lead')}</p>
-            </div>
-            <ul className="features">
-              {FEATURES.map((feature) => (
-                <li key={feature.t}>
-                  <div className="f-head">
-                    <span className="f-icon">{feature.icon}</span>
-                    <h3>{tr(feature.t)}</h3>
-                  </div>
-                  <p dangerouslySetInnerHTML={{ __html: tr(feature.d) }} />
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section className="section install" id="instalar">
-          <div className="wrap split">
-            <div className="split-head">
-              <h2>{tr('install.title')}</h2>
-              <p className="section-lead">{tr('install.lead')}</p>
-              <div className="callout">
-                <WarnIcon />
-                <div>
-                  <strong>{tr('install.warn.k')}</strong>
-                  <p>{tr('install.warn.v')}</p>
-                </div>
-              </div>
-            </div>
-            <ol className="steps">
-              {STEPS.map((step) => (
-                <li key={step}>
-                  <span className="step-num" aria-hidden="true" />
-                  <div>
-                    <h3>{tr(`install.${step}.t`)}</h3>
-                    <p dangerouslySetInnerHTML={{ __html: tr(`install.${step}.d`) }} />
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        <section className="section verify" id="verificar">
-          <div className="wrap split">
-            <div className="split-head">
-              <h2>{tr('verify.title')}</h2>
-              <p className="section-lead">{tr('verify.lead')}</p>
-              <p className="micro" dangerouslySetInnerHTML={{ __html: tr('verify.note') }} />
-            </div>
-            <div className="terminals">
-              <Terminal
-                title={tr('verify.win')}
-                prompt="PS>"
-                code={'Get-FileHash "$HOME\\Downloads\\abuelo-os-amd64.iso" -Algorithm SHA256'}
-                copyLabel={tr('copy.cmd')}
-                copiedLabel={tr('copied')}
-                onStatus={setStatus}
-              />
-              <Terminal
-                title={tr('verify.linux')}
-                prompt="$"
-                code={'sha256sum abuelo-os-amd64.iso'}
-                copyLabel={tr('copy.cmd')}
-                copiedLabel={tr('copied')}
-                onStatus={setStatus}
-              />
-            </div>
-          </div>
-        </section>
-
-        <section className="section update" id="actualizar">
-          <div className="wrap split">
-            <div className="split-head">
-              <h2>{tr('update.title')}</h2>
-              <p className="section-lead">{tr('update.lead')}</p>
-              <p className="section-lead" dangerouslySetInnerHTML={{ __html: tr('update.detail') }} />
-              <p className="links"><a href={LINKS.updates108}>{tr('update.link')} <ArrowIcon /></a></p>
-            </div>
-            <div className="update-side">
-              <div className="layers">
-                <div className="layer layer-top">
-                  <span className="layer-tag">{tr('update.layer1.tag')}</span>
-                  <p dangerouslySetInnerHTML={{ __html: tr('update.layer1.d') }} />
-                </div>
-                <div className="layer layer-base">
-                  <span className="layer-tag">{tr('update.layer2.tag')}</span>
-                  <p dangerouslySetInnerHTML={{ __html: tr('update.layer2.d') }} />
-                </div>
-              </div>
-              <Terminal
-                title={tr('update.cmdlabel')}
-                prompt="$"
-                code={'abuelo-update --check\nsudo abuelo-update --install'}
-                copyLabel={tr('copy.cmd')}
-                copiedLabel={tr('copied')}
-                onStatus={setStatus}
-              />
-            </div>
-          </div>
-        </section>
-
-        <section className="section versions" id="versiones">
-          <div className="wrap">
-            <div className="versions-head">
-              <h2>{tr('versions.title')}</h2>
-              <p className="section-lead">{tr('versions.lead')}</p>
-            </div>
-            <div className="table-scroll">
-              <table className="versions">
-                <thead>
-                  <tr>
-                    <th scope="col">{tr('table.version')}</th>
-                    <th scope="col">{tr('table.date')}</th>
-                    <th scope="col">{tr('table.hash')}</th>
-                    <th scope="col">{tr('table.release')}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {VERSIONS.map((version) => (
-                    <tr key={version.version} className={version.latest ? 'is-latest' : undefined}>
-                      <th scope="row">
-                        {version.latest && <span className="current">{tr('versions.current')}</span>}
-                        <a href={version.tree}>{version.version}</a>
-                      </th>
-                      <td><time dateTime={version.date}>{version.date}</time></td>
-                      <td><code className="tiny">{version.hash}</code></td>
-                      <td><a href={version.release}>v{version.version}</a></td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <p className="links">
-              <a href={LINKS.index}>{tr('versions.index')} <ArrowIcon /></a>
-              <a href={LINKS.issues108}>{tr('versions.issues')} <ArrowIcon /></a>
-            </p>
-          </div>
-        </section>
+          </section>
+        </div>
       </main>
+
 
       <footer className="site-footer">
         <div className="wrap footer-grid">
