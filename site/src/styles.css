@@ -14,6 +14,11 @@
   --sage: #7fa99b;
   --line: rgba(242, 236, 223, 0.13);
   --line-2: rgba(242, 236, 223, 0.24);
+  --glass: rgba(24, 46, 64, 0.55);
+  --glass-soft: rgba(255, 255, 255, 0.04);
+  --glass-hover: rgba(255, 255, 255, 0.07);
+  --glass-edge: rgba(255, 255, 255, 0.14);
+  --glass-highlight: rgba(255, 255, 255, 0.1);
   --wrap: 1160px;
   --display: "Newsreader", Georgia, "Times New Roman", serif;
   --sans: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -53,8 +58,8 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(900px 620px at 78% -8%, rgba(240, 181, 74, 0.1), transparent 62%),
-    radial-gradient(720px 520px at 4% 22%, rgba(127, 169, 155, 0.06), transparent 66%);
+    radial-gradient(900px 620px at 78% -8%, rgba(240, 181, 74, 0.14), transparent 62%),
+    radial-gradient(720px 520px at 4% 22%, rgba(127, 169, 155, 0.09), transparent 66%);
 }
 
 ::selection {
@@ -167,11 +172,11 @@ code {
 }
 
 .site-header.is-scrolled {
-  background: rgba(6, 23, 37, 0.78);
-  border-bottom-color: var(--line);
+  background: rgba(6, 23, 37, 0.72);
+  border-bottom-color: var(--glass-edge);
   box-shadow: 0 18px 40px -32px #000;
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
 }
 
 .header-inner {
@@ -205,40 +210,37 @@ code {
   align-items: center;
   gap: 2px;
   margin-left: auto;
+  padding: 4px;
+  border: 1px solid var(--glass-edge);
+  border-radius: 999px;
+  background: var(--glass-soft);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+  backdrop-filter: blur(18px);
 }
 
 .tabs button {
   position: relative;
-  min-height: 44px;
-  padding: 0 9px;
+  min-height: 36px;
+  padding: 0 12px;
   border: 0;
+  border-radius: 999px;
   background: none;
   color: var(--muted);
   font-family: var(--sans);
-  font-size: 0.92rem;
-  font-weight: 700;
+  font-size: 0.82rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: color 0.18s ease;
+  transition: background 0.18s ease, color 0.18s ease;
 }
 
-.tabs button::after {
-  content: "";
-  position: absolute;
-  inset: auto 9px 8px 9px;
-  height: 1px;
-  background: var(--gold);
-  transform: scaleX(0);
-  transform-origin: 0 50%;
-  transition: transform 0.2s ease;
-}
-
-.tabs button:hover,
-.tabs button.is-active {
+.tabs button:hover {
   color: var(--paper);
 }
 
-.tabs button.is-active::after {
-  transform: scaleX(1);
+.tabs button.is-active {
+  background: var(--glass-hover);
+  color: var(--paper);
+  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 1px 2px rgba(0, 0, 0, 0.18);
 }
 
 .header-tools {
@@ -298,10 +300,13 @@ main {
 
 .window {
   overflow: hidden;
-  border: 1px solid var(--line-2);
-  border-radius: 16px;
-  background: linear-gradient(180deg, rgba(13, 42, 61, 0.62), rgba(8, 28, 43, 0.42));
-  box-shadow: 0 44px 100px -80px #000;
+  border: 1px solid var(--glass-edge);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(24, 46, 64, 0.66), rgba(10, 26, 38, 0.52));
+  box-shadow:
+    0 50px 110px -70px #000,
+    inset 0 1px 0 var(--glass-highlight);
+  backdrop-filter: blur(26px);
 }
 
 .window-bar {
@@ -309,8 +314,8 @@ main {
   align-items: center;
   gap: 12px;
   padding: 11px 16px;
-  border-bottom: 1px solid var(--line);
-  background: rgba(4, 16, 26, 0.45);
+  border-bottom: 1px solid var(--glass-edge);
+  background: var(--glass-soft);
 }
 
 .window-title {
@@ -359,14 +364,15 @@ main {
   gap: 10px;
   min-height: 50px;
   padding: 0 24px;
-  border: 1px solid transparent;
-  border-radius: 10px;
-  background: transparent;
+  border: 1px solid var(--glass-edge);
+  border-radius: 999px;
+  background: var(--glass-soft);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+  backdrop-filter: blur(14px);
   font-family: var(--sans);
   font-size: 0.97rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
   transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
 }
 
@@ -379,33 +385,36 @@ main {
 }
 
 .btn-gold {
-  background: var(--gold);
+  background: linear-gradient(180deg, #f7c766, var(--gold));
+  border-color: rgba(255, 255, 255, 0.32);
   color: var(--ink);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 10px 24px -16px rgba(240, 181, 74, 0.55);
 }
 
 .btn-gold:hover {
-  background: var(--gold-2);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  background: linear-gradient(180deg, #ffd88a, var(--gold-2));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    0 14px 28px -16px rgba(240, 181, 74, 0.65);
 }
 
 .btn-outline {
-  border-color: var(--line-2);
   color: var(--paper);
 }
 
 .btn-outline:hover {
-  border-color: var(--paper);
-  background: rgba(242, 236, 223, 0.05);
+  background: var(--glass-hover);
+  border-color: rgba(255, 255, 255, 0.24);
 }
 
 .btn-quiet {
-  border-color: var(--line);
   color: var(--paper-dim);
 }
 
 .btn-quiet:hover {
-  border-color: var(--line-2);
+  background: var(--glass-hover);
   color: var(--paper);
 }
 
@@ -751,13 +760,13 @@ main {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.9fr);
   overflow: hidden;
-  border: 1px solid var(--line-2);
-  border-top-color: rgba(240, 181, 74, 0.5);
+  border: 1px solid var(--glass-edge);
   border-radius: 20px;
-  background: linear-gradient(180deg, rgba(13, 42, 61, 0.8), rgba(8, 28, 43, 0.56));
+  background: linear-gradient(180deg, rgba(24, 46, 64, 0.6), rgba(10, 26, 38, 0.46));
   box-shadow:
     0 46px 90px -60px #000,
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    inset 0 1px 0 var(--glass-highlight);
+  backdrop-filter: blur(20px);
 }
 
 .release-main {
@@ -818,8 +827,8 @@ main {
   gap: 14px;
   justify-content: center;
   padding: clamp(28px, 4vw, 40px);
-  border-left: 1px dashed var(--line-2);
-  background: rgba(4, 16, 26, 0.45);
+  border-left: 1px dashed var(--glass-edge);
+  background: var(--glass-soft);
 }
 
 .verify-label {
@@ -942,17 +951,25 @@ main {
   margin: 0;
   padding: 0;
   list-style: none;
-  border-top: 1px solid var(--line);
+  overflow: hidden;
+  border: 1px solid var(--glass-edge);
+  border-radius: 16px;
+  background: var(--glass-soft);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
 }
 
 .features li {
-  padding: 24px 0;
-  border-bottom: 1px solid var(--line);
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--glass-edge);
   transition: background 0.2s ease;
 }
 
+.features li:last-child {
+  border-bottom: 0;
+}
+
 .features li:hover {
-  background: linear-gradient(90deg, rgba(240, 181, 74, 0.05), transparent 65%);
+  background: var(--glass-hover);
 }
 
 .f-head {
@@ -1041,7 +1058,11 @@ main {
   margin: 0;
   padding: 0;
   list-style: none;
-  border-top: 1px solid var(--line);
+  overflow: hidden;
+  border: 1px solid var(--glass-edge);
+  border-radius: 16px;
+  background: var(--glass-soft);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
   counter-reset: step;
 }
 
@@ -1049,9 +1070,13 @@ main {
   display: grid;
   grid-template-columns: 64px 1fr;
   gap: 20px;
-  padding: 26px 0;
-  border-bottom: 1px solid var(--line);
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--glass-edge);
   counter-increment: step;
+}
+
+.steps li:last-child {
+  border-bottom: 0;
 }
 
 .step-num::before {
@@ -1076,9 +1101,11 @@ main {
 .terminal {
   min-width: 0;
   overflow: hidden;
-  border: 1px solid var(--line-2);
+  border: 1px solid var(--glass-edge);
   border-radius: 12px;
-  background: #04121d;
+  background: rgba(4, 18, 29, 0.72);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
 }
 
 .terminal-bar {
@@ -1127,9 +1154,10 @@ main {
 
 .layer {
   padding: 20px 22px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--glass-edge);
   border-radius: 12px;
-  box-shadow: 0 22px 44px -38px #000;
+  background: var(--glass-soft);
+  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 22px 44px -38px #000;
 }
 
 .layer-top {
@@ -1177,10 +1205,10 @@ main {
 .table-scroll {
   margin-top: 34px;
   overflow-x: auto;
-  border: 1px solid var(--line);
-  border-top-color: rgba(240, 181, 74, 0.4);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.012);
+  border: 1px solid var(--glass-edge);
+  border-radius: 16px;
+  background: var(--glass-soft);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
 }
 
 .versions {
