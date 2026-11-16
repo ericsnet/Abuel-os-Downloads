@@ -99,6 +99,14 @@ export const strings: Record<string, Localized> = {
   'status.copied': { es: 'Copiado al portapapeles', en: 'Copied to clipboard' },
   'status.failed': { es: 'No se pudo copiar el texto', en: "Couldn't copy the text" },
 
+  'brag.kicker': { es: 'Vídeo', en: 'Video' },
+  'brag.title': { es: 'abuel-os en 21 segundos', en: 'abuel-os in 21 seconds' },
+  'brag.lead': {
+    es: 'El escritorio, las dos cuentas y la versión 1.0.8, sin prisa.',
+    en: 'The desktop, the two accounts and version 1.0.8, unhurried.',
+  },
+  'brag.download': { es: 'Descargar el vídeo', en: 'Download the video' },
+
   'about.title': { es: 'Qué es abuel-os', en: 'What abuel-os is' },
   'about.lead': {
     es: 'Una distribución pequeña y sin adornos, pensada para que la persona que la usa cada día no tenga que pelearse con el sistema.',

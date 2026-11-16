@@ -754,6 +754,70 @@ main {
 }
 
 
+/* ------------------------------------------------------------- vídeo */
+
+.brag {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+  margin-top: clamp(48px, 6vw, 72px);
+  padding-top: clamp(32px, 4vw, 48px);
+  border-top: 1px solid var(--line);
+}
+
+.brag-kicker {
+  color: var(--gold);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.brag h2 {
+  margin-top: 14px;
+  font-size: clamp(1.9rem, 1.2rem + 1.6vw, 2.7rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.brag-lead {
+  margin-top: 12px;
+  max-width: 34ch;
+  color: var(--paper-dim);
+  font-size: 1rem;
+}
+
+.brag-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+  color: var(--gold-2);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.brag-download svg {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.16s ease;
+}
+
+.brag-download:hover svg {
+  transform: translateX(3px);
+}
+
+.brag-video {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line-2);
+  border-radius: 16px;
+  background: #04121d;
+  box-shadow: 0 44px 100px -70px #000;
+}
+
 /* ------------------------------------------------------------- release */
 
 .release-sheet {
@@ -1486,6 +1550,14 @@ main {
     width: 100%;
     max-width: 620px;
     margin-inline: auto;
+  }
+
+  .brag {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .brag-video {
+    order: 2;
   }
 
   .split {

@@ -558,6 +558,30 @@ export default function App() {
                   </div>
                   <DesktopMock lang={lang} />
                 </div>
+
+                <div className="brag">
+                  <div className="brag-copy">
+                    <p className="brag-kicker">{tr('brag.kicker')}</p>
+                    <h2>{tr('brag.title')}</h2>
+                    <p className="brag-lead">{tr('brag.lead')}</p>
+                    <a className="brag-download" href="media/abuelos-brag.mp4" download>
+                      {tr('brag.download')}
+                      <ArrowIcon />
+                    </a>
+                  </div>
+                  <video
+                    className="brag-video"
+                    controls
+                    playsInline
+                    preload="metadata"
+                    poster="media/abuelos-brag.jpg"
+                    width={1280}
+                    height={720}
+                  >
+                    <source src="media/abuelos-brag.mp4" type="video/mp4" />
+                    <a href="media/abuelos-brag.mp4">{tr('brag.download')}</a>
+                  </video>
+                </div>
               </div>
 
               <div className="view" role="tabpanel" id="panel-que-es" aria-labelledby="tab-que-es" hidden={view !== 'que-es'}>
