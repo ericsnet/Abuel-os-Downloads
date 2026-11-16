@@ -1,4 +1,4 @@
-import { useEffect, useState, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from 'react'
 import { CURRENT, LINKS, META, VERSIONS, t, type Lang } from './content'
 
 /* ------------------------------------------------------------------ iconos */
@@ -109,6 +109,46 @@ const ArrowIcon = () => (
   <Icon>
     <path d="M5 12h14" />
     <path d="m13 6 6 6-6 6" />
+  </Icon>
+)
+const PlayIcon = () => (
+  <Icon>
+    <path d="M8 5.5v13l10-6.5-10-6.5Z" fill="currentColor" stroke="none" />
+  </Icon>
+)
+const PauseIcon = () => (
+  <Icon>
+    <rect x="7" y="5" width="3.6" height="14" rx="1" fill="currentColor" stroke="none" />
+    <rect x="13.4" y="5" width="3.6" height="14" rx="1" fill="currentColor" stroke="none" />
+  </Icon>
+)
+const ReplayIcon = () => (
+  <Icon>
+    <path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3" />
+    <path d="M4.4 4.6v4.2h4.2" />
+    <path d="M9.4 9.2v5.6l4.6-2.8-4.6-2.8Z" fill="currentColor" stroke="none" />
+  </Icon>
+)
+const VolumeIcon = () => (
+  <Icon>
+    <path d="M4 9.5h3.2L12 5.5v13L7.2 14.5H4v-5Z" />
+    <path d="M15.5 9a4 4 0 0 1 0 6" />
+    <path d="M18 6.5a7.5 7.5 0 0 1 0 11" />
+  </Icon>
+)
+const MuteIcon = () => (
+  <Icon>
+    <path d="M4 9.5h3.2L12 5.5v13L7.2 14.5H4v-5Z" />
+    <path d="m16 9.5 5 5" />
+    <path d="m21 9.5-5 5" />
+  </Icon>
+)
+const FullscreenIcon = () => (
+  <Icon>
+    <path d="M4 9V4h5" />
+    <path d="M15 4h5v5" />
+    <path d="M20 15v5h-5" />
+    <path d="M9 20H4v-5" />
   </Icon>
 )
 
@@ -332,6 +372,178 @@ function DesktopMock({ lang }: { lang: Lang }) {
         </div>
       </div>
     </figure>
+  )
+}
+
+function BragPlayer({ lang }: { lang: Lang }) {
+  const tr = (key: string) => t(lang, key)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const wrapRef = useRef<HTMLDivElement>(null)
+  const [playing, setPlaying] = useState(false)
+  const [muted, setMuted] = useState(false)
+  const [ended, setEnded] = useState(false)
+  const [time, setTime] = useState(0)
+  const [duration, setDuration] = useState(21)
+
+  useEffect(() => {
+    if (videoRef.current) videoRef.current.muted = muted
+  }, [muted])
+
+  const toggle = () => {
+    const video = videoRef.current
+    if (!video) return
+    if (video.paused) {
+      if (video.ended) video.currentTime = 0
+      void video.play()
+    } else {
+      video.pause()
+    }
+  }
+
+  const seek = (value: number) => {
+    const video = videoRef.current
+    if (!video) return
+    video.currentTime = value
+    setTime(value)
+  }
+
+  const toggleFullscreen = () => {
+    const node = wrapRef.current
+    if (!node) return
+    if (document.fullscreenElement) {
+      void document.exitFullscreen()
+    } else if (node.requestFullscreen) {
+      void node.requestFullscreen().catch(() => undefined)
+    }
+  }
+
+  const onKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+    if (event.target !== event.currentTarget) return
+    const video = videoRef.current
+    if (!video) return
+    const key = event.key.toLowerCase()
+    if (event.key === ' ' || event.key === 'Enter' || key === 'k') {
+      event.preventDefault()
+      toggle()
+      return
+    }
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault()
+      seek(Math.max(0, video.currentTime - 5))
+      return
+    }
+    if (event.key === 'ArrowRight') {
+      event.preventDefault()
+      seek(Math.min(duration, video.currentTime + 5))
+      return
+    }
+    if (key === 'm') {
+      event.preventDefault()
+      setMuted((value) => !value)
+      return
+    }
+    if (key === 'f') {
+      event.preventDefault()
+      toggleFullscreen()
+    }
+  }
+
+  const fmt = (value: number) => {
+    const total = Math.max(0, Math.floor(value))
+    const minutes = Math.floor(total / 60)
+    const seconds = total % 60
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`
+  }
+
+  const progress = duration > 0 ? Math.min(100, (time / duration) * 100) : 0
+
+  return (
+    <div
+      className={playing ? 'player is-playing' : ended ? 'player is-ended' : 'player'}
+      ref={wrapRef}
+      role="group"
+      aria-label={tr('player.label')}
+      tabIndex={0}
+      onKeyDown={onKeyDown}
+    >
+      <video
+        ref={videoRef}
+        className="player-video"
+        poster="media/abuelos-brag.jpg"
+        preload="metadata"
+        playsInline
+        onClick={toggle}
+        onPlay={() => {
+          setPlaying(true)
+          setEnded(false)
+        }}
+        onPause={() => setPlaying(false)}
+        onEnded={() => {
+          setPlaying(false)
+          setEnded(true)
+        }}
+        onTimeUpdate={(event) => setTime(event.currentTarget.currentTime)}
+        onLoadedMetadata={(event) => setDuration(event.currentTarget.duration || 21)}
+        onVolumeChange={(event) => setMuted(event.currentTarget.muted)}
+      >
+        <source src="media/abuelos-brag.mp4" type="video/mp4" />
+      </video>
+
+      <button
+        className="player-big"
+        type="button"
+        onClick={toggle}
+        aria-label={ended ? tr('player.replay') : playing ? tr('player.pause') : tr('player.play')}
+      >
+        {ended ? <ReplayIcon /> : playing ? <PauseIcon /> : <PlayIcon />}
+      </button>
+
+      <div className="player-bar">
+        <button
+          className="player-btn"
+          type="button"
+          onClick={toggle}
+          aria-label={playing ? tr('player.pause') : tr('player.play')}
+        >
+          {playing ? <PauseIcon /> : <PlayIcon />}
+        </button>
+
+        <span className="player-time">
+          {fmt(time)} / {fmt(duration)}
+        </span>
+
+        <input
+          className="player-range"
+          type="range"
+          min={0}
+          max={duration || 0}
+          step={0.01}
+          value={Math.min(time, duration || 0)}
+          onChange={(event) => seek(Number(event.target.value))}
+          aria-label={tr('player.seek')}
+          style={{ '--p': `${progress}%` } as CSSProperties}
+        />
+
+        <button
+          className="player-btn"
+          type="button"
+          onClick={() => setMuted((value) => !value)}
+          aria-label={muted ? tr('player.unmute') : tr('player.mute')}
+          aria-pressed={muted}
+        >
+          {muted ? <MuteIcon /> : <VolumeIcon />}
+        </button>
+
+        <button
+          className="player-btn"
+          type="button"
+          onClick={toggleFullscreen}
+          aria-label={tr('player.fullscreen')}
+        >
+          <FullscreenIcon />
+        </button>
+      </div>
+    </div>
   )
 }
 
@@ -564,23 +776,8 @@ export default function App() {
                     <p className="brag-kicker">{tr('brag.kicker')}</p>
                     <h2>{tr('brag.title')}</h2>
                     <p className="brag-lead">{tr('brag.lead')}</p>
-                    <a className="brag-download" href="media/abuelos-brag.mp4" download>
-                      {tr('brag.download')}
-                      <ArrowIcon />
-                    </a>
                   </div>
-                  <video
-                    className="brag-video"
-                    controls
-                    playsInline
-                    preload="metadata"
-                    poster="media/abuelos-brag.jpg"
-                    width={1280}
-                    height={720}
-                  >
-                    <source src="media/abuelos-brag.mp4" type="video/mp4" />
-                    <a href="media/abuelos-brag.mp4">{tr('brag.download')}</a>
-                  </video>
+                  <BragPlayer lang={lang} />
                 </div>
               </div>
 

@@ -105,7 +105,14 @@ export const strings: Record<string, Localized> = {
     es: 'El escritorio, las dos cuentas y la versión 1.0.8, sin prisa.',
     en: 'The desktop, the two accounts and version 1.0.8, unhurried.',
   },
-  'brag.download': { es: 'Descargar el vídeo', en: 'Download the video' },
+  'player.label': { es: 'Reproductor del vídeo de abuel-os', en: 'abuel-os video player' },
+  'player.play': { es: 'Reproducir', en: 'Play' },
+  'player.pause': { es: 'Pausar', en: 'Pause' },
+  'player.replay': { es: 'Volver a ver', en: 'Replay' },
+  'player.seek': { es: 'Posición del vídeo', en: 'Video position' },
+  'player.mute': { es: 'Silenciar', en: 'Mute' },
+  'player.unmute': { es: 'Activar el sonido', en: 'Unmute' },
+  'player.fullscreen': { es: 'Pantalla completa', en: 'Fullscreen' },
 
   'about.title': { es: 'Qué es abuel-os', en: 'What abuel-os is' },
   'about.lead': {
