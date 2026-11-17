@@ -1,4 +1,4 @@
-﻿# abuel-os 1.0.9
+# abuel-os 1.0.9
 
 Versión sin autologin, con arranque más ligero, instalador personalizado y
 correo Outlook web.
