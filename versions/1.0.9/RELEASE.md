@@ -1,9 +1,9 @@
 # Publicación - abuel-os 1.0.9
 
 - **Fecha:** 2026-11-17
-- **Estado:** construida (no publicada)
-- **Etiqueta:** `v1.0.9` (pendiente de publicar)
-- **Release:** pendiente
+- **Estado:** publicada
+- **Etiqueta:** `v1.0.9`
+- **Release:** https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.9
 - **ISO:** `abuelo-os-amd64.iso` (1.951.432.704 bytes)
 - **SHA256:** `94ba77d110f3ed71b119c4fbe3ed401ab1ef29a356740c591513c5f023bb8969`
 - **Paquete:** `abuelo-os-core_1.0.9_all.deb`
