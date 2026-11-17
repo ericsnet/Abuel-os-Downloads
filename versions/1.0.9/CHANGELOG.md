@@ -30,10 +30,11 @@
   ya no usa Evolution ni una cuenta local.
 - **Autologin en `setup.py`**: eliminado para instalaciones nuevas.
 - **Postinst**: retira el autologin anterior al actualizar desde 1.0.8.
+- **BOM/CRLF**: normalizados `abuelo-outlook`, `branding.desc` y `show.qml`; ShellCheck ya no falla.
 
 ### Artefacto
 
 - ISO 1.0.9 construida.
-- SHA-256: `94ba77d110f3ed71b119c4fbe3ed401ab1ef29a356740c591513c5f023bb8969`
+- SHA-256: `4d3545ec0b74ab6de2f7693babbafa349aba3dfd755a1e265fd65f02b9e3aca92`
 - Paquete: `abuelo-os-core_1.0.9_all.deb`
-- SHA-256 del paquete: `191f0d171a46acf6bb0e99ed37c55f73d49ca93273d679cfe723a00ba458bf1f`
+- SHA-256 del paquete: `877f5b564f0511db2adb7661c1e7b34b072f700ecb959d1d8951aac45fec49bd`

@@ -5,9 +5,9 @@
 - **Etiqueta:** `v1.0.9`
 - **Release:** https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.9
 - **ISO:** `abuelo-os-amd64.iso` (1.951.432.704 bytes)
-- **SHA256:** `94ba77d110f3ed71b119c4fbe3ed401ab1ef29a356740c591513c5f023bb8969`
+- **SHA256:** `4d3545ec0b74ab6de2f7693babbafa349aba3dfd755a1e265fd65f02b9e3aca92`
 - **Paquete:** `abuelo-os-core_1.0.9_all.deb`
-- **SHA256 del paquete:** `191f0d171a46acf6bb0e99ed37c55f73d49ca93273d679cfe723a00ba458bf1f`
+- **SHA256 del paquete:** `877f5b564f0511db2adb7661c1e7b34b072f700ecb959d1d8951aac45fec49bd`
 
 ## Comprobaciones
 

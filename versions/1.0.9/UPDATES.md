@@ -1,4 +1,4 @@
-﻿# Actualizaciones dinámicas de abuel-os 1.0.9
+# Actualizaciones dinámicas de abuel-os 1.0.9
 
 ## Flujo 1.0.8 → 1.0.9
 
@@ -11,7 +11,7 @@
 ## Firma
 
 - Ed25519; la clave privada no está en el repositorio.
-- Paquete 1.0.9: `191f0d171a46acf6bb0e99ed37c55f73d49ca93273d679cfe723a00ba458bf1f`.
+- Paquete 1.0.9: `877f5b564f0511db2adb7661c1e7b34b072f700ecb959d1d8951aac45fec49bd`.
 
 ## Pendiente
 
