@@ -470,6 +470,7 @@ function BragPlayer({ lang }: { lang: Lang }) {
       ref={wrapRef}
       role="group"
       aria-label={tr('player.label')}
+      aria-keyshortcuts="Space K ArrowLeft ArrowRight M F"
       tabIndex={0}
       onKeyDown={onKeyDown}
     >
@@ -529,6 +530,7 @@ function BragPlayer({ lang }: { lang: Lang }) {
           value={Math.min(time, duration || 0)}
           onChange={(event) => seek(Number(event.target.value))}
           aria-label={tr('player.seek')}
+          aria-valuetext={`${fmt(time)} / ${fmt(duration)}`}
           style={{ '--p': `${progress}%` } as CSSProperties}
         />
 
@@ -597,6 +599,13 @@ export default function App() {
   })
 
   const tr = (key: string) => t(lang, key)
+
+  const fmtDate = (iso: string) =>
+    new Intl.DateTimeFormat(lang === 'es' ? 'es-ES' : 'en-GB', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+    }).format(new Date(`${iso}T00:00:00`))
 
   useEffect(() => {
     document.documentElement.lang = lang
@@ -682,7 +691,7 @@ export default function App() {
             }}
           >
             <LogoMark className="mark" />
-            <span className="brand-name">abuel-os</span>
+            <span className="brand-name" translate="no">abuel-os</span>
           </a>
 
           <div className="tabs" role="tablist" aria-label={tr('nav.aria')}>
@@ -744,7 +753,7 @@ export default function App() {
         </nav>
       </header>
 
-            <main id="contenido">
+            <main id="contenido" tabIndex={-1}>
         <div className="wrap">
           <section className="window" aria-labelledby={`tab-${view}`}>
             <div className="window-bar">
@@ -956,7 +965,7 @@ export default function App() {
                             {version.latest && <span className="current">{tr('versions.current')}</span>}
                             <a href={version.tree}>{version.version}</a>
                           </th>
-                          <td><time dateTime={version.date}>{version.date}</time></td>
+                          <td><time dateTime={version.date}>{fmtDate(version.date)}</time></td>
                           <td><code className="tiny">{version.hash}</code></td>
                           <td><a href={version.release}>v{version.version}</a></td>
                         </tr>
@@ -979,7 +988,7 @@ export default function App() {
         <div className="wrap footer-grid">
           <div className="footer-brand">
             <LogoMark className="mark" />
-            <p className="footer-word">abuel-os</p>
+            <p className="footer-word" translate="no">abuel-os</p>
             <p className="footer-tagline">{tr('footer.tagline')}</p>
           </div>
           <div className="footer-side">
