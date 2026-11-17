@@ -40,7 +40,7 @@ export const strings: Record<string, Localized> = {
     es: 'Demostración interactiva del escritorio de abuel-os: iconos, tarjeta de bienvenida y panel inferior.',
     en: 'Interactive demo of the abuel-os desktop: icons, a welcome card and a bottom panel.',
   },
-  'mock.title': { es: 'abuel-os 1.0.8', en: 'abuel-os 1.0.8' },
+  'mock.title': { es: 'abuel-os 1.0.9', en: 'abuel-os 1.0.9' },
   'mock.files': { es: 'Archivos', en: 'Files' },
   'mock.net': { es: 'Internet', en: 'Internet' },
   'mock.panel': { es: 'Panel', en: 'Panel' },
@@ -97,7 +97,7 @@ export const strings: Record<string, Localized> = {
   'demo.help.c2': { es: 'Soporte', en: 'Support' },
 
   'release.title': { es: 'Última versión publicada', en: 'Latest published version' },
-  'release.date': { es: '6 de noviembre de 2026', en: 'November 6, 2026' },
+  'release.date': { es: '17 de noviembre de 2026', en: 'November 17, 2026' },
   'release.download': { es: 'Descargar la ISO', en: 'Download the ISO' },
   'release.link': { es: 'Ver la release', en: 'View the release' },
   'release.note': {
@@ -120,8 +120,8 @@ export const strings: Record<string, Localized> = {
 
   'brag.title': { es: 'abuel-os en 21 segundos', en: 'abuel-os in 21 seconds' },
   'brag.lead': {
-    es: 'El escritorio, las dos cuentas y la versión 1.0.8, sin prisa.',
-    en: 'The desktop, the two accounts and version 1.0.8, unhurried.',
+    es: 'El escritorio, las dos cuentas y la versión 1.0.9, sin prisa.',
+    en: 'The desktop, the two accounts and version 1.0.9, unhurried.',
   },
   'player.label': { es: 'Reproductor del vídeo de abuel-os', en: 'abuel-os video player' },
   'player.play': { es: 'Reproducir', en: 'Play' },
@@ -239,7 +239,7 @@ export const strings: Record<string, Localized> = {
   'table.release': { es: 'Release', en: 'Release' },
   'versions.current': { es: 'actual', en: 'current' },
   'versions.index': { es: 'Índice completo de versiones', en: 'Full version index' },
-  'versions.issues': { es: 'Fallos conocidos de 1.0.8', en: 'Known issues in 1.0.8' },
+  'versions.issues': { es: 'Fallos conocidos de 1.0.9', en: 'Known issues in 1.0.9' },
 
   'footer.tagline': { es: 'Fácil. Seguro. Para ti.', en: 'Easy. Safe. For you.' },
   'footer.legal': {
@@ -259,12 +259,12 @@ export const META = {
   es: {
     title: 'abuel-os — Descargas',
     description:
-      'Descarga abuel-os: sistema basado en Debian 12 y XFCE, pensado para personas mayores. Versión 1.0.8 para AMD64, verificación SHA-256 e instrucciones de instalación.',
+      'Descarga abuel-os: sistema basado en Debian 12 y XFCE, pensado para personas mayores. Versión 1.0.9 para AMD64, verificación SHA-256 e instrucciones de instalación.',
   },
   en: {
     title: 'abuel-os — Downloads',
     description:
-      'Download abuel-os: a system based on Debian 12 and XFCE, made for older people. Version 1.0.8 for AMD64, SHA-256 verification and installation instructions.',
+      'Download abuel-os: a system based on Debian 12 and XFCE, made for older people. Version 1.0.9 for AMD64, SHA-256 verification and installation instructions.',
   },
 } as const
 
@@ -274,16 +274,16 @@ export const LINKS = {
   issues: 'https://github.com/ericsnet/Abuel-os-Downloads/issues',
   license: 'https://github.com/ericsnet/Abuel-os-Downloads/blob/main/LICENSE',
   isoLatest: 'https://github.com/ericsnet/Abuel-os-Downloads/releases/latest/download/abuelo-os-amd64.iso',
-  release108: 'https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.8',
-  updates108: 'https://github.com/ericsnet/Abuel-os-Downloads/blob/main/versions/1.0.8/UPDATES.md',
+  release109: 'https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.9',
+  updates109: 'https://github.com/ericsnet/Abuel-os-Downloads/blob/main/versions/1.0.9/UPDATES.md',
   index: 'https://github.com/ericsnet/Abuel-os-Downloads/blob/main/versions/INDEX.md',
-  issues108: 'https://github.com/ericsnet/Abuel-os-Downloads/blob/main/versions/1.0.8/KNOWN_ISSUES.md',
+  issues109: 'https://github.com/ericsnet/Abuel-os-Downloads/blob/main/versions/1.0.9/KNOWN_ISSUES.md',
 } as const
 
 export const CURRENT = {
-  version: '1.0.8',
-  date: '2026-11-06',
-  hash: '584cb3b2c71d4fd458b3541464fe27af8b0ec38c8580e7bf3774b619f0627c57',
+  version: '1.0.9',
+  date: '2026-11-17',
+  hash: '94ba77d110f3ed71b119c4fbe3ed401ab1ef29a356740c591513c5f023bb8969',
 } as const
 
 export type Version = {
@@ -296,7 +296,8 @@ export type Version = {
 }
 
 export const VERSIONS: Version[] = [
-  { version: '1.0.8', date: '2026-11-06', hash: '584cb3b2c71d4fd458b3541464fe27af8b0ec38c8580e7bf3774b619f0627c57', release: 'https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.8', tree: 'https://github.com/ericsnet/Abuel-os-Downloads/tree/main/versions/1.0.8', latest: true },
+  { version: '1.0.9', date: '2026-11-17', hash: '94ba77d110f3ed71b119c4fbe3ed401ab1ef29a356740c591513c5f023bb8969', release: 'https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.9', tree: 'https://github.com/ericsnet/Abuel-os-Downloads/tree/main/versions/1.0.9', latest: true },
+  { version: '1.0.8', date: '2026-11-06', hash: '584cb3b2c71d4fd458b3541464fe27af8b0ec38c8580e7bf3774b619f0627c57', release: 'https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.8', tree: 'https://github.com/ericsnet/Abuel-os-Downloads/tree/main/versions/1.0.8' },
   { version: '1.0.7', date: '2026-11-06', hash: 'eb87d71e87a115541c81b4aa683c8d7e83ae9c6a415b31f5776e34350ebcfec5', release: 'https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.7', tree: 'https://github.com/ericsnet/Abuel-os-Downloads/tree/main/versions/1.0.7' },
   { version: '1.0.6', date: '2026-11-05', hash: '18d62c0af617b5c89f175d993d5428ecd1ad2abf2143ac9bd6446f4e5d8a8f5a', release: 'https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.6', tree: 'https://github.com/ericsnet/Abuel-os-Downloads/tree/main/versions/1.0.6' },
   { version: '1.0.5', date: '2026-11-05', hash: '5de7fd5384cc4a84ec798e25aa547e6c62902d464c849756995ec4ee04177c07', release: 'https://github.com/ericsnet/Abuel-os-Downloads/releases/tag/v1.0.5', tree: 'https://github.com/ericsnet/Abuel-os-Downloads/tree/main/versions/1.0.5' },

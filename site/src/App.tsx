@@ -866,7 +866,7 @@ export default function App() {
                         <DownloadIcon />
                         {tr('release.download')}
                       </a>
-                      <a className="btn btn-quiet" href={LINKS.release108}>{tr('release.link')}</a>
+                      <a className="btn btn-quiet" href={LINKS.release109}>{tr('release.link')}</a>
                     </div>
                     <p className="micro">{tr('release.note')}</p>
                   </div>
@@ -949,7 +949,7 @@ export default function App() {
                     <h2>{tr('update.title')}</h2>
                     <p className="section-lead">{tr('update.lead')}</p>
                     <p className="section-lead" dangerouslySetInnerHTML={{ __html: tr('update.detail') }} />
-                    <p className="links"><a href={LINKS.updates108}>{tr('update.link')} <ArrowIcon /></a></p>
+                    <p className="links"><a href={LINKS.updates109}>{tr('update.link')} <ArrowIcon /></a></p>
                   </div>
                   <div className="update-side">
                     <div className="layers">
@@ -1019,7 +1019,7 @@ export default function App() {
                 )}
                 <p className="links">
                   <a href={LINKS.index}>{tr('versions.index')} <ArrowIcon /></a>
-                  <a href={LINKS.issues108}>{tr('versions.issues')} <ArrowIcon /></a>
+                  <a href={LINKS.issues109}>{tr('versions.issues')} <ArrowIcon /></a>
                 </p>
               </div>
             </div>
