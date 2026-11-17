@@ -1,4 +1,4 @@
-﻿# Fallos y limitaciones conocidas - abuel-os 1.0.9
+# Fallos y limitaciones conocidas - abuel-os 1.0.9
 
 Lista honesta de lo que no funciona o está incompleto **en esta versión**.
 
@@ -25,6 +25,9 @@ Lista honesta de lo que no funciona o está incompleto **en esta versión**.
   un fallo de VirtualBox o del kernel 6.1.0-56 en ese host.
 
 ## Menores
+
+- Varias cadenas internas siguen diciendo `1.0.5`/`1.0.6` (docstrings y `User-Agent`).
+- `abuelo-sandbox` construye argumentos sin citar rutas de USB con espacios.
 
 - La contraseña de live para `abuelo` y `responsable` sigue siendo `live`.
 - El modo live no conserva cambios al reiniciar.

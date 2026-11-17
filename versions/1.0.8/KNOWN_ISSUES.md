@@ -40,6 +40,8 @@ Lista honesta de lo que no funciona o está incompleto **en esta versión**.
 - Los avisos de PulseAudio/udisks/colord del journal son ruido de la VM y de
   hardware ausente, no fallos de abuel-os.
 
+- Varias cadenas internas siguen diciendo `1.0.5`/`1.0.6` (docstrings y `User-Agent`).
+- `abuelo-sandbox` construye argumentos sin citar rutas de USB con espacios.
 ## Heredados de versiones anteriores
 
 - El modo live mantiene la contraseña conocida `live` para `responsable`.
