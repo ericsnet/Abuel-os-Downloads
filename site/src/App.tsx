@@ -269,7 +269,7 @@ function Terminal({
         <span className="terminal-title">{title}</span>
         <CopyButton text={code} label={copyLabel} copiedLabel={copiedLabel} onStatus={onStatus} compact />
       </div>
-      <pre tabIndex={0}>
+      <pre tabIndex={0} aria-label={title}>
         <code>
           {code.split('\n').map((line, index) => (
             <span className="term-line" key={index}>
