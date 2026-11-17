@@ -111,6 +111,13 @@ const ArrowIcon = () => (
     <path d="m13 6 6 6-6 6" />
   </Icon>
 )
+const DownloadIcon = () => (
+  <Icon>
+    <path d="M12 4v10" />
+    <path d="m7.5 9.5 4.5 4.5 4.5-4.5" />
+    <path d="M5 19h14" />
+  </Icon>
+)
 const PlayIcon = () => (
   <Icon>
     <path d="M8 5.5v13l10-6.5-10-6.5Z" fill="currentColor" stroke="none" />
@@ -469,6 +476,7 @@ function BragPlayer({ lang }: { lang: Lang }) {
       <video
         ref={videoRef}
         className="player-video"
+        aria-label={tr('player.label')}
         poster="media/abuelos-brag.jpg"
         preload="metadata"
         playsInline
@@ -756,7 +764,10 @@ export default function App() {
                     <h1>{tr('hero.title')}</h1>
                     <p className="hero-lead">{tr('hero.lead')}</p>
                     <div className="hero-actions">
-                      <a className="btn btn-gold" href={LINKS.isoLatest}>{tr('hero.cta.download')}</a>
+                      <a className="btn btn-gold" href={LINKS.isoLatest}>
+                        <DownloadIcon />
+                        {tr('hero.cta.download')}
+                      </a>
                       <button className="btn btn-outline" type="button" onClick={() => selectView('instalar')}>
                         {tr('hero.cta.install')}
                       </button>
@@ -773,7 +784,6 @@ export default function App() {
 
                 <div className="brag">
                   <div className="brag-copy">
-                    <p className="brag-kicker">{tr('brag.kicker')}</p>
                     <h2>{tr('brag.title')}</h2>
                     <p className="brag-lead">{tr('brag.lead')}</p>
                   </div>
@@ -812,7 +822,10 @@ export default function App() {
                       <li><time dateTime={CURRENT.date}>{tr('release.date')}</time></li>
                     </ul>
                     <div className="release-actions">
-                      <a className="btn btn-gold" href={LINKS.isoLatest}>{tr('release.download')}</a>
+                      <a className="btn btn-gold" href={LINKS.isoLatest}>
+                        <DownloadIcon />
+                        {tr('release.download')}
+                      </a>
                       <a className="btn btn-quiet" href={LINKS.release108}>{tr('release.link')}</a>
                     </div>
                     <p className="micro">{tr('release.note')}</p>
