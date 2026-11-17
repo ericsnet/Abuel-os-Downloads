@@ -778,31 +778,102 @@ main {
   z-index: 1;
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 12px;
   margin-top: 22px;
   padding: 12px 0;
   border-top: 1px solid var(--line);
   color: var(--muted);
 }
 
-.panel-btn svg {
-  width: 18px;
-  height: 18px;
+.os-dock {
+  --lg-tab-width: 64px;
+  --lg-tab-height: 44px;
 }
 
-.panel-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(242, 236, 223, 0.28);
-}
-
-.panel-spacer {
-  flex: 1;
+.os-dock .lg-tab {
+  font-size: 9px;
 }
 
 .panel-clock {
+  flex: none;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+}
+
+/* ------------------------------------------------------------- panel os */
+
+.os-panel {
+  width: 100%;
+  margin-top: auto;
+  padding: 18px;
+  border-radius: 18px;
+  color: var(--paper);
+  font-family: var(--sans);
+}
+
+.os-panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.os-panel-title {
+  color: var(--gold-2);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.os-panel-sub {
+  margin-top: 5px;
+  max-width: 30ch;
+  color: var(--paper-dim);
   font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.os-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 9px 0;
+  border-top: 1px solid rgba(242, 236, 223, 0.1);
+}
+
+.os-label {
+  flex: none;
+  color: var(--paper);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.os-panel .lg-segmented {
+  --lg-tab-width: 60px;
+  --lg-tab-height: 30px;
+}
+
+.os-slider {
+  flex: none;
+  width: 150px;
+}
+
+.os-preview {
+  margin-top: 12px;
+  color: var(--paper);
+  font-family: var(--display);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.os-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
 }
 
 
@@ -1164,44 +1235,20 @@ main {
 
 /* ------------------------------------------------------------- copiar */
 
-.copy {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+.copy-glass {
   align-self: flex-start;
-  min-height: 42px;
-  padding: 0 12px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: transparent;
-  color: var(--paper-dim);
-  font-family: var(--sans);
   font-size: 0.82rem;
   font-weight: 700;
-  cursor: pointer;
-  transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
+  --lg-glass: rgba(242, 236, 223, 0.06);
+  --lg-glass-active: rgba(240, 181, 74, 0.16);
+  --lg-edge: var(--line);
 }
 
-.copy:hover {
-  border-color: var(--line-2);
-  color: var(--paper);
-  background: rgba(242, 236, 223, 0.04);
-}
-
-.copy svg {
-  width: 15px;
-  height: 15px;
-}
-
-.copy-compact {
-  min-height: 36px;
-  padding: 0 10px;
-  border-color: transparent;
+.lg-button.copy-compact {
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 10px;
   font-size: 0.76rem;
-}
-
-.copy-compact:hover {
-  border-color: var(--line);
 }
 
 /* ------------------------------------------------------------- secciones */
@@ -1506,7 +1553,29 @@ main {
 /* versiones */
 
 .versions-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.versions-head > div {
   max-width: 56ch;
+}
+
+.versions-search {
+  flex: none;
+  width: 300px;
+  max-width: 100%;
+}
+
+.versions-empty {
+  margin-top: 34px;
+  padding: 24px;
+  border: 1px dashed var(--line-2);
+  border-radius: 14px;
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
 .table-scroll {
@@ -1832,6 +1901,16 @@ main {
     gap: 12px;
   }
 
+  .versions-head {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .versions-search {
+    width: 100%;
+  }
+
   .release-sheet {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -2007,6 +2086,37 @@ main {
   .player-big svg {
     width: 28px;
     height: 28px;
+  }
+
+  .screen-panel {
+    justify-content: center;
+  }
+
+  .panel-clock {
+    display: none;
+  }
+
+  .os-dock {
+    --lg-tab-width: 54px;
+    --lg-tab-height: 42px;
+  }
+
+  .os-panel {
+    padding: 14px;
+  }
+
+  .os-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .os-slider {
+    width: 100%;
+  }
+
+  .os-panel .lg-segmented {
+    --lg-tab-width: 66px;
   }
 }
 

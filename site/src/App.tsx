@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from 'react'
+import { Button as GlassButton, SearchField } from 'glisse'
 import { CURRENT, LINKS, META, VERSIONS, t, type Lang } from './content'
+import { OsDock, OsPanel } from './components/OsPanel'
 
 /* ------------------------------------------------------------------ iconos */
 
@@ -234,10 +236,14 @@ function CopyButton({
   }
 
   return (
-    <button type="button" className={compact ? 'copy copy-compact' : 'copy'} onClick={handleClick}>
-      <CopyIcon />
+    <GlassButton
+      variant="glass"
+      icon={<CopyIcon />}
+      className={compact ? 'copy-glass copy-compact' : 'copy-glass'}
+      onClick={handleClick}
+    >
       <span>{copied ? copiedLabel : label}</span>
-    </button>
+    </GlassButton>
   )
 }
 
@@ -313,6 +319,8 @@ function DesktopMock({ lang }: { lang: Lang }) {
   const tr = (key: string) => t(lang, key)
   const [active, setActive] = useState<DemoId | 'home'>('home')
   const [now, setNow] = useState(() => new Date())
+  const [textSize, setTextSize] = useState(17)
+  const [sound, setSound] = useState(true)
 
   useEffect(() => {
     const timer = window.setInterval(() => setNow(new Date()), 30000)
@@ -357,23 +365,36 @@ function DesktopMock({ lang }: { lang: Lang }) {
               </li>
             ))}
           </ul>
-          <div className="screen-card" aria-live="polite">
-            <div className="screen-card-body" key={active}>
-              <p className="screen-hello">{tr(titleKey)}</p>
-              {active === 'home' ? <p className="screen-clock">{time}</p> : null}
-              <p className="screen-note">{tr(noteKey)}</p>
-              <div className="screen-chips">
-                {DEMO_CHIPS[active].map((key) => (
-                  <span key={key}>{tr(key)}</span>
-                ))}
+          {active === 'panel' ? (
+            <OsPanel
+              lang={lang}
+              textSize={textSize}
+              onTextSize={setTextSize}
+              sound={sound}
+              onSound={setSound}
+              onClose={() => setActive('home')}
+              onHelp={() => setActive('help')}
+              onReset={() => {
+                setTextSize(17)
+                setSound(true)
+              }}
+            />
+          ) : (
+            <div className="screen-card" aria-live="polite">
+              <div className="screen-card-body" key={active}>
+                <p className="screen-hello">{tr(titleKey)}</p>
+                {active === 'home' ? <p className="screen-clock">{time}</p> : null}
+                <p className="screen-note">{tr(noteKey)}</p>
+                <div className="screen-chips">
+                  {DEMO_CHIPS[active].map((key) => (
+                    <span key={key}>{tr(key)}</span>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
+          )}
           <div className="screen-panel">
-            <span className="panel-btn" aria-hidden="true"><MenuIcon /></span>
-            <span className="panel-dot" />
-            <span className="panel-dot" />
-            <span className="panel-spacer" />
+            <OsDock lang={lang} active={active} onSelect={setActive} />
             <span className="panel-clock">{time}</span>
           </div>
         </div>
@@ -593,6 +614,7 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [status, setStatus] = useState('')
+  const [versionQuery, setVersionQuery] = useState('')
   const [view, setView] = useState<ViewId>(() => {
     const hash = window.location.hash.replace('#', '')
     return isViewId(hash) ? hash : 'inicio'
@@ -606,6 +628,15 @@ export default function App() {
       month: 'short',
       year: 'numeric',
     }).format(new Date(`${iso}T00:00:00`))
+
+  const query = versionQuery.trim().toLowerCase()
+  const visibleVersions = VERSIONS.filter(
+    (version) =>
+      !query ||
+      version.version.includes(query) ||
+      version.date.includes(query) ||
+      version.hash.includes(query),
+  )
 
   useEffect(() => {
     document.documentElement.lang = lang
@@ -945,34 +976,47 @@ export default function App() {
 
               <div className="view" role="tabpanel" id="panel-versiones" aria-labelledby="tab-versiones" hidden={view !== 'versiones'}>
                 <div className="versions-head">
-                  <h2>{tr('versions.title')}</h2>
-                  <p className="section-lead">{tr('versions.lead')}</p>
+                  <div>
+                    <h2>{tr('versions.title')}</h2>
+                    <p className="section-lead">{tr('versions.lead')}</p>
+                  </div>
+                  <SearchField
+                    className="versions-search"
+                    value={versionQuery}
+                    onValueChange={setVersionQuery}
+                    placeholder={tr('versions.search')}
+                    aria-label={tr('versions.search.aria')}
+                  />
                 </div>
-                <div className="table-scroll">
-                  <table className="versions">
-                    <thead>
-                      <tr>
-                        <th scope="col">{tr('table.version')}</th>
-                        <th scope="col">{tr('table.date')}</th>
-                        <th scope="col">{tr('table.hash')}</th>
-                        <th scope="col">{tr('table.release')}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {VERSIONS.map((version) => (
-                        <tr key={version.version} className={version.latest ? 'is-latest' : undefined}>
-                          <th scope="row">
-                            {version.latest && <span className="current">{tr('versions.current')}</span>}
-                            <a href={version.tree}>{version.version}</a>
-                          </th>
-                          <td><time dateTime={version.date}>{fmtDate(version.date)}</time></td>
-                          <td><code className="tiny">{version.hash}</code></td>
-                          <td><a href={version.release}>v{version.version}</a></td>
+                {visibleVersions.length === 0 ? (
+                  <p className="versions-empty">{tr('versions.empty')}</p>
+                ) : (
+                  <div className="table-scroll">
+                    <table className="versions">
+                      <thead>
+                        <tr>
+                          <th scope="col">{tr('table.version')}</th>
+                          <th scope="col">{tr('table.date')}</th>
+                          <th scope="col">{tr('table.hash')}</th>
+                          <th scope="col">{tr('table.release')}</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                      </thead>
+                      <tbody>
+                        {visibleVersions.map((version) => (
+                          <tr key={version.version} className={version.latest ? 'is-latest' : undefined}>
+                            <th scope="row">
+                              {version.latest && <span className="current">{tr('versions.current')}</span>}
+                              <a href={version.tree}>{version.version}</a>
+                            </th>
+                            <td><time dateTime={version.date}>{fmtDate(version.date)}</time></td>
+                            <td><code className="tiny">{version.hash}</code></td>
+                            <td><a href={version.release}>v{version.version}</a></td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
                 <p className="links">
                   <a href={LINKS.index}>{tr('versions.index')} <ArrowIcon /></a>
                   <a href={LINKS.issues108}>{tr('versions.issues')} <ArrowIcon /></a>
