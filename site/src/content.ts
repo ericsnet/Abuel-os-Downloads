@@ -149,8 +149,8 @@ export const strings: Record<string, Localized> = {
   },
   'about.s3.t': { es: 'Dos cuentas', en: 'Two accounts' },
   'about.s3.d': {
-    es: '<code>abuelo</code> entra automáticamente y usa el equipo. <code>responsable</code> instala, actualiza, cambia la configuración y recupera el sistema cuando hace falta.',
-    en: '<code>abuelo</code> logs in automatically and uses the computer. <code>responsable</code> installs, updates, changes settings and recovers the system when needed.',
+    es: '<code>abuelo</code> usa el equipo con su cuenta. <code>responsable</code> instala, actualiza, cambia la configuración y recupera el sistema cuando hace falta.',
+    en: '<code>abuelo</code> uses the computer with their account. <code>responsable</code> installs, updates, changes settings and recovers the system when needed.',
   },
   'about.s4.t': { es: 'Requisitos', en: 'Requirements' },
   'about.s4.d': {
@@ -190,8 +190,8 @@ export const strings: Record<string, Localized> = {
   },
   'install.s5.t': { es: 'Primer inicio de sesión', en: 'First sign-in' },
   'install.s5.d': {
-    es: 'En la primera instalación puede aparecer la pantalla de inicio de sesión: entra una vez con la cuenta <code>responsable</code> (contraseña inicial <code>live</code>), cámbiala y sal. A partir de ahí, <code>abuelo</code> entra sola. No reutilices esa contraseña en otros servicios.',
-    en: 'On a first install, the sign-in screen may appear: sign in once as <code>responsable</code> (initial password <code>live</code>), change it and sign out. After that, <code>abuelo</code> logs in by itself. Don\'t reuse that password on other services.',
+    es: 'En el primer arranque tras instalar, entra con la cuenta <code>responsable</code> y la contraseña que elegiste en el instalador (si no la cambiaste, <code>live</code>), cámbiala y sal. La cuenta <code>abuelo</code> también pide su contraseña: desde 1.0.9 no hay inicio automático. No reutilices esa contraseña en otros servicios.',
+    en: 'On the first boot after installing, sign in as <code>responsable</code> with the password you chose in the installer (if you didn\'t change it, <code>live</code>), change it and sign out. The <code>abuelo</code> account also asks for its password: since 1.0.9 there is no automatic sign-in. Don\'t reuse that password on other services.',
   },
 
   'verify.title': { es: 'Comprobar la ISO', en: 'Check the ISO' },
