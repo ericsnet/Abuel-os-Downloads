@@ -28,7 +28,7 @@ export const strings: Record<string, Localized> = {
     en: 'abuel-os is a system based on Debian 12 and XFCE, with two separate accounts: one for everyday use and one for whoever looks after the machine.',
   },
   'hero.cta.download': { es: 'Descargar la ISO', en: 'Download the ISO' },
-  'hero.cta.install': { es: 'Cómo se instala', en: 'How installation works' },
+  'hero.cta.install': { es: 'Ver la instalación', en: 'See the installation' },
   'hero.f1.k': { es: 'Sistema base', en: 'Base system' },
   'hero.f1.v': { es: 'Debian 12', en: 'Debian 12' },
   'hero.f2.k': { es: 'Escritorio', en: 'Desktop' },
@@ -241,7 +241,7 @@ export const strings: Record<string, Localized> = {
   'versions.index': { es: 'Índice completo de versiones', en: 'Full version index' },
   'versions.issues': { es: 'Fallos conocidos de 1.0.9', en: 'Known issues in 1.0.9' },
 
-  'footer.tagline': { es: 'Fácil. Seguro. Para ti.', en: 'Easy. Safe. For you.' },
+  'footer.tagline': { es: 'Fácil, seguro, para ti', en: 'Easy, safe, for you' },
   'footer.legal': {
     es: 'abuel-os es software propietario. Descargar una ISO no concede por sí solo permiso para copiar, modificar o redistribuir el software más allá de lo que permita la ley aplicable o una autorización escrita previa de ericsnet.',
     en: 'abuel-os is proprietary software. Downloading an ISO does not by itself grant permission to copy, modify or redistribute the software beyond what applicable law or prior written authorization from ericsnet allows.',

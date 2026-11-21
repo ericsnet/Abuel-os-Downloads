@@ -42,7 +42,7 @@
 /* Filled buttons are gold: ink keeps the label readable. */
 .lg-button[data-variant="filled"] {
   color: #061725;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 /* The selected segment sits on a gold thumb. */

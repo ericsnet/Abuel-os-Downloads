@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from 'react'
-import { Button as GlassButton, SearchField } from 'glisse'
+import { Button as GlassButton, SearchField, SegmentedControl } from 'glisse'
 import { CURRENT, LINKS, META, VERSIONS, t, type Lang } from './content'
 import { OsDock, OsPanel } from './components/OsPanel'
 
@@ -163,21 +163,22 @@ const FullscreenIcon = () => (
 
 function LogoMark({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 256 256" aria-hidden="true" focusable="false">
-      <defs>
-        <linearGradient id="abuelo-logo" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#1d4a70" />
-          <stop offset="100%" stopColor="#2f6d99" />
-        </linearGradient>
-      </defs>
-      <rect x="8" y="8" width="240" height="240" rx="52" fill="url(#abuelo-logo)" />
-      <g transform="translate(128 118)">
-        <path d="M -62 18 L 0 -38 L 62 18 L 62 86 L 24 86 L 24 32 L -24 32 L -24 86 L -62 86 Z" fill="#f6b73c" />
-        <path
-          d="M 0 60 c -11 -13 -27 -20 -27 -34 c 0 -9 8 -17 17 -17 c 5 0 8 2 10 5 c 2 -3 5 -5 10 -5 c 9 0 17 8 17 17 c 0 14 -16 21 -27 34 Z"
-          fill="#ffffff"
-        />
-      </g>
+    <svg
+      className={className}
+      viewBox="0 0 40 40"
+      aria-hidden="true"
+      focusable="false"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M20 4.5 3.5 18v17.5h12V25h9v10.5h12V18L20 4.5Z" />
+      <path
+        d="M20 29.5c-2.8-3.2-6-4.8-6-7.7 0-2 1.7-3.6 3.7-3.6 1 0 1.8.4 2.3 1.1.5-.7 1.3-1.1 2.3-1.1 2 0 3.7 1.6 3.7 3.6 0 2.9-3.2 4.5-6 7.7Z"
+        strokeWidth="1.8"
+      />
     </svg>
   )
 }
@@ -691,18 +692,6 @@ export default function App() {
     if (window.location.hash !== hash) window.history.pushState(null, '', hash)
   }
 
-  function onTabKeyDown(event: ReactKeyboardEvent<HTMLButtonElement>, index: number) {
-    if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return
-    event.preventDefault()
-    let next = index
-    if (event.key === 'ArrowRight') next = (index + 1) % VIEWS.length
-    if (event.key === 'ArrowLeft') next = (index - 1 + VIEWS.length) % VIEWS.length
-    if (event.key === 'Home') next = 0
-    if (event.key === 'End') next = VIEWS.length - 1
-    selectView(VIEWS[next].id)
-    document.getElementById(`tab-${VIEWS[next].id}`)?.focus()
-  }
-
   const toggleLang = () => setLang((value) => (value === 'es' ? 'en' : 'es'))
   const closeMenu = () => setMenuOpen(false)
 
@@ -725,24 +714,13 @@ export default function App() {
             <span className="brand-name" translate="no">abuel-os</span>
           </a>
 
-          <div className="tabs" role="tablist" aria-label={tr('nav.aria')}>
-            {VIEWS.map((item, index) => (
-              <button
-                key={item.id}
-                type="button"
-                role="tab"
-                id={`tab-${item.id}`}
-                aria-selected={view === item.id}
-                aria-controls={`panel-${item.id}`}
-                tabIndex={view === item.id ? 0 : -1}
-                className={view === item.id ? 'is-active' : undefined}
-                onClick={() => selectView(item.id)}
-                onKeyDown={(event) => onTabKeyDown(event, index)}
-              >
-                {tr(item.key)}
-              </button>
-            ))}
-          </div>
+          <SegmentedControl
+            className="nav-selector"
+            aria-label={tr('nav.aria')}
+            items={VIEWS.map((item) => ({ value: item.id, label: tr(item.key) }))}
+            value={view}
+            onValueChange={(value) => selectView(value as ViewId)}
+          />
 
           <div className="header-tools">
             <a className="ghost hide-sm" href={LINKS.repo}>{tr('nav.github')}</a>
@@ -786,7 +764,7 @@ export default function App() {
 
             <main id="contenido" tabIndex={-1}>
         <div className="wrap">
-          <section className="window" aria-labelledby={`tab-${view}`}>
+          <section className="window" aria-label={tr(VIEWS.find((item) => item.id === view)?.key ?? 'nav.home')}>
             <div className="window-bar">
               <span className="dots" aria-hidden="true">
                 <i className="dot dot-gold" />
@@ -798,7 +776,7 @@ export default function App() {
             </div>
 
             <div className="window-body">
-              <div className="view" role="tabpanel" id="panel-inicio" aria-labelledby="tab-inicio" hidden={view !== 'inicio'}>
+              <div className="view" role="region" id="panel-inicio" aria-label={tr('nav.home')} hidden={view !== 'inicio'}>
                 <div className="hero-grid">
                   <div className="hero-copy">
                     <h1>{tr('hero.title')}</h1>
@@ -831,7 +809,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="view" role="tabpanel" id="panel-que-es" aria-labelledby="tab-que-es" hidden={view !== 'que-es'}>
+              <div className="view" role="region" id="panel-que-es" aria-label={tr('nav.about')} hidden={view !== 'que-es'}>
                 <div className="split">
                   <div className="split-head">
                     <h2>{tr('about.title')}</h2>
@@ -851,7 +829,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="view" role="tabpanel" id="panel-descargar" aria-labelledby="tab-descargar" hidden={view !== 'descargar'}>
+              <div className="view" role="region" id="panel-descargar" aria-label={tr('nav.download')} hidden={view !== 'descargar'}>
                 <div className="release-sheet">
                   <div className="release-main">
                     <h2 id="release-title">{tr('release.title')}</h2>
@@ -888,7 +866,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="view" role="tabpanel" id="panel-instalar" aria-labelledby="tab-instalar" hidden={view !== 'instalar'}>
+              <div className="view" role="region" id="panel-instalar" aria-label={tr('nav.install')} hidden={view !== 'instalar'}>
                 <div className="split">
                   <div className="split-head">
                     <h2>{tr('install.title')}</h2>
@@ -915,7 +893,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="view" role="tabpanel" id="panel-verificar" aria-labelledby="tab-verificar" hidden={view !== 'verificar'}>
+              <div className="view" role="region" id="panel-verificar" aria-label={tr('nav.verify')} hidden={view !== 'verificar'}>
                 <div className="split">
                   <div className="split-head">
                     <h2>{tr('verify.title')}</h2>
@@ -943,7 +921,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="view" role="tabpanel" id="panel-actualizar" aria-labelledby="tab-actualizar" hidden={view !== 'actualizar'}>
+              <div className="view" role="region" id="panel-actualizar" aria-label={tr('nav.update')} hidden={view !== 'actualizar'}>
                 <div className="split">
                   <div className="split-head">
                     <h2>{tr('update.title')}</h2>
@@ -974,7 +952,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="view" role="tabpanel" id="panel-versiones" aria-labelledby="tab-versiones" hidden={view !== 'versiones'}>
+              <div className="view" role="region" id="panel-versiones" aria-label={tr('nav.versions')} hidden={view !== 'versiones'}>
                 <div className="versions-head">
                   <div>
                     <h2>{tr('versions.title')}</h2>
