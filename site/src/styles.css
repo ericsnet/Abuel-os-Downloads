@@ -210,13 +210,16 @@ code {
   --lg-tab-width: 78px;
   --lg-tab-height: 36px;
   --lg-tab-inset: 3px;
-  --lg-segment-track: rgba(6, 23, 37, 0.55);
+  --lg-glass: rgba(9, 9, 11, 0.92);
+  --lg-segment-track: rgba(9, 9, 11, 0.92);
+  --lg-edge: rgba(255, 255, 255, 0.14);
+  --lg-shadow: rgba(0, 0, 0, 0.45);
 }
 
 .nav-selector.lg-segmented .lg-tab {
-  font-family: var(--display);
+  font-family: var(--sans);
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0;
 }
 
@@ -666,10 +669,24 @@ main {
 .os-dock {
   --lg-tab-width: 64px;
   --lg-tab-height: 44px;
+  --lg-tab-selected: #f5f5f7;
+}
+
+.os-dock.lg-tab-bar[data-icons] {
+  --lg-tab-selected: #f5f5f7;
 }
 
 .os-dock .lg-tab {
   font-size: 9px;
+}
+
+.os-dock .lg-tab-tint {
+  border-radius: 999px;
+  background: #5b5b5e;
+}
+
+.os-dock .lg-tab-lens::before {
+  background: transparent;
 }
 
 .panel-clock {
@@ -730,6 +747,9 @@ main {
  .os-panel .lg-segmented {
   --lg-tab-width: 64px;
   --lg-tab-height: 30px;
+  --lg-glass: rgba(9, 9, 11, 0.9);
+  --lg-segment-track: rgba(9, 9, 11, 0.9);
+  --lg-edge: rgba(255, 255, 255, 0.14);
 }
 
 .os-slider {
