@@ -230,6 +230,10 @@ code {
 .os-panel .lg-segmented .lg-tab-lensed {
   display: none;
 }
+.nav-selector .lg-tab-lens,
+.os-panel .lg-segmented .lg-tab-lens {
+  margin: -3px 0 0 -3px;
+}
 
 .header-tools {
   display: flex;
@@ -1849,6 +1853,10 @@ main {
   .nav-selector .lg-tab-lensed,
 .os-panel .lg-segmented .lg-tab-lensed {
   display: none;
+}
+.nav-selector .lg-tab-lens,
+.os-panel .lg-segmented .lg-tab-lens {
+  margin: -3px 0 0 -3px;
 }
 
 .header-tools {
