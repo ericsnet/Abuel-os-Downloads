@@ -174,11 +174,9 @@ code {
 }
 
 .site-header.is-scrolled {
-  background: rgba(6, 23, 37, 0.72);
+  background: rgba(6, 23, 37, 0.94);
   border-bottom-color: var(--glass-edge);
   box-shadow: 0 18px 40px -32px #000;
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
 }
 
 .header-inner {
@@ -209,7 +207,7 @@ code {
 
 .nav-selector {
   margin-left: auto;
-  --lg-tab-width: 76px;
+  --lg-tab-width: 78px;
   --lg-tab-height: 36px;
   --lg-tab-inset: 3px;
   --lg-segment-track: rgba(6, 23, 37, 0.55);
@@ -217,9 +215,24 @@ code {
 
 .nav-selector.lg-segmented .lg-tab {
   font-family: var(--display);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: 0;
+}
+
+/* The segmented controls keep their sliding thumb; the press lens is off. */
+.nav-selector .lg-tab-tint,
+.nav-selector .lg-tab-lensed,
+.nav-selector .lg-tab-lens,
+.os-panel .lg-segmented .lg-tab-tint,
+.os-panel .lg-segmented .lg-tab-lensed,
+.os-panel .lg-segmented .lg-tab-lens {
+  display: none;
+}
+
+.nav-selector.lg-segmented[data-lifted] .lg-segmented-thumb,
+.os-panel .lg-segmented[data-lifted] .lg-segmented-thumb {
+  opacity: 1;
 }
 
 .header-tools {
@@ -714,8 +727,8 @@ main {
   font-weight: 600;
 }
 
-.os-panel .lg-segmented {
-  --lg-tab-width: 60px;
+ .os-panel .lg-segmented {
+  --lg-tab-width: 64px;
   --lg-tab-height: 30px;
 }
 
@@ -1601,11 +1614,21 @@ main {
 
 /* ------------------------------------------------------------- liquid glass */
 
+@keyframes glass-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @keyframes glass-in {
   0% {
     opacity: 0;
     transform: translateY(14px) scale(0.945);
-    filter: blur(14px) saturate(1.6);
   }
   55% {
     opacity: 1;
@@ -1613,7 +1636,6 @@ main {
   100% {
     opacity: 1;
     transform: none;
-    filter: blur(0) saturate(1);
   }
 }
 
@@ -1621,12 +1643,10 @@ main {
   0% {
     opacity: 1;
     transform: none;
-    filter: blur(0) saturate(1);
   }
   100% {
     opacity: 0;
     transform: translateY(10px) scale(0.955);
-    filter: blur(12px) saturate(1.4);
   }
 }
 
@@ -1661,7 +1681,7 @@ main {
   position: relative;
   z-index: 2;
   width: 100%;
-  animation: glass-in 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: glass-in 0.52s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 
 .glass-presence::after {
@@ -1694,7 +1714,7 @@ main {
 .glass-presence .os-row,
 .glass-presence .os-preview,
 .glass-presence .os-actions {
-  animation: glass-item 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: glass-item 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 
 .glass-presence .os-panel-head {
@@ -1722,16 +1742,16 @@ main {
 }
 
 .nav-selector {
-  animation: glass-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: glass-pop 0.45s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 
 .os-dock {
-  animation: glass-in 0.55s 0.08s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: glass-pop 0.48s 0.06s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 
 .view:not([hidden]) .versions-search,
 .view:not([hidden]) .copy-glass {
-  animation: glass-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: glass-pop 0.4s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 
 /* ------------------------------------------------------------- movimiento */

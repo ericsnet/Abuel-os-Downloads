@@ -5,16 +5,16 @@
   --lg-foreground: #f2ecdf;
   --lg-muted: rgba(242, 236, 223, 0.62);
   --lg-glass: rgba(18, 44, 62, 0.62);
-  --lg-glass-active: rgba(240, 181, 74, 0.16);
+  --lg-glass-active: rgba(242, 236, 223, 0.12);
   --lg-edge: rgba(242, 236, 223, 0.16);
   --lg-drop: rgba(0, 0, 0, 0.35);
-  --lg-selection: rgba(240, 181, 74, 0.18);
+  --lg-selection: rgba(242, 236, 223, 0.16);
   --lg-lens: rgba(255, 255, 255, 0.06);
   --lg-lens-drop: rgba(0, 0, 0, 0.3);
   --lg-segment-track: rgba(6, 23, 37, 0.5);
   --lg-segment-thumb: #f0b54a;
   --lg-segment-label: #f2ecdf;
-  --lg-segment-lens: rgba(255, 255, 255, 0.06);
+  --lg-segment-lens: rgba(10, 34, 51, 0.94);
   --lg-surface: rgba(10, 34, 51, 0.94);
   --lg-surface-edge: rgba(242, 236, 223, 0.16);
   --lg-shadow: rgba(0, 0, 0, 0.5);
@@ -45,7 +45,7 @@
   font-weight: 600;
 }
 
-/* The selected segment sits on a gold thumb. */
+/* The gold thumb stays visible, so the selected label always reads ink. */
 .lg-segmented :is(.lg-tab, .lg-tab-copy)[data-selected] {
   color: #061725;
 }
