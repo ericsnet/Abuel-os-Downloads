@@ -14,7 +14,7 @@
   --lg-segment-track: rgba(6, 23, 37, 0.5);
   --lg-segment-thumb: #f0b54a;
   --lg-segment-label: #f2ecdf;
-  --lg-segment-lens: rgba(10, 34, 51, 0.94);
+  --lg-segment-lens: rgba(242, 236, 223, 0.09);
   --lg-surface: rgba(10, 34, 51, 0.94);
   --lg-surface-edge: rgba(242, 236, 223, 0.16);
   --lg-shadow: rgba(0, 0, 0, 0.5);
@@ -45,9 +45,18 @@
   font-weight: 600;
 }
 
-/* The gold thumb stays visible, so the selected label always reads ink. */
-.lg-segmented :is(.lg-tab, .lg-tab-copy)[data-selected] {
+/* At rest the selected label reads ink on the gold thumb; while the lens is
+   lifted the thumb fades and the label turns light over the glass. */
+.lg-segmented:not([data-lifted]) :is(.lg-tab, .lg-tab-copy)[data-selected] {
   color: #061725;
+}
+
+.lg-segmented[data-lifted] :is(.lg-tab, .lg-tab-copy)[data-selected] {
+  color: var(--lg-segment-label);
+}
+
+.os-dock.lg-tab-bar[data-icons][data-lifted] {
+  --lg-tab-selected: #f2ecdf;
 }
 
 .lg-input input::placeholder {

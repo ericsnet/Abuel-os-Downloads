@@ -213,6 +213,10 @@ code {
   --lg-segment-track: rgba(6, 23, 37, 0.55);
   --lg-edge: rgba(242, 236, 223, 0.16);
   --lg-shadow: rgba(0, 0, 0, 0.45);
+  --lg-segment-lens: rgba(242, 236, 223, 0.09);
+  --lg-lens-grow-x: 0px;
+  --lg-lens-grow-y: 8px;
+  --lg-segment-lens: rgba(242, 236, 223, 0.09);
 }
 
 .nav-selector.lg-segmented .lg-tab {
@@ -222,19 +226,9 @@ code {
   letter-spacing: 0;
 }
 
-/* The segmented controls keep their sliding thumb; the press lens is off. */
-.nav-selector .lg-tab-tint,
 .nav-selector .lg-tab-lensed,
-.nav-selector .lg-tab-lens,
-.os-panel .lg-segmented .lg-tab-tint,
-.os-panel .lg-segmented .lg-tab-lensed,
-.os-panel .lg-segmented .lg-tab-lens {
+.os-panel .lg-segmented .lg-tab-lensed {
   display: none;
-}
-
-.nav-selector.lg-segmented[data-lifted] .lg-segmented-thumb,
-.os-panel .lg-segmented[data-lifted] .lg-segmented-thumb {
-  opacity: 1;
 }
 
 .header-tools {
@@ -748,6 +742,9 @@ main {
   --lg-tab-height: 30px;
   --lg-segment-track: rgba(6, 23, 37, 0.55);
   --lg-edge: rgba(242, 236, 223, 0.16);
+  --lg-lens-grow-x: 0px;
+  --lg-lens-grow-y: 8px;
+  --lg-segment-lens: rgba(242, 236, 223, 0.09);
 }
 
 .os-slider {
@@ -1849,7 +1846,12 @@ main {
     display: inline-flex;
   }
 
-  .header-tools {
+  .nav-selector .lg-tab-lensed,
+.os-panel .lg-segmented .lg-tab-lensed {
+  display: none;
+}
+
+.header-tools {
     margin-left: auto;
   }
 
