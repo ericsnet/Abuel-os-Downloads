@@ -37,8 +37,8 @@ export const strings: Record<string, Localized> = {
   'hero.f3.v': { es: 'AMD64', en: 'AMD64' },
 
   'mock.alt': {
-    es: 'Demostración interactiva del escritorio de abuel-os: iconos, tarjeta de bienvenida y panel inferior.',
-    en: 'Interactive demo of the abuel-os desktop: icons, a welcome card and a bottom panel.',
+    es: 'Demostración interactiva del escritorio de abuel-os: tarjeta de bienvenida y panel inferior.',
+    en: 'Interactive demo of the abuel-os desktop: a welcome card and a bottom panel.',
   },
   'mock.title': { es: 'abuel-os 1.0.9', en: 'abuel-os 1.0.9' },
   'mock.files': { es: 'Archivos', en: 'Files' },
@@ -48,8 +48,8 @@ export const strings: Record<string, Localized> = {
   'mock.help': { es: 'Ayuda', en: 'Help' },
 
   'mock.demo': {
-    es: 'Pulsa un icono para probar el escritorio.',
-    en: 'Tap an icon to try the desktop.',
+    es: 'Pulsa una aplicación para probar el escritorio.',
+    en: 'Tap an app to try the desktop.',
   },
   'mock.morning': { es: 'Buenos días', en: 'Good morning' },
   'mock.afternoon': { es: 'Buenas tardes', en: 'Good afternoon' },

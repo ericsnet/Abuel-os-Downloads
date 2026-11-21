@@ -25,28 +25,6 @@ function Icon({ children, className }: IconProps & { children: ReactNode }) {
   )
 }
 
-const FolderIcon = () => (
-  <Icon>
-    <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z" />
-  </Icon>
-)
-const GlobeIcon = () => (
-  <Icon>
-    <circle cx="12" cy="12" r="9" />
-    <path d="M3 12h18" />
-    <path d="M12 3c2.6 2.6 3.9 5.6 3.9 9S14.6 18.4 12 21c-2.6-2.6-3.9-5.6-3.9-9S9.4 5.6 12 3Z" />
-  </Icon>
-)
-const SlidersIcon = () => (
-  <Icon>
-    <path d="M4 7h10" />
-    <path d="M18 7h2" />
-    <circle cx="16" cy="7" r="2" />
-    <path d="M4 17h4" />
-    <path d="M12 17h8" />
-    <circle cx="10" cy="17" r="2" />
-  </Icon>
-)
 const MenuIcon = () => (
   <Icon>
     <path d="M4 7h16" />
@@ -291,22 +269,7 @@ function Terminal({
   )
 }
 
-const HelpIcon = () => (
-  <Icon>
-    <circle cx="12" cy="12" r="9" />
-    <path d="M9.6 9.4a2.5 2.5 0 1 1 3.6 2.3c-.7.4-1.2 1-1.2 1.8v.4" />
-    <path d="M12 17.4h.01" />
-  </Icon>
-)
-
 type DemoId = 'files' | 'net' | 'panel' | 'help'
-
-const DEMO_ITEMS = [
-  { id: 'files' as const, label: 'mock.files', icon: <FolderIcon /> },
-  { id: 'net' as const, label: 'mock.net', icon: <GlobeIcon /> },
-  { id: 'panel' as const, label: 'mock.panel', icon: <SlidersIcon /> },
-  { id: 'help' as const, label: 'mock.help', icon: <HelpIcon /> },
-]
 
 const DEMO_CHIPS: Record<DemoId | 'home', string[]> = {
   home: ['mock.files', 'mock.net', 'mock.help'],
@@ -314,6 +277,29 @@ const DEMO_CHIPS: Record<DemoId | 'home', string[]> = {
   net: ['demo.net.c1', 'demo.net.c2'],
   panel: ['demo.panel.c1', 'demo.panel.c2'],
   help: ['demo.help.c1', 'demo.help.c2'],
+}
+
+function GlassPresence({ show, children }: { show: boolean; children: ReactNode }) {
+  const [mounted, setMounted] = useState(show)
+  const [leaving, setLeaving] = useState(false)
+
+  useEffect(() => {
+    if (show) {
+      setMounted(true)
+      setLeaving(false)
+      return
+    }
+    if (!mounted) return
+    setLeaving(true)
+    const id = window.setTimeout(() => {
+      setMounted(false)
+      setLeaving(false)
+    }, 300)
+    return () => window.clearTimeout(id)
+  }, [show, mounted])
+
+  if (!mounted) return null
+  return <div className={leaving ? 'glass-presence is-leaving' : 'glass-presence'}>{children}</div>
 }
 
 function DesktopMock({ lang }: { lang: Lang }) {
@@ -351,22 +337,21 @@ function DesktopMock({ lang }: { lang: Lang }) {
         </div>
         <div className="screen-body">
           <div className="screen-rings" aria-hidden="true" />
-          <ul className="screen-icons">
-            {DEMO_ITEMS.map((item) => (
-              <li key={item.id}>
-                <button
-                  type="button"
-                  className={active === item.id ? 'dicon-btn is-active' : 'dicon-btn'}
-                  aria-pressed={active === item.id}
-                  onClick={() => setActive(item.id)}
-                >
-                  <span className="dicon">{item.icon}</span>
-                  <span className="dicon-label">{tr(item.label)}</span>
-                </button>
-              </li>
-            ))}
-          </ul>
-          {active === 'panel' ? (
+          {active !== 'panel' ? (
+            <div className="screen-card" aria-live="polite">
+              <div className="screen-card-body" key={active}>
+                <p className="screen-hello">{tr(titleKey)}</p>
+                {active === 'home' ? <p className="screen-clock">{time}</p> : null}
+                <p className="screen-note">{tr(noteKey)}</p>
+                <div className="screen-chips">
+                  {DEMO_CHIPS[active].map((key) => (
+                    <span key={key}>{tr(key)}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : null}
+          <GlassPresence show={active === 'panel'}>
             <OsPanel
               lang={lang}
               textSize={textSize}
@@ -380,20 +365,7 @@ function DesktopMock({ lang }: { lang: Lang }) {
                 setSound(true)
               }}
             />
-          ) : (
-            <div className="screen-card" aria-live="polite">
-              <div className="screen-card-body" key={active}>
-                <p className="screen-hello">{tr(titleKey)}</p>
-                {active === 'home' ? <p className="screen-clock">{time}</p> : null}
-                <p className="screen-note">{tr(noteKey)}</p>
-                <div className="screen-chips">
-                  {DEMO_CHIPS[active].map((key) => (
-                    <span key={key}>{tr(key)}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
+          </GlassPresence>
           <div className="screen-panel">
             <OsDock lang={lang} active={active} onSelect={setActive} />
             <span className="panel-clock">{time}</span>
