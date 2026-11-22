@@ -21,16 +21,16 @@ iconos y los ajustes.
 
 ## Recomendación
 
-1. **XFCE**: mantenerlo como único escritorio de la ISO 1.0.6. Es el que está
+1. **XFCE**: mantenerlo como único escritorio de la ISO 1.1.0. Es el que está
    probado y el que necesita menos mantenimiento.
-2. **LXQt**: candidato para una variante "equipos muy justos" (1.1.0). Requiere
+2. **LXQt**: candidato para una variante "equipos muy justos" (1.2.0 o posterior). Requiere
    un panel propio y un adaptador de ajustes.
 3. **MATE**: candidato para quien quiera algo más clásico; mismo trabajo de
    integración que LXQt.
 4. **Cinnamon/GNOME/KDE**: no para la imagen principal; se pueden ofrecer como
    instalación opcional desde Debian, sin la capa abuel-os adaptada.
 
-## Arquitectura propuesta (para 1.1.0)
+## Arquitectura propuesta (para una versión futura)
 
 ```
 config/
@@ -46,14 +46,15 @@ config/
 - El panel del responsable sigue siendo una aplicación GTK independiente; solo
   cambia el lanzador y el aspecto.
 - `abuelo-files` es independiente del escritorio; se reutiliza.
-- Pruebas obligatorias por variante: autologin, iconos, papelera, panel,
+- Pruebas obligatorias por variante: login, iconos, papelera, panel,
   idioma, aplicaciones permitidas y apagado.
 
 ## Estado
 
-- 1.0.6: solo XFCE. Este documento es la investigación y el plan; no se
-  incluyen paquetes de otros escritorios en la ISO.
-- Próximo paso: prototipo LXQt en una rama/VM aparte, sin tocar la ISO estable.
+- 1.1.0: solo XFCE. La versión moderniza la capa propia (pantalla de inicio,
+  tema automático, iconos y fondos) sin añadir paquetes de otros escritorios.
+- Próximo paso: si se quiere LXQt, prototipo en una rama/VM aparte, sin tocar la
+  ISO estable.
 
 ## Fuentes consultadas
 

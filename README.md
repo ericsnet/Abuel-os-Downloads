@@ -4,21 +4,40 @@
 
 **Website:** https://ericsnet.github.io/Abuel-os-Downloads/
 
+**Official abuel-os download page**, for a distribution based on Debian 12 (Bookworm) and XFCE, designed to provide a simple desktop and a separate account for the caregiver.
 
-**Official abuel-os download page**, for a distribution based on Debian 12 (Bookworm) and XFCE, designed to provide a simple desktop and a separate account for the person responsible.
+## Latest published version: 1.0.9
 
-## Latest version: 1.0.9
+**ISO built, pending publication: 1.1.0** (home screen, automatic theme, brand icons, and a lighter boot).
 
 | Feature | Detail |
 |---|---|
 | Architecture | AMD64 (64-bit Intel/AMD) |
 | Base system | Debian 12 (Bookworm) |
-| Desktop | XFCE |
-| Boot | BIOS and UEFI; Secure Boot compatibility indicated for this version |
+| Desktop | XFCE; `abuelo-inicio` home screen from 1.1.0 |
+| Boot | BIOS and UEFI; Secure Boot compatible |
 | RAM | 2 GB minimum; 4 GB recommended |
 | USB | 4 GB minimum; 8 GB or more recommended |
 
-**Download status:** every version is published in this repository, one folder per version, each containing its release notes and checksums; the ISO and update packages are attached to each GitHub release.
+**Download status:** versions 1.0.0 to 1.0.9 are published, one folder per version with its notes and checksums. The ISO and update packages are attached to each GitHub release; they are not stored in the repository. The 1.1.0 ISO is built (1.77 GB) and pending publication; it is not downloadable yet.
+
+## Versions and verification
+
+| Version | Expected SHA-256 | Status |
+|---|---|---|
+| [1.1.0](versions/1.1.0/) | — | ISO built; pending publication |
+| [1.0.9](versions/1.0.9/) | `4d3545ec0b74ab6de2f7693babbafa349aba3dfd755a1e265fd65f02b9e3aca92` | ISO and updates attached to the release |
+| [1.0.8](versions/1.0.8/) | `584cb3b2c71d4fd458b3541464fe27af8b0ec38c8580e7bf3774b619f0627c57` | ISO and updates attached to the release |
+| [1.0.7](versions/1.0.7/) | `eb87d71e87a115541c81b4aa683c8d7e83ae9c6a415b31f5776e34350ebcfec5` | ISO and updates attached to the release |
+| [1.0.6](versions/1.0.6/) | `18d62c0af617b5c89f175d993d5428ecd1ad2abf2143ac9bd6446f4e5d8a8f5a` | ISO attached to the release |
+| [1.0.5](versions/1.0.5/) | `5de7fd5384cc4a84ec798e25aa547e6c62902d464c849756995ec4ee04177c07` | ISO attached to the release |
+| [1.0.4](versions/1.0.4/) | `468c8785723a63881f3828611d5d56c6282de67dddd27c2a8cfdeab476e5356e` | ISO attached to the release |
+| [1.0.3](versions/1.0.3/) | `c9636d05b124391c094077d543df9bba7d3e1f8af5ada2641bef62c6e79f2fae` | ISO attached to the release |
+| [1.0.2](versions/1.0.2/) | `bb0b42ca5f3acd4694263906e296d0b2cac9ab33da4cf6760ce83335551cfb98` | ISO attached to the release |
+| [1.0.1](versions/1.0.1/) | `ff037e08f2ee942806cb92498ae475217ec058db28207dfc2be3490bdb835fc2` | ISO attached to the release |
+| [1.0.0](versions/1.0.0/) | `3262da299e671020aa0268eaf076b7d0756d799d163ff90e1a2b6eec2b22eebf` | ISO attached to the release |
+
+Always verify the SHA-256 of the downloaded ISO and compare it with the one published for that version. If it does not match exactly, do not use the image.
 
 ### Verify SHA on Windows
 
@@ -83,17 +102,18 @@ If the USB drive does not appear, consult the manufacturer's instructions for op
 
 ### 4. First login
 
-In version 1.0.2, the planned accounts are:
+Since version 1.0.9 there is **no autologin**. LightDM shows the accounts and each person chooses their own:
 
-- **Daily use:** `abuelo`, with automatic login.
-- **Responsible person:** `responsable`, with initial password `live`.
+- **Daily use:** `abuelo`.
+- **Caregiver:** `responsable`.
 
-Change the responsible account's initial password during the first setup. Do not reuse it on other services or share it publicly. If the credentials in your ISO do not match this information, consult that version's notes.
+In live mode, the initial password for both is `live`. On an installed system, the caregiver chooses their password during installation and the assistant later creates the older adult's account. Change any initial password during the first setup and do not reuse it on other services.
 
 ### 5. After installation
 
 - Check that the system starts without the USB drive connected.
-- Check the Internet, sound, screen resolution, keyboard, mouse, and printer if applicable.
+- Check the Internet, sound, screen resolution, keyboard, mouse, and Bluetooth.
+- There is no printer support in the image: install CUPS from the system if you need it.
 - Install available updates using the system tools.
 - Keep a backup of important data.
 - Agree on who will take care of updates, passwords, and recovery of the computer.
@@ -117,4 +137,4 @@ abuel-os is proprietary software. Downloading an ISO does not by itself grant pe
 
 ## Detailed version history
 
-See the [version index](versions/INDEX.md) for changes, known issues, and publication details for each version. Every ISO is published in this repository, in the per-version folder shown above.
+See the [version index](versions/INDEX.md) for changes, known issues, and publication details for each version. ISOs and update packages are attached to each GitHub release.

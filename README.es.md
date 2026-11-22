@@ -4,36 +4,38 @@
 
 **Sitio web:** https://ericsnet.github.io/Abuel-os-Downloads/
 
-
 **Página oficial de descarga de abuel-os**, una distribución basada en Debian 12 (Bookworm) y XFCE, diseñada para ofrecer un escritorio sencillo y una cuenta separada para la persona responsable.
 
-## Última versión: 1.0.9
+## Última versión publicada: 1.0.9
+
+**ISO construida, pendiente de publicar: 1.1.0** (pantalla de inicio, tema automático, iconos de marca y arranque más ligero).
 
 | Característica | Detalle |
 |---|---|
 | Arquitectura | AMD64 (Intel/AMD de 64 bits) |
 | Sistema base | Debian 12 (Bookworm) |
-| Escritorio | XFCE |
-| Arranque | BIOS y UEFI; compatibilidad con Secure Boot indicada para esta versión |
+| Escritorio | XFCE; pantalla de inicio `abuelo-inicio` a partir de 1.1.0 |
+| Arranque | BIOS y UEFI; compatibilidad con Secure Boot |
 | RAM | 2 GB mínimo; 4 GB recomendados |
 | USB | 4 GB mínimo; se recomienda 8 GB o más |
 
-**Estado de la descarga:** todas las versiones están publicadas en este repositorio, una carpeta por versión (`versions/1.0.0/`, `versions/1.0.1/`, `versions/1.0.2/`, `versions/1.0.3/`, `versions/1.0.4/`, `versions/1.0.5/`, `versions/1.0.6/`, `versions/1.0.7/`, `versions/1.0.8/`, `versions/1.0.9/`), cada una con sus notas y sumas de verificación; la ISO y los paquetes de actualización se adjuntan a cada release de GitHub.
+**Estado de la descarga:** están publicadas las versiones 1.0.0 a 1.0.9, una carpeta por versión con sus notas y sumas de verificación. La ISO y los paquetes de actualización se adjuntan a cada release de GitHub, no se guardan dentro del repositorio. La ISO 1.1.0 está construida (1,77 GB) y pendiente de publicar; todavía no es descargable.
 
 ## Versiones y verificación
 
 | Versión | SHA-256 esperado | Estado |
 |---|---|---|
-| [1.0.4](versions/1.0.4/) | `468c8785723a63881f3828611d5d56c6282de67dddd27c2a8cfdeab476e5356e` | ISO publicada en este repositorio |
-| [1.0.5](versions/1.0.5/) | `5de7fd5384cc4a84ec798e25aa547e6c62902d464c849756995ec4ee04177c07` | ISO publicada en este repositorio |
-| [1.0.6](versions/1.0.6/) | `18d62c0af617b5c89f175d993d5428ecd1ad2abf2143ac9bd6446f4e5d8a8f5a` | ISO publicada en este repositorio |
-| [1.0.7](versions/1.0.7/) | `eb87d71e87a115541c81b4aa683c8d7e83ae9c6a415b31f5776e34350ebcfec5` | ISO y actualizaciones adjuntas a la release |
-| [1.0.8](versions/1.0.8/) | `584cb3b2c71d4fd458b3541464fe27af8b0ec38c8580e7bf3774b619f0627c57` | ISO y actualizaciones adjuntas a la release |
+| [1.1.0](versions/1.1.0/) | — | ISO construida; pendiente de publicar |
 | [1.0.9](versions/1.0.9/) | `4d3545ec0b74ab6de2f7693babbafa349aba3dfd755a1e265fd65f02b9e3aca92` | ISO y actualizaciones adjuntas a la release |
-| [1.0.3](versions/1.0.3/) | `c9636d05b124391c094077d543df9bba7d3e1f8af5ada2641bef62c6e79f2fae` | ISO publicada en este repositorio |
-| [1.0.2](versions/1.0.2/) | `bb0b42ca5f3acd4694263906e296d0b2cac9ab33da4cf6760ce83335551cfb98` | ISO publicada en este repositorio |
-| [1.0.1](versions/1.0.1/) | `ff037e08f2ee942806cb92498ae475217ec058db28207dfc2be3490bdb835fc2` | ISO publicada en este repositorio |
-| [1.0.0](versions/1.0.0/) | `3262da299e671020aa0268eaf076b7d0756d799d163ff90e1a2b6eec2b22eebf` | ISO publicada en este repositorio |
+| [1.0.8](versions/1.0.8/) | `584cb3b2c71d4fd458b3541464fe27af8b0ec38c8580e7bf3774b619f0627c57` | ISO y actualizaciones adjuntas a la release |
+| [1.0.7](versions/1.0.7/) | `eb87d71e87a115541c81b4aa683c8d7e83ae9c6a415b31f5776e34350ebcfec5` | ISO y actualizaciones adjuntas a la release |
+| [1.0.6](versions/1.0.6/) | `18d62c0af617b5c89f175d993d5428ecd1ad2abf2143ac9bd6446f4e5d8a8f5a` | ISO adjunta a la release |
+| [1.0.5](versions/1.0.5/) | `5de7fd5384cc4a84ec798e25aa547e6c62902d464c849756995ec4ee04177c07` | ISO adjunta a la release |
+| [1.0.4](versions/1.0.4/) | `468c8785723a63881f3828611d5d56c6282de67dddd27c2a8cfdeab476e5356e` | ISO adjunta a la release |
+| [1.0.3](versions/1.0.3/) | `c9636d05b124391c094077d543df9bba7d3e1f8af5ada2641bef62c6e79f2fae` | ISO adjunta a la release |
+| [1.0.2](versions/1.0.2/) | `bb0b42ca5f3acd4694263906e296d0b2cac9ab33da4cf6760ce83335551cfb98` | ISO adjunta a la release |
+| [1.0.1](versions/1.0.1/) | `ff037e08f2ee942806cb92498ae475217ec058db28207dfc2be3490bdb835fc2` | ISO adjunta a la release |
+| [1.0.0](versions/1.0.0/) | `3262da299e671020aa0268eaf076b7d0756d799d163ff90e1a2b6eec2b22eebf` | ISO adjunta a la release |
 
 Verifica siempre la suma SHA-256 de la ISO descargada y compárala con la correspondiente a esa versión. Si no coincide exactamente, no utilices esa imagen.
 
@@ -100,17 +102,18 @@ Si el USB no aparece, consulta las instrucciones del fabricante para abrir el me
 
 ### 4. Primer inicio de sesión
 
-En la versión 1.0.2, las cuentas previstas son:
+Desde la versión 1.0.9 **no hay autologin**. LightDM muestra las cuentas y cada persona elige la suya:
 
-- **Uso diario:** `abuelo`, con inicio de sesión automático.
-- **Persona responsable:** `responsable`, con contraseña inicial `live`.
+- **Uso diario:** `abuelo`.
+- **Persona responsable:** `responsable`.
 
-Cambia la contraseña inicial de la cuenta responsable durante la primera configuración. No la reutilices en otros servicios ni la compartas públicamente. Si las credenciales de tu ISO no coinciden con esta información, consulta las notas de esa versión.
+En el modo live, la contraseña inicial de ambas es `live`. En un sistema instalado, la persona responsable elige su contraseña durante la instalación y el asistente crea después la cuenta de la persona mayor. Cambia cualquier contraseña inicial durante la primera configuración y no la reutilices en otros servicios.
 
 ### 5. Después de instalar
 
 - Comprueba que el sistema inicia sin el USB conectado.
-- Verifica Internet, sonido, resolución de pantalla, teclado, ratón e impresora si corresponde.
+- Verifica Internet, sonido, resolución de pantalla, teclado, ratón y Bluetooth.
+- La impresora no viene instalada: si la necesitas, instala CUPS desde el sistema.
 - Instala las actualizaciones disponibles mediante las herramientas del sistema.
 - Mantén una copia de seguridad de los datos importantes.
 - Acordad quién se encargará de las actualizaciones, las contraseñas y la recuperación del equipo.
@@ -134,4 +137,4 @@ abuel-os es software propietario. Descargar una ISO no concede por sí solo perm
 
 ## Historial detallado de versiones
 
-Consulta el [índice de versiones](versions/INDEX.md) para ver los cambios, los fallos conocidos y los datos de publicación de cada versión. Todas las ISO están publicadas en este repositorio, en la carpeta de cada versión indicada arriba.
+Consulta el [índice de versiones](versions/INDEX.md) para ver los cambios, los fallos conocidos y los datos de publicación de cada versión. Las ISO y los paquetes de actualización se adjuntan a cada release de GitHub.

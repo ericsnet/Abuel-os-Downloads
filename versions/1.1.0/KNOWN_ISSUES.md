@@ -4,9 +4,9 @@ Lista honesta de lo que no funciona o está incompleto **en esta versión**.
 
 ## Bloqueantes
 
-- **Sin ISO ni prueba en vivo todavía.** Lo incluido hasta ahora está
-  implementado y compila, pero no se ha arrancado en una VM ni en hardware. No
-  se puede considerar una versión publicable.
+- **ISO construida pero sin arrancar todavía.** El build terminó el 2026-11-22,
+  pero falta probarla en VM (BIOS y UEFI) y en hardware. No se puede considerar
+  una versión publicable hasta entonces.
 - **Sin medición base de 1.0.9** en `artifacts/qa-1.1.0/`. Los objetivos de
   rendimiento del plan siguen sin verificar.
 - **Paquete de actualización sin firma**: se ha construido para comprobar

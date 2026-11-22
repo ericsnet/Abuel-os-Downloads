@@ -48,7 +48,9 @@
 
 ### Artefacto
 
-- ISO 1.1.0: pendiente de construir.
+- **ISO 1.1.0 construida** el 2026-11-22: 1.767.964.672 bytes.
+  SHA256: `937be4559ac62884eb53d021f09781921b36080b56963630d78dc72821c8582b`.
+  Pendiente de arranque en VM/hardware y de publicación.
 - Paquete `abuelo-os-core_1.1.0_all.deb`: construido y verificado en WSL
   (contenido y permisos), sin firmar todavía.
 - `abuelo-inicio` probado en headless (1366x768, claro y oscuro): arranca,
