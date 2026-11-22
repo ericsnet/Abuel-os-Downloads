@@ -18,26 +18,9 @@
 | RAM | 2 GB minimum; 4 GB recommended |
 | USB | 4 GB minimum; 8 GB or more recommended |
 
-**Download status:** every version is published in this repository, one folder per version (`versions/1.0.0/`, `versions/1.0.1/`, `versions/1.0.2/`, `versions/1.0.3/`, `versions/1.0.4/`, `versions/1.0.5/`, `versions/1.0.6/`, `versions/1.0.7/`, `versions/1.0.8/`, `versions/1.0.9/`), each containing its release notes and checksums; the ISO and update packages are attached to each GitHub release.
+**Download status:** every version is published in this repository, one folder per version, each containing its release notes and checksums; the ISO and update packages are attached to each GitHub release.
 
-## Versions and verification
-
-| Version | Expected SHA-256 | Status |
-|---|---|---|
-| [1.0.4](versions/1.0.4/) | `468c8785723a63881f3828611d5d56c6282de67dddd27c2a8cfdeab476e5356e` | ISO published in this repository |
-| [1.0.5](versions/1.0.5/) | `5de7fd5384cc4a84ec798e25aa547e6c62902d464c849756995ec4ee04177c07` | ISO published in this repository |
-| [1.0.6](versions/1.0.6/) | `18d62c0af617b5c89f175d993d5428ecd1ad2abf2143ac9bd6446f4e5d8a8f5a` | ISO published in this repository |
-| [1.0.7](versions/1.0.7/) | `eb87d71e87a115541c81b4aa683c8d7e83ae9c6a415b31f5776e34350ebcfec5` | ISO and updates attached to the release |
-| [1.0.8](versions/1.0.8/) | `584cb3b2c71d4fd458b3541464fe27af8b0ec38c8580e7bf3774b619f0627c57` | ISO and updates attached to the release |
-| [1.0.9](versions/1.0.9/) | `4d3545ec0b74ab6de2f7693babbafa349aba3dfd755a1e265fd65f02b9e3aca92` | ISO and updates attached to the release |
-| [1.0.3](versions/1.0.3/) | `c9636d05b124391c094077d543df9bba7d3e1f8af5ada2641bef62c6e79f2fae` | ISO published in this repository |
-| [1.0.2](versions/1.0.2/) | `bb0b42ca5f3acd4694263906e296d0b2cac9ab33da4cf6760ce83335551cfb98` | ISO published in this repository |
-| [1.0.1](versions/1.0.1/) | `ff037e08f2ee942806cb92498ae475217ec058db28207dfc2be3490bdb835fc2` | ISO published in this repository |
-| [1.0.0](versions/1.0.0/) | `3262da299e671020aa0268eaf076b7d0756d799d163ff90e1a2b6eec2b22eebf` | ISO published in this repository |
-
-Always verify the SHA-256 checksum of the downloaded ISO and compare it with the one for that version. If it does not match exactly, do not use that image.
-
-### Verify on Windows
+### Verify SHA on Windows
 
 Open PowerShell and run the following command, changing the path if you saved the ISO in another folder:
 
